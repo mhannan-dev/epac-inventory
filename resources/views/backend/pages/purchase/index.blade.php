@@ -97,7 +97,6 @@
                                                         <span class="badge badge-success"><i class="fas fa-check" aria-hidden="true"></i></span>
                                                     @endif
 
-
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -110,7 +109,7 @@
 
                                 </table>
                             </div>
-                            <!-- /.card-body -->
+                            <!-- /.card-body ----->
                         </div>
                         <!-- /.card -->
                     </div>
