@@ -24,10 +24,9 @@
                                     <thead>
                                     <tr>
                                         <th>@lang('form.th_sl')</th>
-                                        <th>@lang('form.th_title')</th>
                                         <th>@lang('form.th_supplier')</th>
                                         <th>@lang('form.th_product_category')</th>
-
+                                        <th>@lang('form.th_title')</th>
                                         <th>@lang('form.th_quantity')</th>
                                         <th>@lang('form.th_units')</th>
                                         <th>@lang('form.th_created_by')</th>
@@ -40,13 +39,9 @@
                                         @foreach ($products as $key => $list)
                                             <tr>
                                                 <td>{{ ++$key }}</td>
+                                                <td class="text-success">{{ $list['supplier']['name'] }}</td>
+                                                <td>{{ $list->category->name }}</td>
                                                 <td>{{ Str::limit($list->name, 20) }}</td>
-                                                <td class="text-success">{{ $list->suppliers->name }}</td>
-                                                <td>
-                                                    {{ $list->category->name }}
-
-                                                </td>
-
                                                 <td><button type="button" class="btn btn-block bg-gradient-warning btn-xs">{{ $list->quantity }}</button></td>
                                                 <td>{{ $list->units->name }}</td>
                                                 <td>{{ \Carbon\Carbon::parse($list->created_at)->diffForHumans() }}</td>

@@ -17,8 +17,23 @@
                             <div class="card-body">
                                 <div class="form-row">
 
-
-                                    <div class="form-group col-md-4">
+                                    <div class="form-group col-md-6">
+                                    @if($suppliers->count() < 1)
+                                        <!-- Button trigger modal -->
+                                            <a type="button" class="btn btn-outline-info mt-md-4" style="margin-top: 30px !important;" data-toggle="modal" data-target="#addSupplierModal">
+                                                Add Supplier <i class="fa fa-plus" aria-hidden="true"></i>
+                                            </a>
+                                        @else
+                                            <label for="supplier_id">Select Supplier</label>
+                                            <select class="form-control form-control-sm" id="supplier_id" name="supplier_id">
+                                                <option>Select supplier</option>
+                                                @foreach($suppliers as $data_row)
+                                                    <option value="{{ $data_row->id}}">{{ $data_row->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        @endif
+                                    </div>
+                                    <div class="form-group col-md-6">
                                         @if($categories->count() < 1)
                                             <!-- Button trigger modal -->
                                             <a type="button" class="btn btn-outline-info mt-md-4" style="margin-top: 30px !important;" data-toggle="modal" data-target="#addCatgModal">
@@ -27,7 +42,7 @@
 
                                         @else
                                             <label for="cuntry">Select Category</label>
-                                            <select class="form-control" id="category_id" name="category_id">
+                                            <select class="form-control form-control-sm" id="category_id" name="category_id">
                                                 <option>Select category</option>
                                                 @foreach($categories as $data_row)
                                                     <option value="{{ $data_row->id}}">{{ $data_row->name }}</option>
@@ -36,79 +51,16 @@
                                         @endif
                                     </div>
 
-{{--                                    <div class="form-group col-md-4">--}}
-{{--                                    @if($sub_categories->count() < 1)--}}
-{{--                                        <!-- Button trigger modal -->--}}
-{{--                                            <a type="button" class="btn btn-outline-info mt-md-4" style="margin-top: 30px !important;" data-toggle="modal" data-target="#addCatgModal">--}}
-{{--                                                Add Subcategory <i class="fa fa-plus" aria-hidden="true"></i>--}}
-{{--                                            </a>--}}
-
-{{--                                        @else--}}
-{{--                                            <label for="cuntry">Select Subcategory</label>--}}
-{{--                                            <select class="form-control" id="sub_category_id" name="sub_category_id">--}}
-{{--                                                <option>Select Subcategory</option>--}}
-{{--                                                @foreach($sub_categories as $data_row)--}}
-{{--                                                    <option value="{{ $data_row->id}}">{{ $data_row->name }}</option>--}}
-{{--                                                @endforeach--}}
-{{--                                            </select>--}}
-{{--                                        @endif--}}
-{{--                                    </div>--}}
 
 
-                                    <div class="form-group col-md-4">
-                                        @if($suppliers->count() < 1)
-                                                <!-- Button trigger modal -->
-                                                <a type="button" class="btn btn-outline-info mt-md-4" style="margin-top: 30px !important;" data-toggle="modal" data-target="#addSupplierModal">
-                                                    Add Supplier <i class="fa fa-plus" aria-hidden="true"></i>
-                                                </a>
-                                        @else
-                                            <label for="cuntry">Select Supplier</label>
-                                            <select class="form-control" id="supplier_id" name="supplier_id">
-                                                <option>Select supplier</option>
-                                                @foreach($suppliers as $data_row)
-                                                    <option value="{{ $data_row->id}}">{{ $data_row->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        @endif
-                                    </div>
 
-{{--                                    <div class="form-group col-md-4">--}}
-{{--                                        @if($brands->count() < 1)--}}
-{{--                                            <!-- Button trigger modal -->--}}
-{{--                                                <a type="button" class="btn btn-outline-info mt-md-4" style="margin-top: 30px !important;" data-toggle="modal" data-target="#addBrandModal">--}}
-{{--                                                    Add Brand <i class="fa fa-plus" aria-hidden="true"></i>--}}
-{{--                                                </a>--}}
-
-{{--                                        @else--}}
-{{--                                            <label for="cuntry">Select Brand</label>--}}
-{{--                                            <select class="form-control" id="brand_id" name="brand_id">--}}
-{{--                                                <option>Select brand</option>--}}
-{{--                                                @foreach($brands as $data_row)--}}
-{{--                                                    <option value="{{ $data_row->id}}">{{ $data_row->name }}</option>--}}
-{{--                                                @endforeach--}}
-{{--                                            </select>--}}
-{{--                                        @endif--}}
-{{--                                    </div>--}}
-
-
-                                    <div class="form-group col-md-4">
+                                    <div class="form-group col-md-6">
                                         <label for="status">Name</label>
-                                        <input type="text" class="form-control" name="name" id="name">
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <label for="status">Quantity</label>
-                                        <input type="text" class="form-control" name="quantity" id="quantity">
+                                        <input type="text" class="form-control form-control-sm" name="name" id="name" placeholder="Enter product name">
                                     </div>
 
-{{--                                    <div class="form-group col-md-4">--}}
-{{--                                        <label for="status">Purchase Price</label>--}}
-{{--                                        <input type="text" class="form-control" name="price" id="price">--}}
-{{--                                    </div>--}}
-{{--                                    <div class="form-group col-md-4">--}}
-{{--                                        <label for="status">Sale Price</label>--}}
-{{--                                        <input type="text" class="form-control" name="sale_price" id="sale_price">--}}
-{{--                                    </div>--}}
-                                    <div class="form-group col-md-4">
+
+                                    <div class="form-group col-md-6">
                                     @if($units->count() < 1)
                                         <!-- Button trigger modal -->
                                             <a type="button" class="btn btn-outline-info mt-md-4" style="margin-top: 30px !important;" data-toggle="modal" data-target="#addUnitModal">
@@ -117,7 +69,7 @@
 
                                         @else
                                             <label for="unit_id">Select Unit</label>
-                                            <select class="form-control" id="unit_id" name="unit_id">
+                                            <select class="form-control form-control-sm" id="unit_id" name="unit_id">
                                                 <option>Select unit</option>
                                                 @foreach($units as $data_row)
                                                     <option value="{{ $data_row->id}}">{{ $data_row->name }}</option>--}}
@@ -129,21 +81,17 @@
                                     </div>
 
                                 </div>
-                                <div class="form-group">
-                                    <label>Description</label>
-                                    <textarea class="form-control" name="description" rows="3" placeholder="Enter ..."></textarea>
-                                </div>
+
 
 
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-info">@lang('form.btn_save')</button>
-                                <a href="{{ route('admin.products.view') }}" class="btn btn-danger"><i
+                                <button type="submit" class="btn btn-info btn-sm">@lang('form.btn_save')</button>
+                                <a href="{{ route('admin.products.view') }}" class="btn btn-danger btn-sm"><i
                                         class="fas fa-undo"></i></a>
                             </div>
                             {!! Form::close() !!}
-
 
                         </div>
                         <!-- /.card -->
@@ -176,18 +124,18 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="name">@lang('form.name')<span class="text-danger">*</span></label>
-                            {!! Form::text('name', null, [ 'class' => 'form-control', 'data-validation-required-message' => 'This field is required', 'placeholder' => 'Enter category name']) !!}
+                            {!! Form::text('name', null, [ 'class' => 'form-control form-control-sm', 'data-validation-required-message' => 'This field is required', 'placeholder' => 'Enter category name']) !!}
                             {!! $errors->first('name', '<label class="help-block text-danger">:message</label>') !!}
                         </div>
 
                         <div class="form-group">
                             <label for="code">@lang('form.code')<span class="text-danger">*</span></label>
-                            {!! Form::text('code', null, [ 'class' => 'form-control', 'data-validation-required-message' => 'This field is required', 'placeholder' => 'Enter category code']) !!}
+                            {!! Form::text('code', null, [ 'class' => 'form-control form-control-sm', 'data-validation-required-message' => 'This field is required', 'placeholder' => 'Enter category code']) !!}
                             {!! $errors->first('code', '<label class="help-block text-danger">:message</label>') !!}
                         </div>
                         <div class="form-group">
                             <label for="status">@lang('form.status')</label>
-                            <select class="form-control" id="status" name="status">
+                            <select class="form-control form-control-sm" id="status" name="status">
                                 <option value="active">Select status</option>
                                 <option value="active">Active</option>
                                 <option value="inactive">Inactive</option>
@@ -224,31 +172,31 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="name">@lang('form.name')<span class="text-danger">*</span></label>
-                            <input class="form-control" name="name" placeholder="Enter supplier name"/>
+                            <input class="form-control form-control-sm" name="name" placeholder="Enter supplier name"/>
                             {!! $errors->first('name', '<label class="help-block text-danger">:message</label>') !!}
                         </div>
 
                         <div class="form-group">
                             <label for="email">@lang('form.email')<span class="text-danger">*</span></label>
-                            <input class="form-control" name="email" placeholder="Enter supplier email"/>
+                            <input class="form-control form-control-sm" name="email" placeholder="Enter supplier email"/>
                             {!! $errors->first('email', '<label class="help-block text-danger">:message</label>') !!}
                         </div>
                         <div class="form-group">
                             <label for="mobile_no">@lang('form.mobile_no')<span
                                     class="text-danger">*</span></label>
 
-                            <input class="form-control" name="mobile_no"
+                            <input class="form-control form-control-sm" name="mobile_no"
                                    placeholder="Enter supplier mobile no"/>
                             {!! $errors->first('mobile_no', '<label class="help-block text-danger">:message</label>') !!}
                         </div>
                         <div class="form-group">
                             <label for="address">@lang('form.address')<span class="text-danger">*</span></label>
-                            <input class="form-control" name="address" placeholder="Enter supplier address"/>
+                            <input class="form-control form-control-sm" name="address" placeholder="Enter supplier address"/>
                             {!! $errors->first('address', '<label class="help-block text-danger">:message</label>') !!}
                         </div>
                         <div class="form-group">
                             <label for="status">Status</label>
-                            <select class="form-control" id="status" name="status">
+                            <select class="form-control form-control-sm" id="status" name="status">
                                 <option>Select status</option>
                                 <option value="active">Active</option>
                                 <option value="inactive">Inactive</option>
@@ -286,7 +234,7 @@
                         <div class="form-group">
                             <label for="name">@lang('form.name')<span class="text-danger">*</span></label>
 
-                            <input type="text" class="form-control {{ $errors->has('name') ? 'error' : '' }}" name="name" id="name" placeholder="Enter brand name"/>
+                            <input type="text" class="form-control form-control-sm {{ $errors->has('name') ? 'error' : '' }}" name="name" id="name" placeholder="Enter brand name"/>
 
                             @if ($errors->has('name'))
                                 <div class="error">
@@ -298,18 +246,18 @@
                         <div class="form-group">
                             <label for="code">@lang('form.code')<span class="text-danger">*</span></label>
 
-                            <input class="form-control" name="code" placeholder="Enter brand code"/>
+                            <input class="form-control form-control-sm" name="code" placeholder="Enter brand code"/>
 
                             {!! $errors->first('code', '<label class="help-block text-danger">:message</label>') !!}
                         </div>
                         <div class="form-group">
                             <label>@lang('form.body')</label>
-                            <textarea name="description" class="form-control" rows="3" placeholder="Enter short desc...."></textarea>
+                            <textarea name="description" class="form-control form-control-sm" rows="3" placeholder="Enter short desc...."></textarea>
                         </div>
 
                         <div class="form-group">
                             <label for="is_active">Status</label>
-                            <select class="form-control" name="status">
+                            <select class="form-control form-control-sm" name="status">
                                 <option>Select Option</option>
                                 <option value="active">Active</option>
                                 <option value="inactive">Inactive</option>
@@ -347,27 +295,14 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="name">@lang('form.name')<span class="text-danger">*</span></label>
-                            {!! Form::text('name', null, [ 'class' => 'form-control', 'data-validation-required-message' => 'This field is required', 'placeholder' => 'Enter category name']) !!}
+                            {!! Form::text('name', null, [ 'class' => 'form-control form-control-sm', 'data-validation-required-message' => 'This field is required', 'placeholder' => 'Enter category name']) !!}
                             {!! $errors->first('name', '<label class="help-block text-danger">:message</label>') !!}
                         </div>
 
-{{--                        <div class="form-group">--}}
-{{--                            <label for="status">@lang('form.brand')</label>--}}
-{{--                            <select class="form-control" id="brand_id" name="brand_id">--}}
-
-{{--                                <option>Select brand</option>--}}
-{{--                                @foreach ($brands as $key => $brand_data)--}}
-{{--                                    <option value="{{ $brand_data->id }}">{{ $brand_data->name }}</option>--}}
-{{--                                @endforeach--}}
-
-
-
-{{--                            </select>--}}
-{{--                        </div>--}}
 
                         <div class="form-group">
                             <label for="status">@lang('form.status')</label>
-                            <select class="form-control" id="status" name="status">
+                            <select class="form-control form-control-sm" id="status" name="status">
                                 <option value="active">Select status</option>
                                 <option value="active">Active</option>
                                 <option value="inactive">Inactive</option>
@@ -406,25 +341,42 @@
 
             $('#supplierForm').validate({
                 rules: {
+                    supplier_id: {
+                        required: true,
+
+                    },
+                    category_id: {
+                        required: true,
+
+                    },
                     name: {
                         required: true,
-                        name: true,
+
                     },
                     email: {
                         required: true,
-                        email: true,
+
                     },
                     mobile_no: {
                         required: true,
-                        mobile_no: true,
+
                     },
                     address: {
                         required: true,
-                        address: true
+
                     },
 
                 },
                 messages: {
+                    supplier_id: {
+                        required: "Please select supplier",
+                        name: "Please select supplier"
+                    },
+
+                    category_id: {
+                        required: "Please select category",
+                        name: "Please select category"
+                    },
                     name: {
                         required: "Please enter a name",
                         name: "Please enter name"

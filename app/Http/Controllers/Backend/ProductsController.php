@@ -56,12 +56,10 @@ class ProductsController extends Controller
     {
         #dd($request->all());
         $request->validate([
-            'category_id' => 'required',
             'supplier_id' => 'required',
+            'category_id' => 'required',
             'unit_id' => 'required',
             'name' => 'required|string|max:255',
-            'quantity' => 'required',
-            'description' => 'required',
 
         ],
             [
@@ -69,18 +67,16 @@ class ProductsController extends Controller
                 'supplier_id.required' => 'Please select supplier',
                 'unit_id.required' => 'Please select unit',
                 'name.required' => 'Please enter a name',
-                'quantity' => 'Please enter quantity',
-                'description' => 'Enter description',
+
             ]
         );
 
         $product = new  Product();
-        $product->category_id = $request->category_id;
         $product->supplier_id = $request->supplier_id;
+        $product->category_id = $request->category_id;
         $product->unit_id = $request->unit_id;
         $product->name = $request->name;
-        $product->quantity = $request->quantity;
-        $product->description = $request->description;
+        $product->quantity = '0';
         $product->created_by = Auth::user()->id;
         $product->save();
         toast('Data added successfully !!', 'success');
