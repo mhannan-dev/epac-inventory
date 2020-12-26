@@ -22,47 +22,47 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                     <tr>
-                                        <th width="4%">@lang('form.th_id')</th>
-                                        <th width="12%">PO No.</th>
-                                        <th width="12%">Date</th>
-                                        <th width="22%">@lang('form.th_title')</th>
-                                        <th width="18%">@lang('form.th_supplier')</th>
-                                        <th width="20%">@lang('form.th_product_brand')</th>
-                                        <th>@lang('form.th_product_category')</th>
-                                        <th>@lang('form.th_price')</th>
-                                        <th>@lang('form.th_quantity')</th>
+                                        <th>@lang('form.th_sl')</th>
+                                        <th>Customer Name</th>
+                                        <th>Invoice No</th>
+                                        <th>Date</th>
+                                        <th>Description</th>
+                                        <th class="text-right">Amount</th>
                                         <th>@lang('form.th_status')</th>
                                         <th class="text-right" width="3%">@lang('form.th_action')</th>
                                     </tr>
                                     </thead>
                                     <tbody>
 
-                                    @if(count($products))
-                                        @foreach ($products as $key => $purchase)
+                                    @if(count($invoices))
+                                        @foreach ($invoices as $key => $invoice)
                                             <tr>
                                                 <td>{{ ++$key }}</td>
-                                                <td>{{ $purchase->purchase_no }}</td>
-                                                <td>{{ $purchase->date }}</td>
-                                                <td>{{ $purchase['products']['brands']['name'] }}</td>
-                                                <td>{{ $purchase['products']['suppliers']->name }}</td>
-                                                <td>{{ $purchase['products']['brands']->name }}</td>
-                                                <td>{{ $purchase['products']['category']->name }}</td>
-                                                <td>{{ $purchase->buying_price }}</td>
-                                                <td>{{ $purchase->buying_qty }} <span class="badge badge-info">{{ $purchase['products']['units']['name'] }}</span></td>
+                                                <td>{{ $invoice['payment']['customer']['name']}} || {{ $invoice['payment']['customer']['mobile_no']}}</td>
+                                                <td class="text-fuchsia text-bold">Invoice no {{ $invoice->invoice_no }}</td>
+                                                <td>{{ $invoice->date }}</td>
+                                                <td>{{ $invoice->description }}</td>
+                                                <td class="text-right">{{ $invoice['payment']['total_amount']}}</td>
+
                                                 <td>
-                                                    @if($purchase->status == 0)
+                                                    @if($invoice->status == 0)
                                                         <span class="badge badge-warning">Pending</span>
-                                                    @elseif($purchase->status == 1)
-                                                        <span class="badge badge-success">Apprvd.</span>
+                                                    @elseif($invoice->status == 1)
+                                                        <span class="badge badge-success">Approved</span>
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    @if($purchase->status == 0)
-                                                        <a title="Approve" href="#approveModal{{ $purchase->id }}" data-toggle="modal" class="badge badge-success text-right">
-                                                            <i class="fa fa-check" aria-hidden="true"></i>
+                                                    @if($invoice->status == 0)
+                                                        <a title="Approve" href="{{ route('invoice.approve', $invoice->id)}}" class="badge badge-success text-right">
+                                                            <i class="fa fa-check-circle" aria-hidden="true"></i>
                                                         </a>
+
+                                                        <a title="Delete" href="#deleteModal{{ $invoice->id }}" data-toggle="modal" class="badge badge-danger text-right">
+                                                            <i class="fa fa-trash-alt" aria-hidden="true"></i>
+                                                        </a>
+
                                                         <!-- Delete Modal -->
-                                                        <div class="modal fade" id="approveModal{{ $purchase->id }}"
+                                                        <div class="modal fade" id="deleteModal{{ $invoice->id }}"
                                                              tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                                                              aria-hidden="true">
                                                             <div class="modal-dialog" role="document">
@@ -76,11 +76,11 @@
                                                                         </button>
                                                                     </div>
                                                                     <div class="modal-body">
-                                                                        <form action="{!! route('purchase.approve', $purchase->id) !!}" method="post">
+                                                                        <form action="{!! route('invoice.delete', $invoice->id) !!}" method="post">
                                                                             @csrf
 
-                                                                            <button type="submit" class="btn btn-success">
-                                                                                Permanent Approve
+                                                                            <button type="submit" class="btn btn-danger">
+                                                                                Permanent Delete
                                                                             </button>
                                                                         </form>
 

@@ -40,7 +40,7 @@
                                             <tr>
                                                 <td>{{ ++$key }}</td>
                                                 <td class="text-success">{{ $list['supplier']['name'] }}</td>
-                                                <td>{{ $list->category->name }}</td>
+                                                <td>{{ $list['category']['name'] }}</td>
                                                 <td>{{ Str::limit($list->name, 20) }}</td>
                                                 <td><button type="button" class="btn btn-block bg-gradient-warning btn-xs">{{ $list->quantity }}</button></td>
                                                 <td>{{ $list->units->name }}</td>

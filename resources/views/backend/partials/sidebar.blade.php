@@ -226,6 +226,13 @@
                                     <p>Invoice</p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{route('invoice.pending.list')}}"
+                                   class="nav-link {{($route=='invoice.pending.list')?'active':''}}">
+                                    <i class="far fa-list-alt"></i>
+                                    <p>Pending Invoice</p>
+                                </a>
+                            </li>
 
                         </ul>
                     </li>

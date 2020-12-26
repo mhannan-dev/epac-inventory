@@ -18,7 +18,7 @@
                                 <div class="form-row">
 
 
-                                    <div class="form-group col-md-4">
+                                    <div class="form-group col-md-6">
                                     @if($suppliers->count() < 1)
                                         <!-- Button trigger modal -->
                                             <a type="button" class="btn btn-outline-info mt-md-4"
@@ -27,8 +27,8 @@
                                                 Add Supplier <i class="fa fa-plus" aria-hidden="true"></i>
                                             </a>
                                         @else
-                                            <label for="cuntry">Select Supplier</label>
-                                            <select class="form-control" id="supplier_id" name="supplier_id">
+                                            <label for="supplier_id">Select Supplier</label>
+                                            <select class="form-control form-control-sm select2" id="supplier_id" name="supplier_id">
                                                 <option>Select supplier</option>
                                                 @foreach($suppliers as $data_row)
 
@@ -42,10 +42,10 @@
                                     </div>
 
 
-                                    <div class="form-group col-md-4">
+                                    <div class="form-group col-md-6">
 
                                         <label for="cuntry">Select category</label>
-                                        <select class="form-control" id="category_id" name="category_id">
+                                        <select class="form-control form-control-sm select2" id="category_id" name="category_id">
                                             <option>Select category</option>
                                             @foreach($categories as $data_row)
                                                 <option value="{{ $data_row->id}}"
@@ -56,20 +56,16 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="form-group col-md-4">
+                                    <div class="form-group col-md-6">
                                         <label for="status">Name</label>
-                                        <input type="text" class="form-control" name="name" id="name"
-                                               value="{{ $product->name }}">
+                                        <input type="text" class="form-control form-control-sm" name="name" id="name"
+                                               value="{{ $data_row->name }}">
                                     </div>
-                                    <div class="form-group col-md-4">
-                                        <label for="status">Quantity</label>
-                                        <input type="text" class="form-control" name="quantity" id="quantity"
-                                               value="{{ $product->quantity }}">
-                                    </div>
-                                    <div class="form-group col-md-4">
+
+                                    <div class="form-group col-md-6">
                                     @if($units->count() < 1)
                                         <!-- Button trigger modal -->
-                                            <a type="button" class="btn btn-outline-info mt-md-4"
+                                            <a type="button" class="btn btn-outline-info btn-sm mt-md-4"
                                                style="margin-top: 30px !important;" data-toggle="modal"
                                                data-target="#addUnitModal">
                                                 Add Unit <i class="fa fa-plus" aria-hidden="true"></i>
@@ -77,7 +73,7 @@
 
                                         @else
                                             <label for="unit_id">Select Unit</label>
-                                            <select class="form-control" id="unit_id" name="unit_id">
+                                            <select class="form-control form-control-sm select2" id="unit_id" name="unit_id">
                                                 <option>Select unit</option>
                                                 @foreach($units as $data_row)
                                                     <option value="{{ $data_row->id}}"
@@ -93,19 +89,13 @@
 
 
                                 </div>
-                                <div class="form-group">
-                                    <label>Description</label>
-
-                                    <input type="text" class="form-control" name="description" id="description"
-                                           value="{{ $product->description }}">
-                                </div>
 
 
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-info">@lang('form.btn_save')</button>
-                                <a href="{{ route('admin.products.view') }}" class="btn btn-danger"><i
+                                <button type="submit" class="btn btn-info btn-sm">@lang('form.btn_save')</button>
+                                <a href="{{ route('admin.products.view') }}" class="btn btn-danger  btn-sm"><i
                                         class="fas fa-undo"></i></a>
                             </div>
                             {!! Form::close() !!}

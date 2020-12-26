@@ -13,12 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', 'Backend\DashboardController@index')->name('dashboard');
+
 /* All Authenticated routes here */
 Auth::routes();
 
 Route::group(array('middleware' => 'auth'), function () {
-
     Route::group(['prefix' => 'user'], function () {
         Route::get('/all-user', 'Backend\UsersController@getIndex')->name('logged_in.user.view');
         Route::get('/create', 'Backend\UsersController@getCreate')->name('admin.user.create');
@@ -126,14 +127,11 @@ Route::group(['prefix' => 'invoice'], function () {
     Route::get('/create', 'Backend\InvoiceController@getCreate')->name('invoice.create');
     Route::post('/store', 'Backend\InvoiceController@postStore')->name('invoice.store');
     Route::get('/pending', 'Backend\InvoiceController@pendingList')->name('invoice.pending.list');
-    Route::post('/approve/{id}', 'Backend\InvoiceController@purchaseApprove')->name('invoice.approve');
+    Route::get('/approve/{id}', 'Backend\InvoiceController@invoice_approve')->name('invoice.approve');
     Route::post('/delete/{id}', 'Backend\InvoiceController@postDelete')->name('invoice.delete');
-
     #Deletable
     Route::get('/invoice_design', 'Backend\InvoiceController@invoice_design')->name('invoice_design');
     Route::get('/invoice_print', 'Backend\InvoiceController@invoice_print')->name('invoice_print');
-
-
 
 });
 

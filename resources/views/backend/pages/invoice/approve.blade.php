@@ -10,45 +10,35 @@
 
                         <div class="card mt-2">
                             <div class="card-header">
-                                <h3 class="card-title">{{$title}} List</h3>
+
+                                <a class="btn btn-warning text-white text-bold">Invoice no {{ $invoice->invoice_no }}</a>
                                 <div class="float-right">
-                                    <a href="{{ route('invoice.create') }}" class="btn btn-outline-info"><i
-                                            class="fas fa-plus"></i> &nbsp;Add {{$title}}</a>
+                                    <a href="{{ route('invoice.pending.list') }}" class="btn btn-outline-info"><i
+                                            class="fas fa-arrow-left"></i> &nbsp;Back to Pending Invoice</a>
                                 </div>
 
                             </div>
 
                             <!-- /.card-header -->
                             <div class="card-body">
+                                @php
+                                  $payment = App\Models\Payment::where('invoice_id', $invoice->id)->first();
+                                @endphp
                                 <table id="example1" class="table table-bordered table-striped">
-                                    <thead>
 
-                                    <tr>
-
-                                        <th>@lang('form.th_sl')</th>
-                                        <th>Customer name</th>
-                                        <th>Invoice No</th>
-                                        <th>Date</th>
-                                        <th>Description</th>
-                                        <th class="text-right">Amount</th>
-
-                                    </tr>
-                                    </thead>
                                     <tbody>
-                                    @foreach ($invoices as $key => $invoice)
-                                        <tr>
-                                            <td>{{ ++$key }}</td>
-                                            <td>
-                                                {{ $invoice['payment']['customer']['name']}} || {{ $invoice['payment']['customer']['mobile_no']}}
-                                            </td>
-                                            <td class="text-fuchsia text-bold">Invoice no {{ $invoice->invoice_no }}</td>
-                                            <td>{{ $invoice->date }}</td>
-                                            <td>{{ $invoice->description }}</td>
-                                            <td class="text-right">{{ $invoice['payment']['total_amount']}}</td>
 
+                                        <tr>
+                                            <td><strong>Customer Info</strong></td>
+                                            <td><strong>Name:</strong> {{ $payment['customer']['name']}}</td>
+                                            <td><strong>Mobile No: </strong>{{ $payment['customer']['email']}}</td>
+                                            <td><strong>Address: </strong>{{ $payment['customer']['address']}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
                                         </tr>
 
-                                    @endforeach
+
 
                                     </tbody>
 

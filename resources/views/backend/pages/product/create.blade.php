@@ -25,7 +25,7 @@
                                             </a>
                                         @else
                                             <label for="supplier_id">Select Supplier</label>
-                                            <select class="form-control form-control-sm" id="supplier_id" name="supplier_id">
+                                            <select class="form-control form-control-sm select2" id="supplier_id" name="supplier_id">
                                                 <option>Select supplier</option>
                                                 @foreach($suppliers as $data_row)
                                                     <option value="{{ $data_row->id}}">{{ $data_row->name }}</option>
@@ -42,7 +42,7 @@
 
                                         @else
                                             <label for="cuntry">Select Category</label>
-                                            <select class="form-control form-control-sm" id="category_id" name="category_id">
+                                            <select class="form-control form-control-sm select2" id="category_id" name="category_id">
                                                 <option>Select category</option>
                                                 @foreach($categories as $data_row)
                                                     <option value="{{ $data_row->id}}">{{ $data_row->name }}</option>

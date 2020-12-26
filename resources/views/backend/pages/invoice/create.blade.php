@@ -24,7 +24,7 @@
 
                                         <div class="input-group">
                                             <input class="form-control form-control-sm" name="date" id="date"
-                                                   value="{{ $date }}" />
+                                                  placeholder="YY-MM-DD"/>
                                         </div>
                                         <!-- /.input group -->
                                     </div>
@@ -38,38 +38,22 @@
                                         </div>
                                         <!-- /.input group -->
                                     </div>
-                                    <div class="form-group col-md-3">
-                                    @if($brands->count() < 1)
-                                        <!-- Button trigger modal -->
-                                            <a type="button" class="btn btn-outline-info mt-md-4" style="margin-top: 30px !important;" data-toggle="modal" data-target="#addBrandModal">Add Brand <i class="fa fa-plus" aria-hidden="true"></i>
-                                            </a>
 
-                                        @else
-                                            <label for="cuntry">Select Brand</label>
-                                            <select class="form-control select2 form-control-sm" id="brand_id" name="brand_id">
-                                                <option>Select brand</option>
-                                                @foreach($brands as $data_row)
-                                                    <option value="{{ $data_row->id}}">{{ $data_row->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        @endif
-                                    </div>
 
                                     <div class="form-group col-md-2">
 
                                         <label for="category_id">Select Category</label>
-                                        <select class="form-control select2 form-control-sm" id="category_id" name="category_id">
-                                            <option value="">Select Category</option>
+
+                                        <select class="form-control form-control-sm select2" id="category_id" name="category_id">
+                                            <option>Select category</option>
+                                            @foreach($categories as $data_row)
+                                                <option value="{{ $data_row->id}}">{{ $data_row->name }}</option>
+                                            @endforeach
                                         </select>
 
                                     </div>
 
-                                    <div class="form-group col-md-3">
-                                        <label for="sub_category_id">Subcategory</label>
-                                        <select class="form-control select2 form-control-sm" id="sub_category_id" name="sub_category_id">
-                                            <option value="">Select Subcategory</option>
-                                        </select>
-                                    </div>
+
                                     <div class="form-group col-md-3">
                                         <label for="cuntry">Product name</label>
                                         <select class="form-control select2 form-control-sm" id="product_id" name="product_id">
@@ -111,9 +95,9 @@
                                         <thead>
                                         <tr>
                                             <th>@lang('form.th_product_category')</th>
-                                            <th>@lang('form.th_product_sub_category')</th>
+
                                             <th>Product name</th>
-                                            <th width="10%">Quantity</th>
+                                            <th width="10%">KG/PCS</th>
                                             <th width="10%">Rate</th>
                                             <th>Unit</th>
                                             <th width="15%">Total</th>
@@ -129,9 +113,9 @@
                                         <tbody>
 
                                         <tr>
-                                            <td colspan="6" class="text-right text-bold text-dark">Discount Amount</td>
+                                            <td colspan="5" class="text-right text-bold text-dark">Discount Amount</td>
 
-                                            <td  colspan="1" class="text-white text-bold">
+                                            <td  class="text-white text-bold">
                                                 <input name="discount_amount" id="discount_amount" type="text" class="text-right form-control form-control-sm" style="background-color: #d4edda" value="{{ old('discount_amount') }}">
                                             </td>
                                             <td></td>
@@ -140,8 +124,8 @@
 
 
                                         <tr>
-                                            <td colspan="6" class="text-right text-bold text-dark">Line Total</td>
-                                            <td  colspan="1" class="text-white text-bold ">
+                                            <td colspan="5" class="text-right text-bold text-dark">Line Total</td>
+                                            <td  class="text-white text-bold ">
                                                 <input name="estimated_amount" id="estimated_amount" type="text" class="text-right form-control form-control-sm estimated_amount" style="background-color: #d4edda" readonly value="{{old('estimated_amount')}}">
                                             </td>
                                             <td></td>
@@ -323,70 +307,7 @@
             </div>
         </div>
     </div>
-    <!-- Brand Modal-->
-    <div class="modal fade" id="addBrandModal" tabindex="-1" role="dialog" aria-labelledby="addBrandModal"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Product Brand</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    {!! Form::open([ 'route' => ['admin.brand.store'], 'name'=>'brandForm' , 'id' => 'brandForm', 'method' => 'post']) !!}
 
-                    @csrf
-                    <div class="card-body">
-                        <div class="form-group">
-                            <label for="name">@lang('form.name')<span class="text-danger">*</span></label>
-
-                            <input type="text" class="form-control {{ $errors->has('name') ? 'error' : '' }}"
-                                   name="name" id="name" placeholder="Enter brand name"/>
-
-                            @if ($errors->has('name'))
-                                <div class="error">
-                                    {{ $errors->first('name') }}
-                                </div>
-                            @endif
-                        </div>
-
-                        <div class="form-group">
-                            <label for="code">@lang('form.code')<span class="text-danger">*</span></label>
-
-                            <input class="form-control" name="code" placeholder="Enter brand code"/>
-
-                            {!! $errors->first('code', '<label class="help-block text-danger">:message</label>') !!}
-                        </div>
-                        <div class="form-group">
-                            <label>@lang('form.body')</label>
-                            <textarea name="description" class="form-control" rows="3"
-                                      placeholder="Enter short desc...."></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="is_active">Status</label>
-                            <select class="form-control" name="status">
-                                <option>Select Option</option>
-                                <option value="active">Active</option>
-                                <option value="inactive">Inactive</option>
-                            </select>
-                        </div>
-
-
-                    </div>
-                    <!-- /.card-body -->
-                    <div class="card-footer">
-                        <button type="submit" class="btn btn-info">@lang('form.btn_save')</button>
-                        <a href="{{ route('admin.brand.view') }}" class="btn btn-danger"><i class="fas fa-undo"></i></a>
-                    </div>
-                    {!! Form::close() !!}
-                </div>
-
-            </div>
-        </div>
-    </div>
     <div class="modal fade" id="addUnitModal" tabindex="-1" role="dialog" aria-labelledby="addUnitModal"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -407,18 +328,7 @@
                             {!! $errors->first('name', '<label class="help-block text-danger">:message</label>') !!}
                         </div>
 
-                        <div class="form-group">
-                            <label for="status">@lang('form.brand')</label>
-                            <select class="form-control" id="brand_id" name="brand_id">
 
-                                <option>Select brand</option>
-                                @foreach ($brands as $key => $brand_data)
-                                    <option value="{{ $brand_data->id }}">{{ $brand_data->name }}</option>
-                                @endforeach
-
-
-                            </select>
-                        </div>
 
                         <div class="form-group">
                             <label for="status">@lang('form.status')</label>
@@ -456,15 +366,11 @@
 
             <input type="hidden" name="invoice_no" value="@{{ invoice_no }}">
 
-            <input type="hidden" name="brand_id[]" value="@{{ brand_id }}">
 
             <td>
                 <input type="hidden" name="category_id[]" value="@{{ category_id }}">@{{ category_name }}
             </td>
 
-            <td>
-                <input type="hidden" name="sub_category_id[]" value="@{{ sub_category_id }}">@{{ sub_category_name }}
-            </td>
 
             <td>
                 <input type="hidden" name="product_id[]" value="@{{ product_id }}">@{{ product_name }}
@@ -498,12 +404,8 @@
 
             var date = $('#date').val();
             var invoice_no = $('#invoice_no').val();
-            var brand_id                = $('#brand_id').val();
-            var brand_name              = $('#brand_id').find('option:selected').text();
             var category_id           = $('#category_id').val();
             var category_name         = $('#category_id').find('option:selected').text();
-            var sub_category_id       = $('#sub_category_id').val();
-            var sub_category_name     = $('#sub_category_id').find('option:selected').text();
             var product_id            = $('#product_id').val();
             var product_name          = $('#product_id').find('option:selected').text();
             var unit_id               = $('#unit_id').val();
@@ -517,19 +419,13 @@
                 return false;
             }
 
-            if (brand_id == '') {
-                $.notify("Brand is rquired", {globalPosition: 'top-right', className: 'error'});
-                return false;
-            }
+
 
             if (category_id == '') {
                 $.notify("Category is rquired", {globalPosition: 'top-right', className: 'error'});
                 return false;
             }
-            if (sub_category_id == '') {
-                $.notify("Sub category is rquired", {globalPosition: 'top-right', className: 'error'});
-                return false;
-            }
+
             if (product_id == '') {
                 $.notify("Product is rquired", {globalPosition: 'top-right', className: 'error'});
                 return false;
@@ -558,11 +454,8 @@
             var data = {
                 date: date,
                 invoice_no: invoice_no,
-                brand_id:        brand_id,
                 category_id: category_id,
                 category_name: category_name,
-                sub_category_id: sub_category_id,
-                sub_category_name: sub_category_name,
                 product_id: product_id,
                 product_name: product_name,
                 selling_qty: selling_qty,
@@ -626,52 +519,14 @@
         });
 
         $(function () {
-            //Loading category under brand_id selection
-            $(document).on('change', '#brand_id', function () {
-                $('#sub_category_id').empty()
-                $('#sub_category_id').append(`<option value="">Select subcategory</option>`)
-                $('#category_id').empty()
-                $('#category_id').append(`<option value="">Select category</option>`)
-                var my_brand_id = $(this).val();
-                $.ajax({
-                    url: "{{ route('category-for-invoice') }}",
-                    type: "GET",
-                    data: {brand_id: my_brand_id},
-                    success: function (data) {
-                        var html = '<option value="">Select category</option>';
-                        $.each(data, function (key, v) {
-                            html += '<option value="' + v.category_id + '">' + v.category.name + '</option>'
-                        });
-                        $('#category_id').html(html);
-                    }
-                });
-            });
 
-            //Loading sub_category_id under category_id selection
+            //Loading product under subcategory selection
             $(document).on('change', '#category_id', function () {
                 var my_category_id = $(this).val();
                 $.ajax({
-                    url: "{{ route('get-sub-category') }}",
-                    type: "GET",
-                    data: {category_id: my_category_id},
-                    success: function (data) {
-                        var html = '<option value="">Select subcategory</option>';
-
-                        $.each(data, function (key, v) {
-                            html += '<option value="' + v.sub_category_id + '">' + v.product_sub_category.name + '</option>' //prd_category_relation
-                        });
-                        $('#sub_category_id').html(html);
-                    }
-                });
-            });
-
-            //Loading product under subcategory_id selection
-            $(document).on('change', '#sub_category_id', function () {
-                var my_sub_category_id = $(this).val();
-                $.ajax({
                     url: "{{ route('get-products') }}",
                     type: "GET",
-                    data: {sub_category_id: my_sub_category_id},
+                    data: {category_id: my_category_id},
                     success: function (data) {
                         var html = '<option value="">Select product</option>';
 
@@ -702,7 +557,6 @@
 
     <script type="text/javascript">
         $(document).on('change','#paid_status', function(){
-            //alert('okay');
             // Paid status
             var paid_status = $(this).val();
             if( paid_status == 'partial_paid'){

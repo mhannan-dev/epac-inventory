@@ -68,18 +68,14 @@ class PurchaseController extends Controller
                 $pucrhase = new  Purchase();
                 $pucrhase->date = date('Y-m-d', strtotime($request->date[$i]));
                 $pucrhase->purchase_no = $request->purchase_no[$i];
-                #$pucrhase->brand_id = $request->brand_id[$i];
                 $pucrhase->supplier_id = $request->supplier_id[$i];
                 $pucrhase->category_id = $request->category_id[$i];
-                #$pucrhase->sub_category_id = $request->sub_category_id[$i];
                 $pucrhase->product_id = $request->product_id[$i];
-                #$pucrhase->unit_id = $request->unit_id[$i];
                 $pucrhase->buying_price = $request->buying_price[$i];
                 $pucrhase->buying_qty = $request->buying_qty[$i];
                 $pucrhase->description = $request->description[$i];
                 $pucrhase->created_by = Auth::user()->id;
                 $pucrhase->status = '0';
-                //dd($pucrhase);
                 $pucrhase->save();
 
             }

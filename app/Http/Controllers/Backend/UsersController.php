@@ -1,13 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Backend;
-use App\Http\Controllers\Controller;
 use App\Http\Traits\UploadTrait;
 use App\Models\User;
 use App\Models\Role;
 use Illuminate\Http\Request;
-use App\Http\Requests\Backend\UserStoreRequest;
-use Illuminate\Support\Facades\DB;
+
+use App\Http\Controllers\Controller;
 
 
 
@@ -29,7 +28,6 @@ class UsersController extends Controller
     {
         $data['title'] = "User";
         $data['all_user'] = User::all();
-
         //dd($data);
         return view('backend.pages.user.index',$data);
     }

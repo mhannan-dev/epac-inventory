@@ -14,14 +14,14 @@ class Product extends Model
         return $this->belongsTo('App\Models\Supplier','supplier_id')->withDefault();
     }
 
-    public function category()
-    {
-        return $this->belongsTo('App\Models\Category','category_id')->withDefault();
-    }
-    
     public function units()
     {
         return $this->belongsTo('App\Models\Unit','unit_id')->withDefault();
+    }
+
+    public function category()
+    {
+        return $this->belongsTo('App\Models\Category','category_id')->withDefault();
     }
 
 
