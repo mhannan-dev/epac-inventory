@@ -24,7 +24,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="email">@lang('form.email')<span class="text-danger">*</span></label>
+                                        <label for="email">@lang('form.email')</label>
                                         {!! Form::text('email', null, [ 'class' => 'form-control', 'data-validation-required-message' => 'This field is required', 'placeholder' => 'Enter name']) !!}
                                         {!! $errors->first('email', '<label class="help-block text-danger">:message</label>') !!}
                                     </div>
@@ -34,7 +34,8 @@
                                         {!! $errors->first('mobile_no', '<label class="help-block text-danger">:message</label>') !!}
                                     </div>
                                     <div class="form-group">
-                                        <label for="address">@lang('form.address')<span class="text-danger">*</span></label>
+                                        <label for="address">
+                                            @lang('form.address')</label>
                                         {!! Form::text('address', null, [ 'class' => 'form-control', 'data-validation-required-message' => 'This field is required', 'placeholder' => 'Enter name']) !!}
                                         {!! $errors->first('address', '<label class="help-block text-danger">:message</label>') !!}
                                     </div>

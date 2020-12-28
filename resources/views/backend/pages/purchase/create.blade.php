@@ -29,12 +29,12 @@
                                         <!-- /.input group -->
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label>Purchase No</label>
+                                        <label>Purchase Memo No</label>
 
                                         <div class="input-group">
-                                            <input class="form-control form-control-sm" name="purchase_no"
+                                            <input type="text" class="form-control form-control-sm" name="purchase_no"
                                                    id="purchase_no"
-                                                   placeholder="Enter purchase no"/>
+                                                   placeholder="E.g. PURC_20201227"/>
 
                                         </div>
                                         <!-- /.input group -->

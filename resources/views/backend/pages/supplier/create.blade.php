@@ -25,13 +25,12 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="email">@lang('form.email')<span class="text-danger">*</span></label>
+                                    <label for="email">@lang('form.email')</label>
                                     <input class="form-control" name="email" placeholder="Enter supplier email"/>
                                     {!! $errors->first('email', '<label class="help-block text-danger">:message</label>') !!}
                                 </div>
                                 <div class="form-group">
-                                    <label for="mobile_no">@lang('form.mobile_no')<span
-                                            class="text-danger">*</span></label>
+                                    <label for="mobile_no">@lang('form.mobile_no')</label>
 
                                     <input class="form-control" name="mobile_no"
                                            placeholder="Enter supplier mobile no"/>
@@ -93,14 +92,14 @@
                         required: true,
                         name: true,
                     },
-                    email: {
-                        required: true,
-                        email: true,
-                    },
-                    mobile_no: {
-                        required: true,
-                        mobile_no: true,
-                    },
+                    // email: {
+                    //     required: true,
+                    //     email: true,
+                    // },
+                    // mobile_no: {
+                    //     required: true,
+                    //     mobile_no: true,
+                    // },
                     address: {
                         required: true,
                         address: true
@@ -112,14 +111,14 @@
                         required: "Please enter a name",
                         name: "Please enter name"
                     },
-                    email: {
-                        required: "Please enter a email address",
-                        email: "Please enter a email"
-                    },
-                    mobile_no: {
-                        required: "Please enter a mobile no",
-                        mobile_no: "Please enter a mobile"
-                    },
+                    // email: {
+                    //     required: "Please enter a email address",
+                    //     email: "Please enter a email"
+                    // },
+                    // mobile_no: {
+                    //     required: "Please enter a mobile no",
+                    //     mobile_no: "Please enter a mobile"
+                    // },
                     address: {
                         required: "Please provide a address",
                         address: "Please write address"

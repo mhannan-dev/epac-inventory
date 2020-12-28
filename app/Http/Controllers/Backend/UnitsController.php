@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Brand;
+
 use App\Models\Unit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -32,7 +32,6 @@ class UnitsController extends Controller
     public function getCreate()
     {
         $data['title'] = "Create New Unit";
-        $data['brands'] = Brand::all();
         return view('backend.pages.units.create', $data);
     }
 
@@ -47,7 +46,7 @@ class UnitsController extends Controller
     {
         //dd($request->all());
         $request->validate([
-                'name' => 'required|string|max:255|unique:categories',
+                'name' => 'required|string|max:255|unique:units',
                 'status' => 'required',
                 ]
         );
@@ -55,7 +54,6 @@ class UnitsController extends Controller
         $unit = new  Unit();
         $unit->name = $request->name;
         $unit->status = $request->status;
-        //$unit->brand_id = $request->brand_id;
         $unit->created_by = Auth::user()->id;
         $unit->save();
 

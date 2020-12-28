@@ -48,24 +48,24 @@ class CustomersController extends Controller
         $request->validate([
 
             'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255|unique:customers',
+           // 'email' => 'required|email|max:255|unique:customers',
             'mobile_no' => 'required|regex:/(01)[0-9]{9}/',
-            'address' => 'required',
+            //'address' => 'required',
 
         ],
             [
                 'name.required' => 'Please enter a name',
-                'email' => 'Please enter a email',
+                //'email' => 'Please enter a email',
                 'mobile_no' => 'Please enter mobile no',
-                'address' => 'Enter password address',
+                //'address' => 'Enter password address',
             ]
         );
 
         $customer               = new  Customer();
         $customer->name         = $request->name;
-        $customer->email        = $request->email;
+        //$customer->email        = $request->email;
         $customer->mobile_no    = $request->mobile_no;
-        $customer->address      = $request->address;
+       // $customer->address      = $request->address;
         $customer->created_by   = Auth::user()->id;
         $customer->save();
         toast('Data added successfully !!','success');

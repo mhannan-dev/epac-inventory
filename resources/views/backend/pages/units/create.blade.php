@@ -80,10 +80,6 @@
                     required: true,
                     name: true,
                 },
-                code: {
-                    required: true,
-                    code: true,
-                },
 
                 status: {
                     required: true,
