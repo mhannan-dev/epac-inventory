@@ -57,7 +57,6 @@ class PurchaseController extends Controller
     {
         //dd('Okay');
         if ($request->category_id == null) {
-
             toast('Sorry do not dot select any items !!', 'error');
             return redirect()->back();
 
@@ -73,6 +72,8 @@ class PurchaseController extends Controller
                 $pucrhase->product_id = $request->product_id[$i];
                 $pucrhase->buying_price = $request->buying_price[$i];
                 $pucrhase->buying_qty = $request->buying_qty[$i];
+                $pucrhase->unit_id = $request->unit_id[$i];
+                $pucrhase->size_weight = $request->size_weight[$i];
                 $pucrhase->description = $request->description[$i];
                 $pucrhase->created_by = Auth::user()->id;
                 $pucrhase->status = '0';

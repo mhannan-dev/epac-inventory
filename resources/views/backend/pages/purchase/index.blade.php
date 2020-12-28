@@ -28,7 +28,8 @@
                                         <th width="22%">@lang('form.th_title')</th>
                                         <th width="18%">@lang('form.th_supplier')</th>
                                         <th>@lang('form.th_product_category')</th>
-                                        <th>@lang('form.th_price')</th>
+                                        <th>Total</th>
+                                        <th>Rate</th>
                                         <th>@lang('form.th_quantity')</th>
                                         <th>@lang('form.th_status')</th>
                                         <th class="text-right" width="3%">@lang('form.th_action')</th>
@@ -45,8 +46,11 @@
                                                 <td>{{ $purchase['products']['name'] }}</td>
                                                 <td>{{ $purchase['products']['supplier']->name }}</td>
                                                 <td>{{ $purchase['products']['category']->name }}</td>
+                                                <td>1000</td>
+                                                <td>10</td>
                                                 <td>{{ $purchase->buying_price }}</td>
-                                                <td>{{ $purchase->buying_qty }} <span class="badge badge-info">{{ $purchase['products']['units']['name'] }}</span></td>
+                                                <td>{{ $purchase->buying_qty }}</td>
+
                                                 <td>
                                                     @if($purchase->status == 0)
                                                         <span class="badge badge-warning">Pending</span>

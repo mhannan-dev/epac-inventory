@@ -6,7 +6,7 @@ use App\Models\Product;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 
-
+use App\Models\Unit;
 use Validator;
 
 
@@ -48,6 +48,16 @@ class DefaultController extends Controller
         #dd($allProducts);
         return response()->json($allProducts);
     }
+
+    public function getUnits(Request $request){
+        $r_product_id = $request->product_id;
+       // dd($r_product_id);
+        $allUnits = Product::select('unit_id')->where('id',$r_product_id)->first();
+        $allUnits = Unit::select('id','name')->where('id',$allUnits->unit_id)->get();
+        //dd($allUnits->toArray());
+        return response()->json($allUnits);
+    }
+
 
     public function getStock(Request $request){
         $r_product_id = $request->product_id;

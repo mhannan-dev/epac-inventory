@@ -5,9 +5,7 @@
         <section class="content">
             <div class="container-fluid">
                 <div class="row justify-content-md-center">
-
                     <div class="col-lg-12">
-
                         <div class="card card-info mt-2">
                             <div class="card-header">
                                 <h3 class="card-title">{{ $title }}</h3>
@@ -17,72 +15,60 @@
                             <div class="card-body">
                                 <div class="form-row">
 
-                                    <div class="form-group col-md-6">
-                                    @if($suppliers->count() < 1)
-                                        <!-- Button trigger modal -->
-                                            <a type="button" class="btn btn-outline-info mt-md-4" style="margin-top: 30px !important;" data-toggle="modal" data-target="#addSupplierModal">
-                                                Add Supplier <i class="fa fa-plus" aria-hidden="true"></i>
-                                            </a>
-                                        @else
-                                            <label for="supplier_id">Select Supplier</label>
-                                            <select class="form-control form-control-sm select2" id="supplier_id" name="supplier_id">
-                                                <option>Select supplier</option>
+                                    <div class="form-group col-md-3">
+
+                                        <div class="form-group">
+                                            <label>Supplier</label>
+                                            <select class="form-control select2 form-control-sm" style="width: 100%;" id="supplier_id" name="supplier_id">
+
+                                                <option selected="selected">Select supplier</option>
                                                 @foreach($suppliers as $data_row)
+
                                                     <option value="{{ $data_row->id}}">{{ $data_row->name }}</option>
                                                 @endforeach
-                                            </select>
-                                        @endif
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        @if($categories->count() < 1)
-                                            <!-- Button trigger modal -->
-                                            <a type="button" class="btn btn-outline-info mt-md-4" style="margin-top: 30px !important;" data-toggle="modal" data-target="#addCatgModal">
-                                                Add Category <i class="fa fa-plus" aria-hidden="true"></i>
-                                            </a>
 
-                                        @else
-                                            <label for="cuntry">Select Category</label>
-                                            <select class="form-control form-control-sm select2" id="category_id" name="category_id">
-                                                <option>Select category</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group col-md-3">
+
+                                        <div class="form-group">
+                                            <label>Category</label>
+                                            <select class="form-control select2 form-control-sm" style="width: 100%;" id="category_id" name="category_id">
+                                                <option selected="selected">Select Category</option>
                                                 @foreach($categories as $data_row)
+
                                                     <option value="{{ $data_row->id}}">{{ $data_row->name }}</option>
                                                 @endforeach
+
                                             </select>
-                                        @endif
+                                        </div>
                                     </div>
 
 
+                                    <div class="form-group col-md-3">
 
+                                        <div class="form-group">
+                                            <label>Unit</label>
+                                            <select  class="form-control select2 form-control-sm" style="width: 100%;" id="unit_id" name="unit_id">
+                                                <option selected="selected">Select Unit</option>
+                                                @foreach($units as $data_row)
 
-                                    <div class="form-group col-md-6">
+                                                    <option value="{{ $data_row->id}}">{{ $data_row->name }}</option>
+                                                @endforeach
+
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-3">
                                         <label for="status">Name</label>
                                         <input type="text" class="form-control form-control-sm" name="name" id="name" placeholder="Enter product name">
                                     </div>
 
 
-                                    <div class="form-group col-md-6">
-                                    @if($units->count() < 1)
-                                        <!-- Button trigger modal -->
-                                            <a type="button" class="btn btn-outline-info mt-md-4" style="margin-top: 30px !important;" data-toggle="modal" data-target="#addUnitModal">
-                                                Add Unit <i class="fa fa-plus" aria-hidden="true"></i>
-                                            </a>
-
-                                        @else
-                                            <label for="unit_id">Select Unit</label>
-                                            <select class="form-control form-control-sm" id="unit_id" name="unit_id">
-                                                <option>Select unit</option>
-                                                @foreach($units as $data_row)
-                                                    <option value="{{ $data_row->id}}">{{ $data_row->name }}</option>--}}
-                                                @endforeach
-
-
-                                            </select>
-                                        @endif
-                                    </div>
-
                                 </div>
-
-
 
                             </div>
                             <!-- /.card-body -->

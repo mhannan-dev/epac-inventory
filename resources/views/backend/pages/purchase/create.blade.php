@@ -34,7 +34,7 @@
                                         <div class="input-group">
                                             <input type="text" class="form-control form-control-sm" name="purchase_no"
                                                    id="purchase_no"
-                                                   placeholder="E.g. PURC_20201227"/>
+                                                   placeholder="E.g.PURC_20201227"/>
 
                                         </div>
                                         <!-- /.input group -->
@@ -65,9 +65,29 @@
                                     <div class="form-group col-md-4">
                                         <label for="product_id">Product name</label>
                                         <select class="form-control select2 form-control-sm" id="product_id" name="product_id">
-                                            <option>Select Product</option>
+                                            <option value="">Product name</option>
                                         </select>
                                     </div>
+
+{{--                                    <div class="form-group col-md-4">--}}
+{{--                                        <label for="size_weight">Size/Wait/Others</label>--}}
+{{--                                        <input name="size_weight" type="text" class="form-control-sm form-control" placeholder="Product size or weight">--}}
+{{--                                    </div>--}}
+
+
+                                    <div class="form-group col-md-4">
+                                        <label for="product_id">Unit Name</label>
+{{--                                        <select class="form-control select2 form-control-sm" id="unit_id" name="unit_id">--}}
+{{--                                            <option value="">Unit name</option>--}}
+{{--                                        </select>--}}
+                                        <select class="form-control select2 form-control-sm" id="unit_id" name="unit_id">
+                                        <option>Unit name</option>
+                                        @foreach ($units as $key => $unit)
+                                            <option value="{{ $unit->id }}">{{ $unit->name }}</option>
+                                        @endforeach
+                                        </select>
+                                    </div>
+
 
 
                                     <div class="form-group">
@@ -87,9 +107,11 @@
                                         <tr>
                                             <th>@lang('form.th_product_category')</th>
                                             <th>@lang('form.th_title')</th>
-                                            <th width="10%">PCS/KG</th>
-                                            <th width="10%">Unit Price</th>
                                             <th>Description</th>
+                                            <th>Weight/Size</th>
+                                            <th>Unit</th>
+                                            <th width="10%">Rate</th>
+                                            <th width="10%">Quantity</th>
                                             <th width="15%">Total Price</th>
                                             <th width="3%" class="text-right">Action</th>
 
@@ -103,10 +125,10 @@
 
                                         <tbody>
                                         <tr>
-                                            <td colspan="5" class="text-bold text-dark">Line Total</td>
+                                            <td colspan="7" class="text-bold text-dark">Line Total</td>
 
                                             <td class="text-white text-bold text-center">
-                                                <input id="estimated_amount" type="text" class="form-control text-right estimated_amount" readonly>
+                                                <input id="estimated_amount" type="text" class="form-control form-control-sm text-right estimated_amount" readonly>
 
                                             </td>
                                             <td></td>
@@ -136,160 +158,6 @@
 
     </div>
 
-    <!-- Category Modal-->
-    <div class="modal fade" id="addCatgModal" tabindex="-1" role="dialog" aria-labelledby="addCatgModal"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Product Category</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    {!! Form::open([ 'route' => ['admin.category.store'], 'id' => 'prdForm','method' => 'post']) !!}
-                    @csrf
-                    <div class="card-body">
-                        <div class="form-group">
-                            <label for="name">@lang('form.name')<span class="text-danger">*</span></label>
-                            {!! Form::text('name', null, [ 'class' => 'form-control', 'data-validation-required-message' => 'This field is required', 'placeholder' => 'Enter category name']) !!}
-                            {!! $errors->first('name', '<label class="help-block text-danger">:message</label>') !!}
-                        </div>
-
-                        <div class="form-group">
-                            <label for="code">@lang('form.code')<span class="text-danger">*</span></label>
-                            {!! Form::text('code', null, [ 'class' => 'form-control', 'data-validation-required-message' => 'This field is required', 'placeholder' => 'Enter category code']) !!}
-                            {!! $errors->first('code', '<label class="help-block text-danger">:message</label>') !!}
-                        </div>
-                        <div class="form-group">
-                            <label for="status">@lang('form.status')</label>
-                            <select class="form-control" id="status" name="status">
-                                <option value="active">Select status</option>
-                                <option value="active">Active</option>
-                                <option value="inactive">Inactive</option>
-
-                            </select>
-                        </div>
-
-                    </div>
-                    <!-- /.card-body -->
-                    <div class="card-footer">
-                        <button type="submit" class="btn btn-info">Submit</button>
-                        <a href="{{ route('admin.category.view') }}" class="btn btn-danger"><i class="fas fa-undo"></i></a>
-                    </div>
-                    {!! Form::close() !!}
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <!-- Supplier Modal-->
-    <div class="modal fade" id="addSupplierModal" tabindex="-1" role="dialog" aria-labelledby="addSupplierModal"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Product Supplier</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    {!! Form::open([ 'route' => ['admin.supplier.store'], 'id' => 'prdForm','method' => 'post']) !!}
-                    @csrf
-                    <div class="card-body">
-                        <div class="form-group">
-                            <label for="name">@lang('form.name')<span class="text-danger">*</span></label>
-                            <input class="form-control" name="name" placeholder="Enter supplier name"/>
-                            {!! $errors->first('name', '<label class="help-block text-danger">:message</label>') !!}
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">@lang('form.email')<span class="text-danger">*</span></label>
-                            <input class="form-control" name="email" placeholder="Enter supplier email"/>
-                            {!! $errors->first('email', '<label class="help-block text-danger">:message</label>') !!}
-                        </div>
-                        <div class="form-group">
-                            <label for="mobile_no">@lang('form.mobile_no')<span
-                                    class="text-danger">*</span></label>
-
-                            <input class="form-control" name="mobile_no"
-                                   placeholder="Enter supplier mobile no"/>
-                            {!! $errors->first('mobile_no', '<label class="help-block text-danger">:message</label>') !!}
-                        </div>
-                        <div class="form-group">
-                            <label for="address">@lang('form.address')<span class="text-danger">*</span></label>
-                            <input class="form-control" name="address" placeholder="Enter supplier address"/>
-                            {!! $errors->first('address', '<label class="help-block text-danger">:message</label>') !!}
-                        </div>
-                        <div class="form-group">
-                            <label for="status">Status</label>
-                            <select class="form-control" id="status" name="status">
-                                <option>Select status</option>
-                                <option value="active">Active</option>
-                                <option value="inactive">Inactive</option>
-
-                            </select>
-                        </div>
-
-                    </div>
-                    <!-- /.card-body -->
-                    <div class="card-footer">
-                        <button type="submit" class="btn btn-info">@lang('form.btn_save')</button>
-                        <a href="{{ route('admin.suppliers.view') }}" class="btn btn-danger"><i class="fas fa-undo"></i></a>
-                    </div>
-                    {!! Form::close() !!}
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="addUnitModal" tabindex="-1" role="dialog" aria-labelledby="addUnitModal"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Product Unit</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    {!! Form::open([ 'route' => ['admin.units.store'], 'id' => 'customerForm','method' => 'post']) !!}
-                    @csrf
-                    <div class="card-body">
-                        <div class="form-group">
-                            <label for="name">@lang('form.name')<span class="text-danger">*</span></label>
-                            {!! Form::text('name', null, [ 'class' => 'form-control', 'data-validation-required-message' => 'This field is required', 'placeholder' => 'Enter category name']) !!}
-                            {!! $errors->first('name', '<label class="help-block text-danger">:message</label>') !!}
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for="status">@lang('form.status')</label>
-                            <select class="form-control" id="status" name="status">
-                                <option value="active">Select status</option>
-                                <option value="active">Active</option>
-                                <option value="inactive">Inactive</option>
-
-                            </select>
-                        </div>
-
-                    </div>
-                    <!-- /.card-body -->
-                    <div class="card-footer">
-                        <button type="submit" class="btn btn-info">Submit</button>
-                        <a href="{{ route('admin.units.view') }}" class="btn btn-danger"><i class="fas fa-undo"></i></a>
-                    </div>
-                    {!! Form::close() !!}
-                </div>
-
-            </div>
-        </div>
-    </div>
 
 
 @endsection
@@ -315,18 +183,26 @@
             <td>
                 <input type="hidden" name="product_id[]" value="@{{ product_id }}">@{{ product_name }}
             </td>
+
             <td>
-                <input type="number" min="1" class="form-control form-control-sm buying_qty" name="buying_qty[]"
-                       value="1">
+                <textarea type="text" class="form-control form-control-sm description" name="description[]">@{{ description }}</textarea>
+
+            </td>
+            <td>
+                <input type="text" class="form-control form-control-sm size_weight" value="@{{ size_weight }}" name="size_weight[]">@{{ size_weight }}
+            </td>
+            <td>
+                <input type="hidden" name="unit_id[]" value="@{{ unit_id }}">@{{ unit_name }}
+
             </td>
             <td>
                 <input type="number" class="form-control form-control-sm unit_price" name="unit_price[]" value="">
             </td>
 
             <td>
-                <textarea type="text" class="form-control form-control-sm description" name="description[]">@{{ description }}</textarea>
-
+                <input type="number" min="1" class="form-control form-control-sm buying_qty" name="buying_qty[]">
             </td>
+
             <td>
                 <input type="number" class="form-control form-control-sm text-right buying_price" value="1"
                        name="buying_price[]" readonly>
@@ -345,9 +221,9 @@
         $(document).on('click', ".addEventMore", function () {
 
             var date = $('#date').val();
-            var purchase_no = $('#purchase_no').val();
-            var brand_id = $('#brand_id').val();
-            var brand_name = $('#brand_id').find('option:selected').text();
+            //var purchase_no = $('#purchase_no').val();
+            //var brand_id = $('#brand_id').val();
+            //var brand_name = $('#brand_id').find('option:selected').text();
             var supplier_id = $('#supplier_id').val();
             var supplier_name = $('#supplier_id').find('option:selected').text();
             var category_id = $('#category_id').val();
@@ -359,6 +235,7 @@
             var unit_id = $('#unit_id').val();
             var unit_name = $('#unit_id').find('option:selected').text();
             var buying_qty = $('#buying_qty').val();
+            var size_weight = $('#size_weight').val();
             var unit_price = $('#unit_price').val();
             var description = $('#description').val();
             var buying_price = $('#buying_price').val();
@@ -367,46 +244,51 @@
                 $.notify("Date is rquired", {globalPosition: 'top-right', className: 'error'});
                 return false;
             }
-            if (purchase_no == '') {
-                $.notify("Purchase is rquired", {globalPosition: 'top-right', className: 'error'});
-                return false;
-            }
-            if (brand_id == '') {
-                $.notify("Brand is rquired", {globalPosition: 'top-right', className: 'error'});
-                return false;
-            }
+            // if (purchase_no == '') {
+            //     $.notify("Purchase is rquired", {globalPosition: 'top-right', className: 'error'});
+            //     return false;
+            // }
+            // if (brand_id == '') {
+            //     $.notify("Brand is rquired", {globalPosition: 'top-right', className: 'error'});
+            //     return false;
+            // }
             if (supplier_id == '') {
-                $.notify("Supplier is rquired", {globalPosition: 'top-right', className: 'error'});
+                $.notify("Supplier is required", {globalPosition: 'top-right', className: 'error'});
                 return false;
             }
             if (category_id == '') {
-                $.notify("Category is rquired", {globalPosition: 'top-right', className: 'error'});
+                $.notify("Category is required", {globalPosition: 'top-right', className: 'error'});
                 return false;
             }
-            if (sub_category_id == '') {
-                $.notify("Sub category is rquired", {globalPosition: 'top-right', className: 'error'});
-                return false;
-            }
+            // if (sub_category_id == '') {
+            //     $.notify("Sub category is required", {globalPosition: 'top-right', className: 'error'});
+            //     return false;
+            // }
             if (product_id == '') {
-                $.notify("Product is rquired", {globalPosition: 'top-right', className: 'error'});
+                $.notify("Product is required", {globalPosition: 'top-right', className: 'error'});
                 return false;
             }
             if (unit_id == '') {
-                $.notify("Unit is rquired", {globalPosition: 'top-right', className: 'error'});
+                $.notify("Unit is required", {globalPosition: 'top-right', className: 'error'});
                 return false;
             }
 
             if (buying_qty == '') {
-                $.notify("Buying Quantity is rquired", {globalPosition: 'top-right', className: 'error'});
+                $.notify("Buying Quantity is required", {globalPosition: 'top-right', className: 'error'});
                 return false;
             }
+            if (size_weight == '') {
+                $.notify("Size/Wait is required", {globalPosition: 'top-right', className: 'error'});
+                return false;
+            }
+
             if (unit_price == '') {
-                $.notify("Unit price is rquired", {globalPosition: 'top-right', className: 'error'});
+                $.notify("Unit price is required", {globalPosition: 'top-right', className: 'error'});
                 return false;
             }
 
             if (buying_price == '') {
-                $.notify("Puying price is rquired", {globalPosition: 'top-right', className: 'error'});
+                $.notify("Puying price is required", {globalPosition: 'top-right', className: 'error'});
                 return false;
             }
 
@@ -414,9 +296,10 @@
             var template = Handlebars.compile(source);
             var data = {
                 date: date,
-                purchase_no: purchase_no,
-                brand_id: brand_id,
+                //purchase_no: purchase_no,
+                //brand_id: brand_id,
                 supplier_id: supplier_id,
+                supplier_name: supplier_name,
                 category_id: category_id,
                 category_name: category_name,
                 sub_category_id: sub_category_id,
@@ -426,6 +309,7 @@
                 buying_qty: buying_qty,
                 unit_price: unit_price,
                 unit_id: unit_id,
+                size_weight: size_weight,
                 unit_name: unit_name,
                 buying_price: buying_price,
                 description: description
@@ -485,7 +369,7 @@
                 });
             });
 
-            //Loading product under subcategory_id selection
+            //Loading product_name under category_id selection
             $(document).on('change', '#category_id', function () {
                 var my_category_id = $(this).val();
                 $.ajax({
@@ -493,7 +377,7 @@
                     type: "GET",
                     data: {category_id: my_category_id},
                     success: function (data) {
-                        var html = '<option value="">Select product</option>';
+                        var html = '<option value="">Product name</option>';
                         $.each(data, function (key, v) {
                             html += '<option value="' + v.id + '">' + v.name + '</option>'
                         });
@@ -501,6 +385,25 @@
                     }
                 });
             });
+
+            //Loading product_name under category_id selection
+            {{--$(document).on('change', '#product_id', function () {--}}
+            {{--    var my_product_id = $(this).val();--}}
+            {{--    $.ajax({--}}
+            {{--        url: "{{ route('get-unit') }}",--}}
+            {{--        type: "GET",--}}
+            {{--        data: {product_id: my_product_id},--}}
+            {{--        success: function (data) {--}}
+            {{--            var html = '<option value="">Unit name</option>';--}}
+            {{--            $.each(data, function (key, v) {--}}
+            {{--                //console.log(v.name)--}}
+            {{--                html += '<option value="' + v.id + '">' + v.name + '</option>'--}}
+            {{--            });--}}
+            {{--            $('#unit_id').html(html);--}}
+            {{--        }--}}
+            {{--    });--}}
+            {{--});--}}
+
         });
 
     </script>

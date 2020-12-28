@@ -54,7 +54,7 @@ class ProductsController extends Controller
 
     public function postStore(Request $request)
     {
-        #dd($request->all());
+        //dd($request->all());
         $request->validate([
             'supplier_id' => 'required',
             'category_id' => 'required',
@@ -74,7 +74,6 @@ class ProductsController extends Controller
         $product->category_id = $request->category_id;
         $product->unit_id = $request->unit_id;
         $product->name = $request->name;
-        $product->quantity = '0';
         $product->created_by = Auth::user()->id;
         $product->save();
         toast('Data added successfully !!', 'success');
@@ -113,7 +112,7 @@ class ProductsController extends Controller
      */
     public function postUpdate(Request $request, $id)
     {
-        #dd($request->all());
+        //dd($request->all());
         $request->validate([
                 'category_id' => 'required',
                 'supplier_id' => 'required',

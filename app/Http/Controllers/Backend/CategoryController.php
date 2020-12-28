@@ -53,7 +53,7 @@ class CategoryController extends Controller
 
         $category = new  Category();
         $category->name = $request->name;
-        $category->code = Str::slug($request->name);
+        //$category->slug = Str::slug($request->name);
         $category->status = $request->status;
         $category->created_by = Auth::user()->id;
         $category->save();
