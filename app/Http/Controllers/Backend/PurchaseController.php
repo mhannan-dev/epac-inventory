@@ -55,7 +55,8 @@ class PurchaseController extends Controller
 
     public function postStore(Request $request)
     {
-        //dd('Okay');
+        //dd($request->all());
+
         if ($request->category_id == null) {
             toast('Sorry do not dot select any items !!', 'error');
             return redirect()->back();
@@ -66,15 +67,15 @@ class PurchaseController extends Controller
             for ($i = 0; $i < $count_category; $i++) {
                 $pucrhase = new  Purchase();
                 $pucrhase->date = date('Y-m-d', strtotime($request->date[$i]));
-                $pucrhase->purchase_no = $request->purchase_no[$i];
                 $pucrhase->supplier_id = $request->supplier_id[$i];
                 $pucrhase->category_id = $request->category_id[$i];
                 $pucrhase->product_id = $request->product_id[$i];
-                $pucrhase->buying_price = $request->buying_price[$i];
-                $pucrhase->buying_qty = $request->buying_qty[$i];
+                $pucrhase->description = $request->description[$i];
                 $pucrhase->unit_id = $request->unit_id[$i];
                 $pucrhase->size_weight = $request->size_weight[$i];
-                $pucrhase->description = $request->description[$i];
+                $pucrhase->buying_qty = $request->buying_qty[$i];
+                $pucrhase->unit_price = $request->unit_price[$i];
+                $pucrhase->buying_price = $request->buying_price[$i];
                 $pucrhase->created_by = Auth::user()->id;
                 $pucrhase->status = '0';
                 $pucrhase->save();
@@ -114,7 +115,8 @@ class PurchaseController extends Controller
     public function pendingList()
     {
         $data['title'] = "Pending Purchase";
-        $data['products'] = Purchase::orderBy('date', 'desc')->orderBy('id', 'desc')->where('status', '0' )->get();
+        $data['purchases'] = Purchase::orderBy('date', 'desc')->orderBy('id', 'desc')->where('status', '0' )->get();
+        //dd($data['purchase']);
         return view('backend.pages.purchase.pending', $data);
     }
 

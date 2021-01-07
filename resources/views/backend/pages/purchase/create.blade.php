@@ -88,8 +88,6 @@
                                         </select>
                                     </div>
 
-
-
                                     <div class="form-group">
                                         <a class="btn btn-info text-white addEventMore btn-sm"
                                            style="margin-top: 30px !important;">
@@ -110,7 +108,7 @@
                                             <th>Description</th>
                                             <th>Weight/Size</th>
                                             <th>Unit</th>
-                                            <th width="10%">Rate</th>
+                                            <th width="10%">Buying Rate</th>
                                             <th width="10%">Quantity</th>
                                             <th width="15%">Total Price</th>
                                             <th width="3%" class="text-right">Action</th>

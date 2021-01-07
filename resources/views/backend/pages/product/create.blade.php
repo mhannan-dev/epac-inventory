@@ -15,7 +15,7 @@
                             <div class="card-body">
                                 <div class="form-row">
 
-                                    <div class="form-group col-md-3">
+                                    <div class="form-group col-md-4">
 
                                         <div class="form-group">
                                             <label>Supplier</label>
@@ -31,7 +31,7 @@
                                         </div>
 
                                     </div>
-                                    <div class="form-group col-md-3">
+                                    <div class="form-group col-md-4">
 
                                         <div class="form-group">
                                             <label>Category</label>
@@ -47,22 +47,22 @@
                                     </div>
 
 
-                                    <div class="form-group col-md-3">
+{{--                                    <div class="form-group col-md-3">--}}
 
-                                        <div class="form-group">
-                                            <label>Unit</label>
-                                            <select  class="form-control select2 form-control-sm" style="width: 100%;" id="unit_id" name="unit_id">
-                                                <option selected="selected">Select Unit</option>
-                                                @foreach($units as $data_row)
+{{--                                        <div class="form-group">--}}
+{{--                                            <label>Unit</label>--}}
+{{--                                            <select  class="form-control select2 form-control-sm" style="width: 100%;" id="unit_id" name="unit_id">--}}
+{{--                                                <option selected="selected">Select Unit</option>--}}
+{{--                                                @foreach($units as $data_row)--}}
 
-                                                    <option value="{{ $data_row->id}}">{{ $data_row->name }}</option>
-                                                @endforeach
+{{--                                                    <option value="{{ $data_row->id}}">{{ $data_row->name }}</option>--}}
+{{--                                                @endforeach--}}
 
-                                            </select>
-                                        </div>
-                                    </div>
+{{--                                            </select>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
 
-                                    <div class="form-group col-md-3">
+                                    <div class="form-group col-md-4">
                                         <label for="status">Name</label>
                                         <input type="text" class="form-control form-control-sm" name="name" id="name" placeholder="Enter product name">
                                     </div>

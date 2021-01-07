@@ -208,6 +208,15 @@
                                 </a>
                             </li>
 
+                            <li class="nav-item">
+                                <a href="{{route('purchase.pending.list')}}"
+                                   class="nav-link {{($route=='purchase.pending.list')?'active':''}}">
+                                    <i class="far fa-list-alt"></i>
+                                    <p>Approve Purchase</p>
+                                </a>
+                            </li>
+
+
                         </ul>
                     </li>
 

@@ -196,6 +196,7 @@ class InvoiceController extends Controller
     {
         $data['title'] = "Pending Invoice";
         $data['invoices'] = Invoice::orderBy('date', 'desc')->orderBy('id', 'desc')->where('status', '0')->get();
+     
         return view('backend.pages.invoice.pending', $data);
     }
 

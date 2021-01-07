@@ -18,7 +18,7 @@
                                 <div class="form-row">
 
 
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-4">
                                     @if($suppliers->count() < 1)
                                         <!-- Button trigger modal -->
                                             <a type="button" class="btn btn-outline-info mt-md-4"
@@ -42,7 +42,7 @@
                                     </div>
 
 
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-4">
 
                                         <label for="cuntry">Select category</label>
                                         <select class="form-control form-control-sm select2" id="category_id" name="category_id">
@@ -56,36 +56,34 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-4">
                                         <label for="status">Name</label>
                                         <input type="text" class="form-control form-control-sm" name="name" id="name"
                                                value="{{ $data_row->name }}">
                                     </div>
 
-                                    <div class="form-group col-md-6">
-                                    @if($units->count() < 1)
-                                        <!-- Button trigger modal -->
-                                            <a type="button" class="btn btn-outline-info btn-sm mt-md-4"
-                                               style="margin-top: 30px !important;" data-toggle="modal"
-                                               data-target="#addUnitModal">
-                                                Add Unit <i class="fa fa-plus" aria-hidden="true"></i>
-                                            </a>
+{{--                                    <div class="form-group col-md-6">--}}
+{{--                                    @if($units->count() < 1)--}}
+{{--                                        <!-- Button trigger modal -->--}}
+{{--                                            <a type="button" class="btn btn-outline-info btn-sm mt-md-4"--}}
+{{--                                               style="margin-top: 30px !important;" data-toggle="modal"--}}
+{{--                                               data-target="#addUnitModal">--}}
+{{--                                                Add Unit <i class="fa fa-plus" aria-hidden="true"></i>--}}
+{{--                                            </a>--}}
 
-                                        @else
-                                            <label for="unit_id">Select Unit</label>
-                                            <select class="form-control form-control-sm select2" id="unit_id" name="unit_id">
-                                                <option>Select unit</option>
-                                                @foreach($units as $data_row)
-                                                    <option value="{{ $data_row->id}}"
-                                                            @if($data_row->id == $product->unit_id): selected @else '
-                                                    ' @endif>
-                                                    {{ $data_row->name }}</option>
-                                                @endforeach
-
-
-                                            </select>
-                                        @endif
-                                    </div>
+{{--                                        @else--}}
+{{--                                            <label for="unit_id">Select Unit</label>--}}
+{{--                                            <select class="form-control form-control-sm select2" id="unit_id" name="unit_id">--}}
+{{--                                                <option>Select unit</option>--}}
+{{--                                                @foreach($units as $data_row)--}}
+{{--                                                    <option value="{{ $data_row->id}}"--}}
+{{--                                                            @if($data_row->id == $product->unit_id): selected @else '--}}
+{{--                                                    ' @endif>--}}
+{{--                                                    {{ $data_row->name }}</option>--}}
+{{--                                                @endforeach--}}
+{{--                                            </select>--}}
+{{--                                        @endif--}}
+{{--                                    </div>--}}
 
 
                                 </div>
@@ -105,9 +103,7 @@
                         <!-- /.card -->
                     </div>
 
-                    <div class="col-md-6">
 
-                    </div>
 
                 </div>
 

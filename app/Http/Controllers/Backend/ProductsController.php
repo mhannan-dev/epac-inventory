@@ -58,13 +58,13 @@ class ProductsController extends Controller
         $request->validate([
             'supplier_id' => 'required',
             'category_id' => 'required',
-            'unit_id' => 'required',
+            //'unit_id' => 'required',
             'name' => 'required|string|max:255',
         ],
             [
                 'category_id.required' => 'Please select category',
                 'supplier_id.required' => 'Please select supplier',
-                'unit_id.required' => 'Please select unit',
+                //'unit_id.required' => 'Please select unit',
                 'name.required' => 'Please enter a name',
             ]
         );
@@ -72,7 +72,7 @@ class ProductsController extends Controller
         $product = new  Product();
         $product->supplier_id = $request->supplier_id;
         $product->category_id = $request->category_id;
-        $product->unit_id = $request->unit_id;
+        //$product->unit_id = $request->unit_id;
         $product->name = $request->name;
         $product->created_by = Auth::user()->id;
         $product->save();
@@ -117,14 +117,14 @@ class ProductsController extends Controller
                 'category_id' => 'required',
                 'supplier_id' => 'required',
                 'name' => 'required|string|max:255',
-                'unit_id' => 'required',
+                //'unit_id' => 'required',
             ]
         );
 
         $product = Product::find($id);
         $product->supplier_id = $request->supplier_id;
         $product->category_id = $request->category_id;
-        $product->unit_id = $request->unit_id;
+        //$product->unit_id = $request->unit_id;
         $product->name = $request->name;
         $product->updated_by = Auth::user()->id;
         $product->save();

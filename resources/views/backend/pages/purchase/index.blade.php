@@ -23,16 +23,16 @@
                                     <thead>
                                     <tr>
                                         <th width="4%">@lang('form.th_sl')</th>
-                                        <th width="12%">PO No.</th>
-                                        <th width="12%">Date</th>
-                                        <th width="22%">@lang('form.th_title')</th>
-                                        <th width="18%">@lang('form.th_supplier')</th>
+                                        {{-- <th width="12%">PO No.</th> --}}
+                                        <th>Date</th>
+                                        <th>@lang('form.th_title')</th>
+                                        <th>@lang('form.th_supplier')</th>
                                         <th>@lang('form.th_product_category')</th>
                                         <th>Total</th>
-                                        <th>Rate</th>
+                                        <th>Buy Price</th>
                                         <th>@lang('form.th_quantity')</th>
                                         <th>@lang('form.th_status')</th>
-                                        <th class="text-right" width="3%">@lang('form.th_action')</th>
+                                        <th>@lang('form.th_action')</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -41,21 +41,21 @@
                                         @foreach ($products as $key => $purchase)
                                             <tr>
                                                 <td>{{ ++$key }}</td>
-                                                <td>{{ $purchase->purchase_no }}</td>
+                                                {{-- <td>{{ $purchase->purchase_no }}</td> --}}
                                                 <td>{{ $purchase->date }}</td>
                                                 <td>{{ $purchase['products']['name'] }}</td>
                                                 <td>{{ $purchase['products']['supplier']->name }}</td>
                                                 <td>{{ $purchase['products']['category']->name }}</td>
-                                                <td>1000</td>
-                                                <td>10</td>
-                                                <td>{{ $purchase->buying_price }}</td>
-                                                <td>{{ $purchase->buying_qty }}</td>
+                                                <td>Total 1000</td>
+                                                
+                                                <td>buying_price</td>
+                                                <td>buying_qty</td>
 
                                                 <td>
                                                     @if($purchase->status == 0)
-                                                        <span class="badge badge-warning">Pending</span>
+                                                        Pending
                                                     @elseif($purchase->status == 1)
-                                                        <span class="badge badge-success">Apprvd.</span>
+                                                        Apprvd.
                                                     @endif
                                                 </td>
                                                 <td>

@@ -23,8 +23,7 @@
                                         <label>Date</label>
 
                                         <div class="input-group">
-                                            <input class="form-control form-control-sm" name="date" id="date"
-                                                  placeholder="YY-MM-DD"/>
+                                            <input class="form-control form-control-sm" name="date" id="date" placeholder="YY-MM-DD"/>
                                         </div>
                                         <!-- /.input group -->
                                     </div>
@@ -32,14 +31,11 @@
                                         <label>Invoice No</label>
 
                                         <div class="input-group">
-                                            <input class="form-control form-control-sm" name="invoice_no" id="invoice_no"
-                                                   value= {{ $invoice_no }} readonly style="background-color: #d4edda"/>
+                                            <input class="form-control form-control-sm" name="invoice_no" id="invoice_no" value= {{ $invoice_no }} readonly style="background-color: #d4edda"/>
 
                                         </div>
                                         <!-- /.input group -->
                                     </div>
-
-
                                     <div class="form-group col-md-2">
 
                                         <label for="category_id">Select Category</label>
@@ -52,16 +48,12 @@
                                         </select>
 
                                     </div>
-
-
                                     <div class="form-group col-md-3">
                                         <label for="cuntry">Product name</label>
                                         <select class="form-control select2 form-control-sm" id="product_id" name="product_id">
                                             <option>Product name</option>
                                         </select>
-
                                     </div>
-
                                     <div class="form-group col-md-3">
                                         <label for="cuntry">Unit</label>
                                         <select class=" select2 form-control form-control-sm" id="unit_id" name="unit_id">
@@ -509,7 +501,6 @@
 
     </script>
 
-
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -545,8 +536,8 @@
                     type: "GET",
                     data: { product_id: my_product_id },
                     success: function (data) {
+                        console.log(data)
                         $('#curent_stock_qty').val(data);
-
                     }
                 });
             });
