@@ -48,7 +48,7 @@
                                                     <td>{{ $purchase['products']->name }}</td>
                                                     <td>{{ $purchase->description }}</td>
                                                     <td>{{ $purchase->size_weight }}</td>
-                                                    <td>{{ $purchase['products']['units']->name }}</td>
+                                                    <td><button class="btn btn-success btn-sm">{{ $purchase['products']['units']->name }}</button></td>
                                                     <td>{{ $purchase->unit_price }}</td>
                                                     <td>{{ $purchase->buying_qty }}</td>
                                                     <td>{{ $purchase->buying_price }}</td>
@@ -64,12 +64,49 @@
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        @if ($purchase->status == '0')
-                                                            <a title="Approve" id="approveBtn" class="btn btn-success btn-sm">
-                                                                <i class="fa fa-check-circle"></i>
-                                                            </a>
-                                                        @endif
-                                                    </td>
+                                                    @if($purchase->status == 0)
+                                                        <a title="Approve" href="#approveModal{{ $purchase->id }}" data-toggle="modal" class="badge badge-success text-right">
+                                                            <i class="fa fa-check" aria-hidden="true"></i>
+                                                        </a>
+                                                        <!-- Delete Modal -->
+                                                        <div class="modal fade" id="approveModal{{ $purchase->id }}"
+                                                             tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                                             aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">Are
+                                                                            sure to approve?</h5>
+                                                                        <button type="button" class="close"
+                                                                                data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <form action="{!! route('purchase.approve', $purchase->id) !!}" method="post">
+                                                                            @csrf
+
+                                                                            <button type="submit" class="btn btn-success">
+                                                                                Permanent Approve
+                                                                            </button>
+                                                                        </form>
+
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-success"
+                                                                                data-dismiss="modal">Cancel
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Delete Modal -->
+                                                    @elseif($purchase->status == 1)
+                                                        <span class="badge badge-success"><i class="fas fa-check" aria-hidden="true"></i></span>
+                                                    @endif
+
+
+                                                </td>
                                                 </tr>
                                             @endforeach
                                         @else

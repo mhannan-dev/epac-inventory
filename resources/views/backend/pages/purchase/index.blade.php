@@ -31,6 +31,8 @@
                                         <th>Total</th>
                                         <th>Buy Price</th>
                                         <th>@lang('form.th_quantity')</th>
+                                        <th>Size weight</th>
+                                        <th>Unit Name</th>
                                         <th>@lang('form.th_status')</th>
                                         <th>@lang('form.th_action')</th>
                                     </tr>
@@ -46,20 +48,20 @@
                                                 <td>{{ $purchase['products']['name'] }}</td>
                                                 <td>{{ $purchase['products']['supplier']->name }}</td>
                                                 <td>{{ $purchase['products']['category']->name }}</td>
-                                                <td>Total 1000</td>
-                                                
-                                                <td>buying_price</td>
-                                                <td>buying_qty</td>
-
+                                                <td>{{ $purchase->buying_price }}</td>
+                                                <td>{{ $purchase->unit_price }}</td>
+                                                <td>{{ $purchase->buying_qty }}</td>
+                                                <td>{{ $purchase->size_weight }}</td>
+                                                <td><button class="btn btn-success btn-sm">{{ $purchase['products']['units']->name }}</button></td>
                                                 <td>
                                                     @if($purchase->status == 0)
-                                                        Pending
+                                                        <span class="badge badge-warning">Pending</span>
                                                     @elseif($purchase->status == 1)
-                                                        Apprvd.
+                                                        <span class="badge badge-success">Apprvd.</span>
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    @if($purchase->status == 0)
+                                                     @if($purchase->status == 0)
                                                         <a href="#deleteModal{{ $purchase->id }}" data-toggle="modal" class="badge badge-danger text-right">
                                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                                         </a>
