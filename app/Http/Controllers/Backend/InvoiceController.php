@@ -196,7 +196,7 @@ class InvoiceController extends Controller
     {
         $data['title'] = "Pending Invoice";
         $data['invoices'] = Invoice::orderBy('date', 'desc')->orderBy('id', 'desc')->where('status', '0')->get();
-     
+
         return view('backend.pages.invoice.pending', $data);
     }
 
@@ -209,8 +209,8 @@ class InvoiceController extends Controller
     {
 
         $data['title'] = 'Approve Invoice';
-        $data['invoice'] = Invoice::find($id);
-        #$invoice = Invoice::with(['invoice_details'])->find($id);
+        $data['invoice'] = Invoice::with(['invoice_details'])->find($id);
+        //dd($data['invoice']);
 
         return view('backend.pages.invoice.approve',$data);
     }
