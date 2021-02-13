@@ -77,7 +77,7 @@
                                             <td colspan="6">Sub Total</td>
                                             <td>{{ $total_sum }}</td>
                                         </tr>
-                                        <tr class="text-right">
+                                        <tr class="text-right table-success">
                                             <td colspan="6" class="text-muted">Discount</td>
                                             <td>{{ $payment->discount_amount }}</td>
                                         </tr>
