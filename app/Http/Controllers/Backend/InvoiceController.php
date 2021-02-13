@@ -3,10 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-
 use App\Models\Customer;
-use App\Models\Purchase;
-use App\Models\SubCategory;
 use App\Models\Supplier;
 use App\Models\Product;
 use App\Models\Unit;
@@ -31,7 +28,7 @@ class InvoiceController extends Controller
     {
         $data['title'] = "Invoice";
         $data['invoices'] = Invoice::orderBy('date', 'desc')->orderBy('id', 'desc')->where('status','1')->get();
-        #dd($data['invoices']);
+
         return view('backend.pages.invoice.index', $data);
     }
 
@@ -62,8 +59,6 @@ class InvoiceController extends Controller
         $data['units'] = Unit::all();
         $data['products'] = Product::all();
         $data['customers'] = Customer::all();
-
-
 
         $invoice_data = Invoice::orderBy('id', 'desc')->first();
         if ($invoice_data == null) {
@@ -205,9 +200,8 @@ class InvoiceController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function invoice_approve($id)
+    public function approve($id)
     {
-
         $data['title'] = 'Approve Invoice';
         $data['invoice'] = Invoice::with(['invoice_details'])->find($id);
         //dd($data['invoice']);

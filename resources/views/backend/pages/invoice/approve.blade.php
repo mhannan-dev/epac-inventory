@@ -25,52 +25,81 @@
                                 @php
                                     $payment = App\Models\Payment::where('invoice_id', $invoice->id)->first();
                                 @endphp
-                                <table id="example1" class="table table-bordered table-striped" width="100%">
+                                <table id="example1" class="table table-bordered table-striped  table-sm"  width="100%">
 
                                     <tbody>
 
-                                    <tr>
+                                    <tr class="table-primary">
                                         <td>Customer Info</td>
                                         <td width="25%">Name:{{ $payment['customer']['name']}}</td>
                                         <td width="20%">Mobile No: {{ $payment['customer']['mobile_no']}}</td>
                                         <td width="40%">Address:{{ $payment['customer']['address']}}</td>
                                     </tr>
                                     <tr>
-                                        <td width="15%"></td>
-                                        <td width="85%" colspan="3">Description: {{ $invoice->description }}</td>
+
+                                        <td colspan="4" width="85%" colspan="3">Description: {{ $invoice->description }}</td>
                                     </tr>
-
-
                                     </tbody>
-
                                 </table>
-                                <table border="1" width="100%" class="table table-bordered table-striped">
-                                    <thead>
-                                    <tr>
-                                        <th>Sl</th>
-                                        <th>Category</th>
-                                        <th>Product name</th>
-                                        <th class="text-success bg-info">Current Stock</th>
-                                        <th>Quantity</th>
-                                        <th class="text-right">Unit Price</th>
-                                        <th class="text-right">Total</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($invoice['invoice_details'] as $key => $details)
+                                <form action="{{ route('approval.store', $invoice->id ) }}" method="post">
+                                    @csrf
+                                    <table border="1" width="100%" class="table table-bordered table-striped  table-sm">
+                                        <thead>
                                         <tr>
-                                            <td>{{ $key+1 }}</td>
-                                            <td>{{ $details['category']['name'] }}</td>
-                                            <td>{{ $details['products']['name'] }}</td>
-                                            <td class="text-center">{{ $details['products']['quantity'] }}</td>
-                                            <td>{{ $details->selling_qty }}</td>
-                                            <td class="text-right">{{ $details->unit_price }}</td>
-                                            <td class="text-right">{{ $details->selling_price }}</td>
+                                            <th>Sl</th>
+                                            <th>Category</th>
+                                            <th>Product name</th>
+                                            <th>Current Stock</th>
+                                            <th>Quantity</th>
+                                            <th class="text-right">Unit Price</th>
+                                            <th class="text-right">Total</th>
                                         </tr>
-                                    @endforeach
-                                    </tbody>
+                                        </thead>
+                                        <tbody>
+                                        @php
+                                            $total_sum = '0';
+                                        @endphp
+                                        @foreach($invoice['invoice_details'] as $key => $details)
+                                            <tr class="table-primary">
+                                                <td>{{ $key+1 }}</td>
+                                                <td>{{ $details['category']['name'] }}</td>
+                                                <td>{{ $details['products']['name'] }}</td>
+                                                <td class="text-center">{{ $details['products']['quantity'] }}</td>
+                                                <td>{{ $details->selling_qty }}</td>
+                                                <td class="text-right">{{ $details->unit_price }}</td>
+                                                <td class="text-right">{{ $details->selling_price }}</td>
+                                            </tr>
+                                            @php
+                                                $total_sum += $details->selling_price;
+                                            @endphp
+                                        @endforeach
+                                        <tr class="text-right">
+                                            <td colspan="6">Sub Total</td>
+                                            <td>{{ $total_sum }}</td>
+                                        </tr>
+                                        <tr class="text-right">
+                                            <td colspan="6" class="text-muted">Discount</td>
+                                            <td>{{ $payment->discount_amount }}</td>
+                                        </tr>
 
-                                </table>
+                                        <tr class="text-right" style="text-decoration: underline double;">
+                                            <td colspan="6" class="te">Paid amount</td>
+                                            <td>{{ $payment->paid_amount }}</td>
+                                        </tr>
+
+                                        <tr class="text-right table-warning">
+                                            <td colspan="6">Due</td>
+                                            <td>{{ $payment->due_amount }}</td>
+                                        </tr>
+                                        <tr class="text-right " style="text-decoration: underline double;">
+                                            <td colspan="6"> <strong> Grand Total</strong> </td>
+                                            <td>{{ $payment->total_amount }}</td>
+                                        </tr>
+                                        </tbody>
+
+                                    </table>
+                                    <button class="btn btn-info mt-2">Approve Invoice</button>
+                                </form>
                             </div>
                             <!-- /.card-body -->
                         </div>
