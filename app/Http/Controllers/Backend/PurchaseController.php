@@ -78,6 +78,7 @@ class PurchaseController extends Controller
                 $pucrhase->buying_price = $request->buying_price[$i];
                 $pucrhase->created_by = Auth::user()->id;
                 $pucrhase->status = '0';
+                //dd($pucrhase);
                 $pucrhase->save();
 
             }

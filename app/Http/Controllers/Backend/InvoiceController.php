@@ -151,11 +151,9 @@ class InvoiceController extends Controller
                         $payment_details->invoice_id = $invoice->id;
                         $payment_details->date = date('Y-m-d', strtotime($request->date));
                         $payment_details->save();
-
                     }
                 });
                 // Transaction end
-
             }
         }
         toast('Invoice has been saved successfully !!', 'success');
@@ -191,7 +189,6 @@ class InvoiceController extends Controller
     {
         $data['title'] = "Pending Invoice";
         $data['invoices'] = Invoice::orderBy('date', 'desc')->orderBy('id', 'desc')->where('status', '0')->get();
-
         return view('backend.pages.invoice.pending', $data);
     }
 
@@ -205,7 +202,6 @@ class InvoiceController extends Controller
         $data['title'] = 'Approve Invoice';
         $data['invoice'] = Invoice::with(['invoice_details'])->find($id);
         //dd($data['invoice']);
-
         return view('backend.pages.invoice.approve',$data);
     }
 
@@ -217,7 +213,6 @@ class InvoiceController extends Controller
      */
     public function postDelete($id)
     {
-
         $delete_row = Invoice::find($id);
         #dd($delete_row);
         if (!is_null($delete_row)) {
@@ -228,5 +223,33 @@ class InvoiceController extends Controller
         }
         toast('Data deleted successfully !!', 'success');
         return back();
+    }
+
+    public function appprovalStore(Request $request, $id)
+    {
+        foreach($request->selling_qty as $key => $val ){
+            $invoice_details = InvoiceDetail::where('id', $key)->first();
+            $product = Product::where('id', $invoice_details->product_id)->first();
+            if($product->quantity < $request->selling_qty[$key]){
+                toast('Sorry ! you approve maximum value', 'error');
+                return redirect()->back();
+            }
+        }
+        $invoice = Invoice::find($id);
+        $invoice->approved_by = Auth::user()->id;
+        $invoice->status = '1';
+        DB::transaction(function () use ($request, $invoice, $id) {
+            foreach ($request->selling_qty as $key => $val) {
+                $invoice_details            = InvoiceDetail::where('id', $key)->first();
+                $invoice_details->status    = '1';
+                $invoice_details->save();
+                $product                    = Product::where('id', $invoice_details->product_id)->first();
+                $product->quantity          = ((float)$product->quantity)-((float)$request->selling_qty[$key]);    
+                $product->save();
+            }
+            $invoice->save(); 
+        });
+        toast('Invoice successfully approved !!', 'success');
+        return redirect()->route('invoice.pending.list');
     }
 }

@@ -92,7 +92,6 @@
                                         <a class="btn btn-info text-white addEventMore btn-sm"
                                            style="margin-top: 30px !important;">
                                             <i class="fas fa-plus-circle">&nbsp;</i> Add More</a>
-
                                     </div>
                                 </div>
                                 <!-- /.card-body -->

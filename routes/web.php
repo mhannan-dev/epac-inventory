@@ -128,11 +128,9 @@ Route::group(['prefix' => 'invoice'], function () {
     Route::post('/store', 'Backend\InvoiceController@postStore')->name('invoice.store');
     Route::get('/pending', 'Backend\InvoiceController@pendingList')->name('invoice.pending.list');
     Route::get('/approve/{id}', 'Backend\InvoiceController@approve')->name('invoice.approve');
-    Route::get('/approve/store/{id}', 'Backend\InvoiceController@appprovalStore')->name('approval.store');
+    Route::post('/approve/store/{id}', 'Backend\InvoiceController@appprovalStore')->name('approval.store');
     Route::post('/delete/{id}', 'Backend\InvoiceController@postDelete')->name('invoice.delete');
-    #Deletable
-    Route::get('/invoice_design', 'Backend\InvoiceController@invoice_design')->name('invoice_design');
-    Route::get('/invoice_print', 'Backend\InvoiceController@invoice_print')->name('invoice_print');
+    
 
 });
 

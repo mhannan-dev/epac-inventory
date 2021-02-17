@@ -41,6 +41,7 @@
 
                                     @if(count($products))
                                         @foreach ($products as $key => $purchase)
+
                                             <tr>
                                                 <td>{{ ++$key }}</td>
                                                 {{-- <td>{{ $purchase->purchase_no }}</td> --}}
@@ -52,7 +53,7 @@
                                                 <td>{{ $purchase->unit_price }}</td>
                                                 <td>{{ $purchase->buying_qty }}</td>
                                                 <td>{{ $purchase->size_weight }}</td>
-                                                <td><button class="btn btn-success btn-sm">{{ $purchase['products']['units']->name }}</button></td>
+                                                <td>{{ $purchase['products']['units']->name }}</td>
                                                 <td>
                                                     @if($purchase->status == 0)
                                                         <span class="badge badge-warning">Pending</span>

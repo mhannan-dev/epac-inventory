@@ -89,7 +89,7 @@
                                             <th>@lang('form.th_product_category')</th>
 
                                             <th>Product name</th>
-                                            <th width="10%">KG/PCS</th>
+                                            <th width="10%">Quantity</th>
                                             <th width="10%">Rate</th>
                                             <th>Unit</th>
                                             <th width="15%">Total</th>
@@ -142,7 +142,7 @@
                                             <input type="text" class="form-control form-control-sm paid_amount mt-2" id="paid_amount" name="paid_amount" placeholder="Enter paid amount" style="display: none" value="{{old('paid_amount')}}">
                                         </div>
                                         <div class="form-group col-md-8">
-                                            <label for="customer_id">Customer name</label>
+                                            <label for="customer_id">Customer name</label> <span class="text-danger">*</span>
                                             <select name="customer_id" id="customer_id" class="form-control form-control-sm select2">
                                                 <option value="">Selecr customer name </option>
                                                 @foreach($customers as $customer_row)
@@ -171,9 +171,7 @@
                                     <br>
                                     <div class="form-group">
                                         <button type="submit" id="storeButton"  class="btn btn-info btn-sm text-white">Invoice Store</button>
-                                        <a href="{{ route('invoice_design')}} " class="btn btn-success btn-sm text-white">Invoice Design Sample</a>
-
-
+                            
                                     </div>
                                 </form>
                             </div>

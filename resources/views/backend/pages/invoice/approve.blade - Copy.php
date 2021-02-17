@@ -5,7 +5,6 @@
         <section class="content">
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
-                <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <div class="col-12">
                         <div class="card mt-2">
@@ -99,7 +98,7 @@
                                         </tbody>
 
                                     </table>
-                                    <button type="submit" class="text-white btn btn-info mt-2">Approve Invoice</button>
+                                    <a type="submit" class="text-white btn btn-info mt-2">Approve Invoice</a>
 
                                 </form>
                             </div>
