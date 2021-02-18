@@ -46,8 +46,8 @@ class SuppliersController extends Controller
         //dd($request->all());
         $request->validate([
             'name' => 'required|string|max:255',
-//            'email' => 'required|max:255|unique:suppliers',
-//            'mobile_no' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+        //  'email' => 'required|max:255|unique:suppliers',
+        //  'mobile_no' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             'address' => 'required',
             'status' => 'required',
         ]);
@@ -96,17 +96,13 @@ class SuppliersController extends Controller
      */
     public function postUpdate(Request $request, $id)
     {
-        //dd($request);
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required',
-            'mobile_no' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
-            'address' => 'required', 'status' => 'required',
-
-        ]
-        );
-
-
+        // dd($request);
+        // $request->validate([
+        //     'name' => 'required|string|max:255',
+        //     'mobile_no' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+        //     'address' => 'required', 
+        //     'status' => 'required',
+        // ]);
         $supplier = Supplier::find($id);
         $supplier->name = $request->name;
         $supplier->email = $request->email;

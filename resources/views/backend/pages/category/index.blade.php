@@ -27,7 +27,7 @@
                                     <tr>
                                         <th>@lang('form.th_sl')</th>
                                         <th>@lang('form.th_product_category')</th>
-                                        <th>@lang('form.th_code')</th>
+                                        
                                         <th>@lang('form.th_created_by')</th>
                                         <th>@lang('form.th_updated_by')</th>
                                         <th>@lang('form.th_status')</th>
@@ -42,7 +42,7 @@
                                             <tr>
                                                 <td>{{ ++$key }}</td>
                                                 <td>{{ $list->name }}</td>
-                                                <td>{{ $list->code }}</td>
+                                                
                                                 <td>{{ Auth::user()->name }}</td>
                                                 <td>{{ Auth::user()->name }}</td>
                                                 @php
@@ -111,7 +111,7 @@
                                         @endforeach
                                     @else
                                         <tr>
-                                            <td colspan="5"> Opps!!, {{$title}} Not found</td>
+                                            <td colspan="8"> Opps!!, {{$title}} Not found</td>
                                         </tr>
                                     @endif
                                     </tbody>

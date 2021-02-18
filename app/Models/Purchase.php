@@ -31,6 +31,11 @@ class Purchase extends Model
         return $this->belongsTo('App\Models\Category', 'category_id')->withDefault();
     }
 
+    public function unit()
+    {
+        return $this->belongsTo(Unit::class)->withDefault();
+    }
+
 
 
 

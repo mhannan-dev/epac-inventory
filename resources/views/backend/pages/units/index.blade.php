@@ -110,7 +110,7 @@
                                         @endforeach
                                     @else
                                         <tr>
-                                            <td colspan="5"> Opps!!, {{ $title }} Not found</td>
+                                            <td colspan="7"> Opps!!, {{ $title }} Not found</td>
                                         </tr>
                                     @endif
                                     </tbody>

@@ -36,6 +36,7 @@
 
                                     @if(count($products))
                                         @foreach ($products as $key => $list)
+                                        
                                             <tr>
                                                 <td>{{ ++$key }}</td>
                                                 <td class="text-success">{{ $list['supplier']['name'] }}</td>

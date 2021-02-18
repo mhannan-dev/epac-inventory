@@ -2,7 +2,6 @@
 @push('styles')
     <link href="#" rel="stylesheet" type="text/css"/>
 @endpush
-
 @section('content')
     <div class="content-wrapper" style="min-height: 1244.06px;">
         <section class="content">
@@ -105,7 +104,7 @@
                                             <th>@lang('form.th_product_category')</th>
                                             <th>@lang('form.th_title')</th>
                                             <th>Description</th>
-                                            <th>Weight/Size</th>
+                                            {{-- <th>Weight/Size</th> --}}
                                             <th>Unit</th>
                                             <th width="10%">Buying Rate</th>
                                             <th width="10%">Quantity</th>
@@ -114,15 +113,11 @@
 
                                         </tr>
                                         </thead>
-
                                         <tbody id="addRow" class="addRow">
-
                                         </tbody>
-
-
                                         <tbody>
                                         <tr>
-                                            <td colspan="7" class="text-bold text-dark">Line Total</td>
+                                            <td colspan="6" class="text-bold text-dark">Line Total</td>
 
                                             <td class="text-white text-bold text-center">
                                                 <input id="estimated_amount" type="text" class="form-control form-control-sm text-right estimated_amount" readonly>
@@ -170,49 +165,35 @@
             <input type="hidden" name="purchase_no[]" value="@{{ purchase_no }}">
 
             <input type="hidden" name="supplier_id[]" value="@{{ supplier_id }}">
-
-
             <td>
                 <input type="hidden" name="category_id[]" value="@{{ category_id }}">@{{ category_name }}
             </td>
-
-
             <td>
                 <input type="hidden" name="product_id[]" value="@{{ product_id }}">@{{ product_name }}
             </td>
-
             <td>
                 <textarea type="text" class="form-control form-control-sm description" name="description[]">@{{ description }}</textarea>
-
             </td>
-            <td>
-                <input type="text" class="form-control form-control-sm size_weight" value="@{{ size_weight }}" name="size_weight[]">@{{ size_weight }}
-            </td>
+            {{-- <td>
+                <input type="text"  name="size_weight[]" value="@{{ size_weight }}" class="form-control form-control-sm size_weight">@{{ size_weight }}
+            </td> --}}
             <td>
                 <input type="hidden" name="unit_id[]" value="@{{ unit_id }}">@{{ unit_name }}
-
             </td>
             <td>
                 <input type="number" class="form-control form-control-sm unit_price" name="unit_price[]" value="">
             </td>
-
             <td>
                 <input type="number" min="1" class="form-control form-control-sm buying_qty" name="buying_qty[]">
             </td>
-
             <td>
                 <input type="number" class="form-control form-control-sm text-right buying_price" value="1"
                        name="buying_price[]" readonly>
             </td>
             <td>
                 <i class="btn btn-danger btn-sm fa fa-window-close removeEventMore"></i>
-
             </td>
-
-
         </tr>
-
-
     </script>
     <script type="text/javascript">
         $(document).on('click', ".addEventMore", function () {
@@ -285,7 +266,7 @@
             }
 
             if (buying_price == '') {
-                $.notify("Puying price is required", {globalPosition: 'top-right', className: 'error'});
+                $.notify("Buying price is required", {globalPosition: 'top-right', className: 'error'});
                 return false;
             }
 

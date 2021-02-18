@@ -534,7 +534,7 @@
                     type: "GET",
                     data: { product_id: my_product_id },
                     success: function (data) {
-                        console.log(data)
+                        //console.log(data)
                         $('#curent_stock_qty').val(data);
                     }
                 });

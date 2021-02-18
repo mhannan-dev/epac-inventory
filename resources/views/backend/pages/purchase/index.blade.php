@@ -31,7 +31,7 @@
                                         <th>Total</th>
                                         <th>Buy Price</th>
                                         <th>@lang('form.th_quantity')</th>
-                                        <th>Size weight</th>
+                                        {{-- <th>Size weight</th> --}}
                                         <th>Unit Name</th>
                                         <th>@lang('form.th_status')</th>
                                         <th>@lang('form.th_action')</th>
@@ -52,8 +52,8 @@
                                                 <td>{{ $purchase->buying_price }}</td>
                                                 <td>{{ $purchase->unit_price }}</td>
                                                 <td>{{ $purchase->buying_qty }}</td>
-                                                <td>{{ $purchase->size_weight }}</td>
-                                                <td>{{ $purchase['products']['units']->name }}</td>
+                                                {{-- <td>{{ $purchase->size_weight }}</td> --}}
+                                                <td>{{ $purchase['unit']->name }}</td>
                                                 <td>
                                                     @if($purchase->status == 0)
                                                         <span class="badge badge-warning">Pending</span>
@@ -109,7 +109,7 @@
                                         @endforeach
                                     @else
                                         <tr>
-                                            <td colspan="5"> Opps!!, {{$title}} Not found</td>
+                                            <td colspan="12"> Opps!!, {{$title}} Not found</td>
                                         </tr>
                                     @endif
                                     </tbody>
@@ -121,7 +121,6 @@
                         <!-- /.card -->
                     </div>
                 </div>
-
             </div><!-- /.container-fluid -->
         </section>
         <!-- /.content -->

@@ -22,16 +22,13 @@
                             <div class="card-body">
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
-
                                     <tr>
-
                                         <th>@lang('form.th_sl')</th>
                                         <th>Customer name</th>
                                         <th>Invoice No</th>
                                         <th>Date</th>
                                         <th>Description</th>
                                         <th class="text-right">Amount</th>
-
                                     </tr>
                                     </thead>
                                     <tbody>

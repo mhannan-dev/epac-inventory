@@ -73,8 +73,8 @@
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-info btn-sm">@lang('form.btn_save')</button>
-                                <a href="{{ route('admin.products.view') }}" class="btn btn-danger btn-sm"><i
+                                <button type="submit" class="btn btn-info">@lang('form.btn_save')</button>
+                                <a href="{{ route('admin.products.view') }}" class="btn btn-danger"><i
                                         class="fas fa-undo"></i></a>
                             </div>
                             {!! Form::close() !!}

@@ -5,19 +5,15 @@
         <section class="content">
             <div class="container-fluid">
                 <div class="row justify-content-md-center">
-
                     <div class="col-lg-12">
-
                         <div class="card card-info mt-2">
                             <div class="card-header">
                                 <h3 class="card-title">{{ $title }}</h3>
                             </div>
-                            {!! Form::open([ 'route' => ['admin.products.update',$product->id],'name'=>'supplierForm' ,'id' => 'supplierForm', 'method' => 'post']) !!}
+                            {!! Form::open([ 'route' => ['admin.products.update', $product->id], 'name'=>'supplierForm' , 'id' => 'supplierForm', 'method' => 'post']) !!}
                             @csrf
                             <div class="card-body">
                                 <div class="form-row">
-
-
                                     <div class="form-group col-md-4">
                                     @if($suppliers->count() < 1)
                                         <!-- Button trigger modal -->
@@ -31,26 +27,20 @@
                                             <select class="form-control form-control-sm select2" id="supplier_id" name="supplier_id">
                                                 <option>Select supplier</option>
                                                 @foreach($suppliers as $data_row)
-
-                                                    <option value="{{ $data_row->id}}"
-                                                            @if($data_row->id == $product->supplier_id): selected @else
-                                                        ' ' @endif>
+                                                    <option value="{{ $data_row->id}}" @if($data_row->id == $product->supplier_id): selected @else ' ' @endif>
                                                     {{ $data_row->name }}</option>
                                                 @endforeach
                                             </select>
                                         @endif
                                     </div>
 
-
                                     <div class="form-group col-md-4">
-
                                         <label for="cuntry">Select category</label>
                                         <select class="form-control form-control-sm select2" id="category_id" name="category_id">
                                             <option>Select category</option>
                                             @foreach($categories as $data_row)
                                                 <option value="{{ $data_row->id}}"
-                                                        @if($data_row->id == $product->category_id): selected @else '
-                                                ' @endif>
+                                                        @if($data_row->id == $product->category_id): selected @else '' @endif>
                                                 {{ $data_row->name }}
                                                 </option>
                                             @endforeach
@@ -59,41 +49,16 @@
                                     <div class="form-group col-md-4">
                                         <label for="status">Name</label>
                                         <input type="text" class="form-control form-control-sm" name="name" id="name"
-                                               value="{{ $data_row->name }}">
+                                               value="{{ $product->name  }}">
+
+                                               
                                     </div>
-
-{{--                                    <div class="form-group col-md-6">--}}
-{{--                                    @if($units->count() < 1)--}}
-{{--                                        <!-- Button trigger modal -->--}}
-{{--                                            <a type="button" class="btn btn-outline-info btn-sm mt-md-4"--}}
-{{--                                               style="margin-top: 30px !important;" data-toggle="modal"--}}
-{{--                                               data-target="#addUnitModal">--}}
-{{--                                                Add Unit <i class="fa fa-plus" aria-hidden="true"></i>--}}
-{{--                                            </a>--}}
-
-{{--                                        @else--}}
-{{--                                            <label for="unit_id">Select Unit</label>--}}
-{{--                                            <select class="form-control form-control-sm select2" id="unit_id" name="unit_id">--}}
-{{--                                                <option>Select unit</option>--}}
-{{--                                                @foreach($units as $data_row)--}}
-{{--                                                    <option value="{{ $data_row->id}}"--}}
-{{--                                                            @if($data_row->id == $product->unit_id): selected @else '--}}
-{{--                                                    ' @endif>--}}
-{{--                                                    {{ $data_row->name }}</option>--}}
-{{--                                                @endforeach--}}
-{{--                                            </select>--}}
-{{--                                        @endif--}}
-{{--                                    </div>--}}
-
-
                                 </div>
-
-
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-info btn-sm">@lang('form.btn_save')</button>
-                                <a href="{{ route('admin.products.view') }}" class="btn btn-danger  btn-sm"><i
+                                <button type="submit" class="btn btn-info">@lang('form.btn_save')</button>
+                                <a href="{{ route('admin.products.view') }}" class="btn btn-danger"><i
                                         class="fas fa-undo"></i></a>
                             </div>
                             {!! Form::close() !!}

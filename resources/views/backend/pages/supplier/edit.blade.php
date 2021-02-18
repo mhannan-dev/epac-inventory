@@ -13,7 +13,6 @@
                                 <h3 class="card-title">{{ $title }}</h3>
                             </div>
 
-
                                 {!! Form::open([ 'route' => ['admin.supplier.update',$data_list->id], 'id' => 'supplierForm', 'method' => 'post']) !!}
                                 @csrf
                                 <div class="card-body">
@@ -38,6 +37,15 @@
                                         {!! Form::text('address', $data_list->address, [ 'class' => 'form-control', 'data-validation-required-message' => 'This field is required', 'placeholder' => 'Enter name']) !!}
                                         {!! $errors->first('address', '<label class="help-block text-danger">:message</label>') !!}
                                     </div>
+
+                                    <div class="form-group">
+                                    <label for="is_active">Status</label>
+                                    <select class="form-control" name="status">
+
+                                        <option value="active" {{( $data_list->status == "active" )? "selected": " "}}>Active</option>
+                                        <option value="inactive" {{( $data_list->status == "inactive" )? "selected": " "}}>Inactive</option>
+                                    </select>
+                                </div>
 
                                 </div>
                                 <!-- /.card-body -->

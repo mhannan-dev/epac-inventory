@@ -27,7 +27,6 @@ class ProductsController extends Controller
     {
         $data['title'] = "Product";
         $data['products'] = Product::all();
-        //dd($data['products']);
         return view('backend.pages.product.index', $data);
     }
 
@@ -91,11 +90,12 @@ class ProductsController extends Controller
     public function getEdit($id)
 
     {
+        $data['product'] = Product::find($id);
         $data['title'] = "Update Product";
         $data['suppliers'] = Supplier::all();
         $data['categories'] = Category::all();
         $data['units'] = Unit::all();
-        $data['product'] = Product::find($id);
+        //dd($data['product']);
         if (!is_null($data)) {
             return view('backend.pages.product.edit', $data);
         } else {
@@ -116,7 +116,7 @@ class ProductsController extends Controller
         $request->validate([
                 'category_id' => 'required',
                 'supplier_id' => 'required',
-                'name' => 'required|string|max:255',
+                'name' => 'required',
                 //'unit_id' => 'required',
             ]
         );
