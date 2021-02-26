@@ -244,12 +244,18 @@ class InvoiceController extends Controller
                 $invoice_details->status    = '1';
                 $invoice_details->save();
                 $product                    = Product::where('id', $invoice_details->product_id)->first();
-                $product->quantity          = ((float)$product->quantity)-((float)$request->selling_qty[$key]);    
+                $product->quantity          = ((float)$product->quantity)-((float)$request->selling_qty[$key]);
                 $product->save();
             }
-            $invoice->save(); 
+            $invoice->save();
         });
         toast('Invoice successfully approved !!', 'success');
         return redirect()->route('invoice.pending.list');
+    }
+    public function dailyReport()
+    {
+
+        $data['title'] = "Daily Invoice";
+        return view('backend.pages.invoice.daily-report',$data);
     }
 }
