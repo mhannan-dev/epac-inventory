@@ -180,6 +180,9 @@ return [
         */
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
 
+        // ...
+        niklasravnsborg\LaravelPdf\PdfServiceProvider::class
+
 
     ],
 
@@ -236,8 +239,9 @@ return [
         * Package Service Providers...
         */
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
-
         'Str'      => 'Illuminate\Support\Str',
+        // ...
+        'PDF' => niklasravnsborg\LaravelPdf\Facades\Pdf::class
 
 
 

@@ -16,7 +16,7 @@ use App\Models\PaymentDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DB;
-
+use PDF;
 class InvoiceController extends Controller
 {
     /**
@@ -252,6 +252,21 @@ class InvoiceController extends Controller
         toast('Invoice successfully approved !!', 'success');
         return redirect()->route('invoice.pending.list');
     }
+
+    public function invoicePrintList()
+    {
+        $data['title'] = "Invoice Print";
+        $data['invoices'] = Invoice::orderBy('date', 'desc')->orderBy('id', 'desc')->where('status','1')->get();
+        return view('backend.pages.invoice.print-invoices', $data);
+    }
+
+    public function invoicePrint($id)
+    {
+        $data['invoice'] = Invoice::with(['invoice_details'])->find($id);
+        $pdf = PDF::loadView('backend.pages._PDF.invoice_pdf', $data);
+        return $pdf->stream('document.pdf');
+    }
+
     public function dailyInvoiceReport()
     {
         $data['title'] = "Daily Invoice";
@@ -263,4 +278,9 @@ class InvoiceController extends Controller
         $end_date           = date('Y-m-d', strtotime($request->end_date));
         $data['all_data']   = Invoice::whereBetween('date',[$st_date, $end_date])->where('status', '1')-get();
     }
+
+
+
+
+
 }

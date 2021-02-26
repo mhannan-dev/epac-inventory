@@ -130,11 +130,10 @@ Route::group(['prefix' => 'invoice'], function () {
     Route::get('/approve/{id}', 'Backend\InvoiceController@approve')->name('invoice.approve');
     Route::post('/approve/store/{id}', 'Backend\InvoiceController@appprovalStore')->name('approval.store');
     Route::post('/delete/{id}', 'Backend\InvoiceController@postDelete')->name('invoice.delete');
+    Route::get('/print/list', 'Backend\InvoiceController@invoicePrintList')->name('invoice.print.list');
+    Route::get('/print/{id}', 'Backend\InvoiceController@invoicePrint')->name('invoice.print');
     Route::get('/daily/report', 'Backend\InvoiceController@dailyInvoiceReport')->name('invoice.daily.report');
     Route::get('/daily/pdf', 'Backend\InvoiceController@dailyInvoicePdf')->name('invoice.daily.pdf');
-
-
-
 
 });
 
@@ -149,6 +148,24 @@ Route::get('/category-for-invoice', 'Backend\DefaultController@categoryForInvoic
 Route::get('/get-products', 'Backend\DefaultController@getProducts')->name('get-products');
 Route::get('/get-unit', 'Backend\DefaultController@getUnits')->name('get-unit');
 Route::get('/check-product-stock', 'Backend\DefaultController@getStock')->name('check-product-stock');
+
+
+
+//to clear all cache
+Route::get('__cc', function () {
+    try {
+        // \Artisan::call('optimize');
+        \Artisan::call('clear-compiled');
+        \Artisan::call('cache:clear');
+        \Artisan::call('view:clear');
+        \Artisan::call('config:clear');
+        \Artisan::call('config:cache');
+        \Artisan::call('queue:restart');
+    } catch (\Exception $e) {
+        echo $e->getMessage();
+    }
+});
+
 
 
 

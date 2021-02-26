@@ -41,6 +41,7 @@
       24 => 'App\\Providers\\EventServiceProvider',
       25 => 'App\\Providers\\RouteServiceProvider',
       26 => 'RealRashid\\SweetAlert\\SweetAlertServiceProvider',
+      27 => 'niklasravnsborg\\LaravelPdf\\PdfServiceProvider',
     ),
     'aliases' => 
     array (
@@ -80,6 +81,7 @@
       'Validator' => 'Illuminate\\Support\\Facades\\Validator',
       'View' => 'Illuminate\\Support\\Facades\\View',
       'Alert' => 'RealRashid\\SweetAlert\\Facades\\Alert',
+      'PDF' => 'niklasravnsborg\\LaravelPdf\\Facades\\Pdf',
     ),
   ),
   'auth' => 
@@ -609,6 +611,17 @@
     'remote_sites_path' => '',
     'local_sites_path' => '',
     'housekeeping_endpoint_prefix' => '_ignition',
+  ),
+  'pdf' => 
+  array (
+    'mode' => 'utf-8',
+    'format' => 'A4',
+    'author' => '',
+    'subject' => '',
+    'keywords' => '',
+    'creator' => 'Laravel Pdf',
+    'display_mode' => 'fullpage',
+    'tempDir' => 'D:\\laragon\\www\\pos_shop\\../temp/',
   ),
   'trustedproxy' => 
   array (
