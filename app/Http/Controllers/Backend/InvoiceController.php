@@ -254,8 +254,11 @@ class InvoiceController extends Controller
     }
     public function dailyReport()
     {
-
         $data['title'] = "Daily Invoice";
         return view('backend.pages.invoice.daily-report',$data);
+    }
+    public function dailyReportPdf()
+    {
+        dd('pdf here');
     }
 }
