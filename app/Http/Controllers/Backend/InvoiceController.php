@@ -252,13 +252,15 @@ class InvoiceController extends Controller
         toast('Invoice successfully approved !!', 'success');
         return redirect()->route('invoice.pending.list');
     }
-    public function dailyReport()
+    public function dailyInvoiceReport()
     {
         $data['title'] = "Daily Invoice";
         return view('backend.pages.invoice.daily-report',$data);
     }
-    public function dailyReportPdf()
+    public function dailyInvoicePdf(Request $request)
     {
-        dd('pdf here');
+        $st_date            = date('Y-m-d', strtotime($request->start_date));
+        $end_date           = date('Y-m-d', strtotime($request->end_date));
+        $data['all_data']   = Invoice::whereBetween('date',[$st_date, $end_date])->where('status', '1')-get();
     }
 }
