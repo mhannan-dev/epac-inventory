@@ -180,7 +180,7 @@ return [
         */
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
 
-        //PDF
+        //PDF Provider
 	    Barryvdh\DomPDF\ServiceProvider::class,
 
        
@@ -243,7 +243,7 @@ return [
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
         'Str'      => 'Illuminate\Support\Str',
 
-        //PDF
+        //PDF Facadec
         'PDF' => Barryvdh\DomPDF\Facade::class,
         
 
