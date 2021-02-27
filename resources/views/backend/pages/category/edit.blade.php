@@ -24,11 +24,11 @@
                                     {!! $errors->first('name', '<label class="help-block text-danger">:message</label>') !!}
                                 </div>
 
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="code">@lang('form.code')<span class="text-danger">*</span></label>
                                     <input type="text" name="code" class="form-control" data-validation-required-message="This field is required" value="{{ $data_list->code }}">
                                     {!! $errors->first('code', '<label class="help-block text-danger">:message</label>') !!}
-                                </div>
+                                </div> --}}
                                 <div class="form-group">
                                     <label for="is_active">Status</label>
                                     <select class="form-control" name="status">

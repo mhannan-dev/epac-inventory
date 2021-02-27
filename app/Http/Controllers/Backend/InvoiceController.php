@@ -263,7 +263,8 @@ class InvoiceController extends Controller
     public function invoicePrint($id)
     {
         $data['invoice'] = Invoice::with(['invoice_details'])->find($id);
-        $pdf = PDF::loadView('backend.pages._PDF.invoice_pdf', $data);
+        $pdf = PDF::loadView('backend.pages._PDF.inv_pdf', $data);
+        //$pdf->SetProtection(['copy','print'], '', 'pass');
         return $pdf->stream('document.pdf');
     }
 

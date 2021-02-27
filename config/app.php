@@ -180,8 +180,10 @@ return [
         */
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
 
-        // ...
-        niklasravnsborg\LaravelPdf\PdfServiceProvider::class
+        //PDF
+	    Barryvdh\DomPDF\ServiceProvider::class,
+
+       
 
 
     ],
@@ -240,8 +242,10 @@ return [
         */
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
         'Str'      => 'Illuminate\Support\Str',
-        // ...
-        'PDF' => niklasravnsborg\LaravelPdf\Facades\Pdf::class
+
+        //PDF
+        'PDF' => Barryvdh\DomPDF\Facade::class,
+        
 
 
 

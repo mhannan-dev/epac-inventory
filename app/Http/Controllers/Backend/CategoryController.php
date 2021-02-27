@@ -103,7 +103,7 @@ class CategoryController extends Controller
 
         $supplier = Category::find($id);
         $supplier->name = $request->name;
-        $supplier->code = Str::slug($request->name);
+        //$supplier->code = Str::slug($request->name);
         $supplier->status = $request->status;
         $supplier->updated_by   = Auth::user()->id;
         $supplier->save();
