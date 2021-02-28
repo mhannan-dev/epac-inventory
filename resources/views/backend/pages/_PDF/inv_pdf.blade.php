@@ -1,30 +1,150 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ URL::asset('backend') }}/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
     <title>Hello, world!</title>
-  </head>
-  <body>
-    <h1>Welcome to https://epac.com.bd/</h1>
+    <style>
 
-    <hr>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+        .alignleft {
+            float: left;
+        }
+
+        .alignright {
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+
+
+      <table style="margin-bottom: 10px;">
+        <tr>
+            <th>From</th>
+            <th>To</th>
+            <th>Info</th>
+        </tr>
+        <tr>
+            <td>
+
+                <span>epac Ltd.</span><br>
+                45, Topkhana Road, <br>
+                Purana platinum,<br>
+                Dhaka-1000.
+
+
+            </td>
+            <td>
+
+                <span>Al Mahmud</span><br>
+                45, Rayerbazar, <br>
+                Dhaka-1000.
+
+
+            </td>
+            <td>
+
+                <strong>Invoice no# </strong>12545<br>
+                <strong>Payment Due:</strong> 01/03/2021 </span> <br>
+                <strong>Account:</strong> 968-34567 </span>
+
+
+            </td>
+        </tr>
+        </table
+
+    <table>
+        <tr>
+            <th>Company</th>
+            <th>Contact</th>
+            <th>Country</th>
+        </tr>
+        <tr>
+            <td>Alfreds Futterkiste</td>
+            <td>Maria Anders</td>
+            <td>Germany</td>
+        </tr>
+        <tr>
+            <td>Centro comercial Moctezuma</td>
+            <td>Francisco Chang</td>
+            <td>Mexico</td>
+        </tr>
+        <tr>
+            <td>Ernst Handel</td>
+            <td>Roland Mendel</td>
+            <td>Austria</td>
+        </tr>
+        <tr>
+            <td>Island Trading</td>
+            <td>Helen Bennett</td>
+            <td>UK</td>
+        </tr>
+        <tr>
+            <td>Laughing Bacchus Winecellars</td>
+            <td>Yoshi Tannamuri</td>
+            <td>Canada</td>
+        </tr>
+        <tr>
+            <td>Magazzini Alimentari Riuniti</td>
+            <td>Giovanni Rovelli</td>
+            <td>Italy</td>
+        </tr>
+    </table>
+
+
+
+    {{-- <div class="row">
+            <div class="col-md-12">
+                @php
+                    $payment = App\Models\Payment::where('invoice_id', $invoice->id)->first();
+                @endphp
+                <table width="100%">
+                    <tbody>
+                        <tr>
+                            <td width="30%">
+                                <strong>Name :</strong> {!! $payment['customer']['name'] !!}
+                            </td>
+
+                            <td width="30%">
+                                <strong>Mobile :</strong> {!! $payment['customer']['mobile_no'] !!}
+                            </td>
+
+                            <td width="40%">
+                                <strong>Address :</strong> {!! $payment['customer']['address'] !!}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div> --}}
+
+
+</body>
+
 </html>
