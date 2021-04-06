@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 29, 2021 at 04:49 PM
+-- Generation Time: Apr 06, 2021 at 11:49 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.13
 
@@ -96,7 +96,8 @@ CREATE TABLE `invoices` (
 INSERT INTO `invoices` (`id`, `invoice_no`, `date`, `description`, `status`, `approved_by`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
 (1, 1, '2021-02-18', 'Rice 20 litre', 1, 8, 8, NULL, '2021-02-18 02:17:34', '2021-02-18 02:17:49'),
 (2, 2, '2021-02-18', 'Mota chal', 1, 8, 8, NULL, '2021-02-18 02:50:36', '2021-02-18 02:51:04'),
-(3, 3, '2021-02-18', 'Mota chal	98 kg', 1, 8, 8, NULL, '2021-02-18 02:52:36', '2021-02-18 02:52:57');
+(3, 3, '2021-02-18', 'Mota chal	98 kg', 1, 8, 8, NULL, '2021-02-18 02:52:36', '2021-02-18 02:52:57'),
+(5, 4, '2021-04-06', 'Mota chal 95 KG per kg 65 bdt.', 1, 8, 8, NULL, '2021-04-06 05:45:45', '2021-04-06 05:46:27');
 
 -- --------------------------------------------------------
 
@@ -125,7 +126,8 @@ CREATE TABLE `invoice_details` (
 INSERT INTO `invoice_details` (`id`, `invoice_id`, `category_id`, `product_id`, `date`, `selling_qty`, `unit_price`, `selling_price`, `status`, `updated_at`, `created_at`) VALUES
 (1, 1, 1, 2, '2021-02-18', 20, 180, 3600, 1, '2021-02-18 02:17:34', '2021-02-18 02:17:34'),
 (2, 2, 1, 1, '2021-02-18', 10, 110, 1100, 1, '2021-02-18 02:50:36', '2021-02-18 02:50:36'),
-(3, 3, 1, 1, '2021-02-18', 98, 100, 9800, 1, '2021-02-18 02:52:36', '2021-02-18 02:52:36');
+(3, 3, 1, 1, '2021-02-18', 98, 100, 9800, 1, '2021-02-18 02:52:36', '2021-02-18 02:52:36'),
+(5, 5, 1, 1, '2021-04-06', 95, 65, 6175, 1, '2021-04-06 05:45:45', '2021-04-06 05:45:45');
 
 -- --------------------------------------------------------
 
@@ -177,7 +179,8 @@ CREATE TABLE `payments` (
 INSERT INTO `payments` (`id`, `invoice_id`, `customer_id`, `paid_status`, `paid_amount`, `due_amount`, `total_amount`, `discount_amount`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, 'full_paid', 3500, 0, 3500, 100, '2021-02-18 02:17:34', '2021-02-18 02:17:34'),
 (2, 2, 1, 'full_paid', 1000, 0, 1000, 100, '2021-02-18 02:50:36', '2021-02-18 02:50:36'),
-(3, 3, 1, 'full_paid', 9800, 0, 9800, 0, '2021-02-18 02:52:36', '2021-02-18 02:52:36');
+(3, 3, 1, 'full_paid', 9800, 0, 9800, 0, '2021-02-18 02:52:36', '2021-02-18 02:52:36'),
+(5, 5, 1, 'full_paid', 6000, 0, 6000, 175, '2021-04-06 05:45:45', '2021-04-06 05:45:45');
 
 -- --------------------------------------------------------
 
@@ -202,7 +205,8 @@ CREATE TABLE `payment_details` (
 INSERT INTO `payment_details` (`id`, `invoice_id`, `current_paid_amount`, `date`, `updated_by`, `created_at`, `updated_at`) VALUES
 (1, 1, 3500, '2021-02-18', NULL, '2021-02-18 02:17:34', '2021-02-18 02:17:34'),
 (2, 2, 1000, '2021-02-18', NULL, '2021-02-18 02:50:36', '2021-02-18 02:50:36'),
-(3, 3, 9800, '2021-02-18', NULL, '2021-02-18 02:52:36', '2021-02-18 02:52:36');
+(3, 3, 9800, '2021-02-18', NULL, '2021-02-18 02:52:36', '2021-02-18 02:52:36'),
+(4, 5, 6000, '2021-04-06', NULL, '2021-04-06 05:45:45', '2021-04-06 05:45:45');
 
 -- --------------------------------------------------------
 
@@ -228,9 +232,9 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `category_id`, `name`, `created_by`, `updated_by`, `created_at`, `updated_at`, `supplier_id`, `unit_id`, `quantity`) VALUES
-(1, 1, 'Mota chal', 8, 8, '2021-02-18 02:12:23', '2021-02-18 06:00:14', 2, NULL, 195),
-(2, 2, 'Oil', 8, 8, '2021-02-18 02:13:28', '2021-02-18 03:32:42', 2, NULL, 249),
-(4, 1, 'XYZ name', 8, 8, '2021-02-18 04:43:37', '2021-02-18 06:00:22', 2, NULL, NULL);
+(1, 1, 'Mota chal', 8, 8, '2021-02-18 02:12:23', '2021-04-06 05:46:27', 2, NULL, 190),
+(2, 2, 'Oil', 8, 8, '2021-02-18 02:13:28', '2021-04-06 05:43:39', 2, NULL, 449),
+(4, 1, 'Minicket Rice', 8, 8, '2021-02-18 04:43:37', '2021-04-06 05:40:48', 2, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -261,8 +265,8 @@ CREATE TABLE `purchases` (
 --
 
 INSERT INTO `purchases` (`id`, `category_id`, `supplier_id`, `buying_qty`, `unit_price`, `buying_price`, `description`, `status`, `date`, `created_by`, `product_id`, `unit_id`, `size_weight`, `updated_at`, `created_at`) VALUES
-(2, 1, 2, 200, 100, 20000, 'Mota chal', 1, '2021-02-18', 8, 1, 2, NULL, '2021-02-18 08:47:37', '2021-02-18 08:47:37'),
-(4, 2, 2, 10, 150, 1500, 'Soyabean Oil', 0, '2021-02-18', 8, 2, 1, NULL, '2021-02-18 09:35:05', '2021-02-18 09:35:05');
+(1, 1, 2, 200, 100, 20000, 'Mota chal', 1, '2021-02-18', 8, 1, 2, NULL, '2021-02-18 08:47:37', '2021-02-18 08:47:37'),
+(2, 2, 2, 200, 100, 20000, 'Oil 20 Litre', 1, '2021-04-06', 8, 2, 1, NULL, '2021-04-06 11:43:11', '2021-04-06 11:43:11');
 
 -- --------------------------------------------------------
 
@@ -487,13 +491,13 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT for table `invoices`
 --
 ALTER TABLE `invoices`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `invoice_details`
 --
 ALTER TABLE `invoice_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -505,7 +509,19 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `payment_details`
+--
+ALTER TABLE `payment_details`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `purchases`
+--
+ALTER TABLE `purchases`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
