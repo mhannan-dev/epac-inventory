@@ -267,6 +267,12 @@ class InvoiceController extends Controller
         //$pdf->SetProtection(['copy','print'], '', 'pass');
         return $pdf->stream('document.pdf');
     }
+    public function invoiceWeb($id)
+    {
+        $data['invoice'] = Invoice::with(['invoice_details'])->find($id);
+        //dd($data['invoice']);
+        return view('backend.pages._PDF.invoice_web', $data);
+    }
 
     public function dailyInvoiceReport()
     {
@@ -277,7 +283,7 @@ class InvoiceController extends Controller
     {
         $st_date            = date('Y-m-d', strtotime($request->start_date));
         $end_date           = date('Y-m-d', strtotime($request->end_date));
-        $data['all_data']   = Invoice::whereBetween('date',[$st_date, $end_date])->where('status', '1')-get();
+        $data['all_data']   = Invoice::whereBetween('date',[$st_date, $end_date])->where('status', '1')->get();
     }
 
 

@@ -132,6 +132,7 @@ Route::group(['prefix' => 'invoice'], function () {
     Route::post('/delete/{id}', 'Backend\InvoiceController@postDelete')->name('invoice.delete');
     Route::get('/print/list', 'Backend\InvoiceController@invoicePrintList')->name('invoice.print.list');
     Route::get('/print/{id}', 'Backend\InvoiceController@invoicePrint')->name('invoice.print');
+    Route::get('/view/{id}', 'Backend\InvoiceController@invoiceWeb')->name('invoice.web');
     Route::get('/daily/report', 'Backend\InvoiceController@dailyInvoiceReport')->name('invoice.daily.report');
     Route::get('/daily/pdf', 'Backend\InvoiceController@dailyInvoicePdf')->name('invoice.daily.pdf');
 

@@ -36,7 +36,7 @@
                                     </tr>
                                     </tbody>
                                 </table>
-                
+
                                 <form action="{{ route('approval.store', $invoice->id) }}" method="POST">
 
                                    {{ csrf_field() }}

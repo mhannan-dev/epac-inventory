@@ -7,7 +7,6 @@
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <div class="col-12">
-
                         <div class="card mt-2">
                             <div class="card-header">
                                 <h3 class="card-title">{{$title}} List</h3>
@@ -15,9 +14,7 @@
                                     <a href="{{ route('invoice.create') }}" class="btn btn-outline-info"><i
                                             class="fas fa-plus"></i> &nbsp;Add {{$title}}</a>
                                 </div>
-
                             </div>
-
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <table id="example1" class="table table-bordered table-striped">
@@ -44,17 +41,16 @@
                                             <td>{{ $invoice->description }}</td>
                                             <td class="text-right">{{ $invoice['payment']['total_amount']}}</td>
                                             <td class="text-right">
-                                                <a href="{{ route('invoice.print',$invoice->id) }}"  title="Print" class="btn btn-dark btn-sm">
+                                                <a target="_blank" href="{{ route('invoice.web',$invoice->id) }}"  title="View" class="btn btn-warning btn-sm">
                                                     <i class="fa fa-print text-white"></i>
                                                 </a>
+                                                {{-- <a href="{{ route('invoice.print',$invoice->id) }}"  title="Print" class="btn btn-dark btn-sm">
+                                                    <i class="fa fa-print text-white"></i>
+                                                </a> --}}
                                             </td>
-
                                         </tr>
-
                                     @endforeach
-
                                     </tbody>
-
                                 </table>
                             </div>
                             <!-- /.card-body -->
@@ -62,7 +58,6 @@
                         <!-- /.card -->
                     </div>
                 </div>
-
             </div><!-- /.container-fluid -->
         </section>
         <!-- /.content -->
@@ -74,7 +69,6 @@
     <link rel="stylesheet"
           href="{{ URL::asset('backend')}}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 @endpush
-
 @push('scripts')
     <script src="{{ URL::asset('backend')}}/plugins/datatables/jquery.dataTables.min.js"></script>
     <!-- DataTables -->
@@ -99,5 +93,4 @@
             });
         });
     </script>
-
 @endpush
