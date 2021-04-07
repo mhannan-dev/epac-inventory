@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Http\Controllers\Backend;
+
 use App\Models\Unit;
 use App\Models\Brand;
 use App\Models\Invoice;
@@ -15,6 +17,7 @@ use App\Models\PaymentDetail;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+
 class InvoiceController extends Controller
 {
     /**
@@ -25,7 +28,7 @@ class InvoiceController extends Controller
     public function getIndex()
     {
         $data['title'] = "Invoice";
-        $data['invoices'] = Invoice::orderBy('date', 'desc')->orderBy('id', 'desc')->where('status','1')->get();
+        $data['invoices'] = Invoice::orderBy('date', 'desc')->orderBy('id', 'desc')->where('status', '1')->get();
         return view('backend.pages.invoice.index', $data);
     }
     //Fake
@@ -86,8 +89,8 @@ class InvoiceController extends Controller
                 $invoice->status = '0';
                 $invoice->created_by = Auth::user()->id;
                 // Transaction start
-                DB::transaction(function() use($request,$invoice) {
-                    if($invoice->save()) {
+                DB::transaction(function () use ($request, $invoice) {
+                    if ($invoice->save()) {
                         $count_category = count($request->category_id);
                         for ($i = 0; $i < $count_category; $i++) {
                             $invoice_details = new InvoiceDetail();
@@ -183,7 +186,7 @@ class InvoiceController extends Controller
         $data['title'] = 'Approve Invoice';
         $data['invoice'] = Invoice::with(['invoice_details'])->find($id);
         //dd($data['invoice']);
-        return view('backend.pages.invoice.approve',$data);
+        return view('backend.pages.invoice.approve', $data);
     }
     /**
      * Remove the specified resource from storage.
@@ -197,19 +200,19 @@ class InvoiceController extends Controller
         #dd($delete_row);
         if (!is_null($delete_row)) {
             $delete_row->delete();
-            InvoiceDetail::where('invoice_id',$delete_row->id)->delete();
-            Payment::where('invoice_id',$delete_row->id)->delete();
-            PaymentDetail::where('invoice_id',$delete_row->id)->delete();
+            InvoiceDetail::where('invoice_id', $delete_row->id)->delete();
+            Payment::where('invoice_id', $delete_row->id)->delete();
+            PaymentDetail::where('invoice_id', $delete_row->id)->delete();
         }
         toast('Data deleted successfully !!', 'success');
         return back();
     }
     public function appprovalStore(Request $request, $id)
     {
-        foreach($request->selling_qty as $key => $val ){
+        foreach ($request->selling_qty as $key => $val) {
             $invoice_details = InvoiceDetail::where('id', $key)->first();
             $product = Product::where('id', $invoice_details->product_id)->first();
-            if($product->quantity < $request->selling_qty[$key]){
+            if ($product->quantity < $request->selling_qty[$key]) {
                 toast('Sorry ! you approve maximum value', 'error');
                 return redirect()->back();
             }
@@ -223,7 +226,7 @@ class InvoiceController extends Controller
                 $invoice_details->status    = '1';
                 $invoice_details->save();
                 $product                    = Product::where('id', $invoice_details->product_id)->first();
-                $product->quantity          = ((float)$product->quantity)-((float)$request->selling_qty[$key]);
+                $product->quantity          = ((float)$product->quantity) - ((float)$request->selling_qty[$key]);
                 $product->save();
             }
             $invoice->save();
@@ -234,7 +237,7 @@ class InvoiceController extends Controller
     public function invoicePrintList()
     {
         $data['title'] = "Invoice Print";
-        $data['invoices'] = Invoice::orderBy('date', 'desc')->orderBy('id', 'desc')->where('status','1')->get();
+        $data['invoices'] = Invoice::orderBy('date', 'desc')->orderBy('id', 'desc')->where('status', '1')->get();
         return view('backend.pages.invoice.print-invoices', $data);
     }
     public function invoicePrint($id)
@@ -250,16 +253,20 @@ class InvoiceController extends Controller
         //dd($data['invoice']);
         return view('backend.pages._PDF.invoice_web', $data);
     }
-    public function dailyInvoiceReport()
+    public function dailyInvoiceSearch()
     {
         $data['title'] = "Daily Invoice";
-        return view('backend.pages.invoice.daily-report',$data);
+        return view('backend.pages.invoice.daily_search', $data);
     }
-    public function dailyReportPdf(Request $request)
+    public function dailyInvoiceReport(Request $request)
     {
-        $st_date            = date('Y-m-d', strtotime($request->start_date));
-        $end_date           = date('Y-m-d', strtotime($request->end_date));
-        $data['all_data']   = Invoice::whereBetween('date',[$st_date, $end_date])->where('status', '1')->get();
-        
+        $data['title'] = "Invoice";
+        $st_date    = date('Y-m-d', strtotime($request->start_date));
+        $end_date   = date('Y-m-d', strtotime($request->end_date));
+        $data['start_date'] = date('Y-m-d', strtotime($request->start_date));
+        $data['end_date']   = date('Y-m-d', strtotime($request->end_date));
+        $data['invoices']   = Invoice::whereBetween('date', [$st_date, $end_date])->where('status', '1')->get();
+        return view('backend.pages.invoice.search_result', $data);
+
     }
 }

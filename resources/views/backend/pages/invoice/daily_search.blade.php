@@ -13,7 +13,7 @@
                                 <h3 class="card-title">{{ $title }}</h3>
                             </div>
                             <div class="card-body">
-                                <form action="{{ route('invoice.daily.report.pdf') }}" method="GET" target="_blank" id="myForm">
+                                <form action="{{ route('invoice.daily.report') }}" method="GET" target="_blank" id="myForm">
                                     <div class="form-row">
                                         <div class="form-group col-md-2">
                                             <label>Start Date</label>

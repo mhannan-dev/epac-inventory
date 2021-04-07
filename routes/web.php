@@ -123,18 +123,18 @@ Route::group(['prefix' => 'purchase'], function () {
 });
 
 Route::group(['prefix' => 'invoice'], function () {
-    Route::get('/index', 'Backend\InvoiceController@getIndex')->name('invoice.view');
+    Route::get('/list', 'Backend\InvoiceController@getIndex')->name('invoice.view');
     Route::get('/create', 'Backend\InvoiceController@getCreate')->name('invoice.create');
     Route::post('/store', 'Backend\InvoiceController@postStore')->name('invoice.store');
     Route::get('/pending', 'Backend\InvoiceController@pendingList')->name('invoice.pending.list');
     Route::get('/approve/{id}', 'Backend\InvoiceController@approve')->name('invoice.approve');
     Route::post('/approve/store/{id}', 'Backend\InvoiceController@appprovalStore')->name('approval.store');
     Route::post('/delete/{id}', 'Backend\InvoiceController@postDelete')->name('invoice.delete');
-    Route::get('/print/list', 'Backend\InvoiceController@invoicePrintList')->name('invoice.print.list');
+    Route::get('/print', 'Backend\InvoiceController@invoicePrintList')->name('invoice.print.list');
     Route::get('/print/{id}', 'Backend\InvoiceController@invoicePrint')->name('invoice.print');
     Route::get('/view/{id}', 'Backend\InvoiceController@invoiceWeb')->name('invoice.web');
-    Route::get('/daily/report/search', 'Backend\InvoiceController@dailyInvoiceReport')->name('invoice.daily.search');
-    Route::get('/daily/invoice/report', 'Backend\InvoiceController@dailyInvoicePdf')->name('invoice.daily.report.pdf');
+    Route::get('/date-wise/search', 'Backend\InvoiceController@dailyInvoiceSearch')->name('invoice.daily.search');
+    Route::get('/date-wise/search/list', 'Backend\InvoiceController@dailyInvoiceReport')->name('invoice.daily.report');
 
 });
 
