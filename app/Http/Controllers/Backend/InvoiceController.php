@@ -1,22 +1,20 @@
 <?php
-
 namespace App\Http\Controllers\Backend;
-
-use App\Http\Controllers\Controller;
-use App\Models\Customer;
-use App\Models\Supplier;
-use App\Models\Product;
 use App\Models\Unit;
 use App\Models\Brand;
-use App\Models\Category;
 use App\Models\Invoice;
-use App\Models\InvoiceDetail;
 use App\Models\Payment;
-use App\Models\PaymentDetail;
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\Customer;
+use App\Models\Supplier;
+use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
+use App\Models\InvoiceDetail;
+use App\Models\PaymentDetail;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use DB;
-use PDF;
 class InvoiceController extends Controller
 {
     /**
@@ -28,25 +26,19 @@ class InvoiceController extends Controller
     {
         $data['title'] = "Invoice";
         $data['invoices'] = Invoice::orderBy('date', 'desc')->orderBy('id', 'desc')->where('status','1')->get();
-
         return view('backend.pages.invoice.index', $data);
     }
-
-
     //Fake
     public function invoice_design()
     {
         $data['title'] = "Invoice";
         return view('backend.pages.invoice.invoice_pdf');
     }
-
     public function invoice_print()
     {
         $data['title'] = "invoice_print";
         return view('backend.pages.invoice.invoice_print');
     }
-
-
     /**
      * Show the form for creating a new resource.
      *
@@ -59,7 +51,6 @@ class InvoiceController extends Controller
         $data['units'] = Unit::all();
         $data['products'] = Product::all();
         $data['customers'] = Customer::all();
-
         $invoice_data = Invoice::orderBy('id', 'desc')->first();
         if ($invoice_data == null) {
             $firstReg = '0';
@@ -69,17 +60,14 @@ class InvoiceController extends Controller
             $invoice_data = Invoice::orderBy('id', 'desc')->first()->invoice_no;
             $data['invoice_no'] = $invoice_data + 1;
         }
-
         return view('backend.pages.invoice.create', $data);;
     }
-
     /**
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-
     public function postStore(Request $request)
     {
         #dd($request->all());
@@ -93,7 +81,6 @@ class InvoiceController extends Controller
             } else {
                 $invoice = new Invoice();
                 $invoice->invoice_no = $request->invoice_no;
-
                 $invoice->date = date('Y-m-d', strtotime($request->date));
                 $invoice->description = $request->description;
                 $invoice->status = '0';
@@ -158,10 +145,7 @@ class InvoiceController extends Controller
         }
         toast('Invoice has been saved successfully !!', 'success');
         return redirect()->route('invoice.view');
-
     }
-
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -169,7 +153,6 @@ class InvoiceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function getEdit($id)
-
     {
         $data['title'] = "Update Product";
         $data['suppliers'] = Supplier::all();
@@ -184,14 +167,12 @@ class InvoiceController extends Controller
             return redirect()->route('backend.pages.product.index');
         }
     }
-
     public function pendingList()
     {
         $data['title'] = "Pending Invoice";
         $data['invoices'] = Invoice::orderBy('date', 'desc')->orderBy('id', 'desc')->where('status', '0')->get();
         return view('backend.pages.invoice.pending', $data);
     }
-
     /**
      * Update the specified resource in storage.
      * @param int $id
@@ -204,7 +185,6 @@ class InvoiceController extends Controller
         //dd($data['invoice']);
         return view('backend.pages.invoice.approve',$data);
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -224,7 +204,6 @@ class InvoiceController extends Controller
         toast('Data deleted successfully !!', 'success');
         return back();
     }
-
     public function appprovalStore(Request $request, $id)
     {
         foreach($request->selling_qty as $key => $val ){
@@ -252,14 +231,12 @@ class InvoiceController extends Controller
         toast('Invoice successfully approved !!', 'success');
         return redirect()->route('invoice.pending.list');
     }
-
     public function invoicePrintList()
     {
         $data['title'] = "Invoice Print";
         $data['invoices'] = Invoice::orderBy('date', 'desc')->orderBy('id', 'desc')->where('status','1')->get();
         return view('backend.pages.invoice.print-invoices', $data);
     }
-
     public function invoicePrint($id)
     {
         $data['invoice'] = Invoice::with(['invoice_details'])->find($id);
@@ -273,21 +250,16 @@ class InvoiceController extends Controller
         //dd($data['invoice']);
         return view('backend.pages._PDF.invoice_web', $data);
     }
-
     public function dailyInvoiceReport()
     {
         $data['title'] = "Daily Invoice";
         return view('backend.pages.invoice.daily-report',$data);
     }
-    public function dailyInvoicePdf(Request $request)
+    public function dailyReportPdf(Request $request)
     {
         $st_date            = date('Y-m-d', strtotime($request->start_date));
         $end_date           = date('Y-m-d', strtotime($request->end_date));
         $data['all_data']   = Invoice::whereBetween('date',[$st_date, $end_date])->where('status', '1')->get();
+        
     }
-
-
-
-
-
 }
