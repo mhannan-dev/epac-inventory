@@ -138,6 +138,12 @@ Route::group(['prefix' => 'invoice'], function () {
 
 });
 
+Route::group(['prefix' => 'stock'], function () {
+    Route::get('/report', 'Backend\StockController@stockReport')->name('stock.report');
+    Route::get('/report/pdf', 'Backend\StockController@stockReportPdf')->name('stock.report.pdf');
+
+});
+
 
 
 
@@ -153,19 +159,14 @@ Route::get('/check-product-stock', 'Backend\DefaultController@getStock')->name('
 
 
 //to clear all cache
-Route::get('__cc', function () {
-    try {
-        // \Artisan::call('optimize');
-        \Artisan::call('clear-compiled');
-        \Artisan::call('cache:clear');
-        \Artisan::call('view:clear');
-        \Artisan::call('config:clear');
-        \Artisan::call('config:cache');
-        \Artisan::call('queue:restart');
-    } catch (\Exception $e) {
-        echo $e->getMessage();
-    }
-});
+//to clear all cache
+Route::get('/clear', function() {
+    Artisan::call('cache:clear');
+    Artisan::call('config:clear');
+    Artisan::call('config:cache');
+    Artisan::call('view:clear');
+    return "Cleared!";
+ });
 
 
 

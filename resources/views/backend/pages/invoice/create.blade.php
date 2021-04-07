@@ -171,7 +171,7 @@
                                     <br>
                                     <div class="form-group">
                                         <button type="submit" id="storeButton"  class="btn btn-info btn-sm text-white">Invoice Store</button>
-                            
+
                                     </div>
                                 </form>
                             </div>
@@ -366,7 +366,7 @@
                 <input type="hidden" name="product_id[]" value="@{{ product_id }}">@{{ product_name }}
             </td>
             <td>
-                <input type="number" min="1" class="form-control form-control-sm selling_qty" name="selling_qty[]" value="1">
+                <input type="number" min="1" class="form-control form-control-sm selling_qty" name="selling_qty[]" value="">
             </td>
             <td>
                 <input type="number" class="form-control form-control-sm unit_price" name="unit_price[]" value="">

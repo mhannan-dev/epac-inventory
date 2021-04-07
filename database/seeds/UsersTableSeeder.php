@@ -16,8 +16,8 @@ class UsersTableSeeder extends Seeder
             'role_id' => '1',
             'name' => 'Admin Name',
             'username' => 'admin',
-            'email' => 'mdhannan.info@gmail.com',
-            'password' => bcrypt('rootadmin'),
+            'email' => 'epacinv@gmail.com',
+            'password' => bcrypt('rootAdminQP'),
 
         ]);
 

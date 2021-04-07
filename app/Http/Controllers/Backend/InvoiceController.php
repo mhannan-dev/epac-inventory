@@ -10,14 +10,13 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Customer;
 use App\Models\Supplier;
-use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
 use App\Models\InvoiceDetail;
 use App\Models\PaymentDetail;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-
+use PDF;
 class InvoiceController extends Controller
 {
     /**
@@ -73,7 +72,7 @@ class InvoiceController extends Controller
      */
     public function postStore(Request $request)
     {
-        #dd($request->all());
+        //dd($request->all());
         if ($request->category_id == null) {
             toast('Sorry you do not added any product !!', 'error');
             return redirect()->back();
@@ -99,6 +98,7 @@ class InvoiceController extends Controller
                             $invoice_details->category_id = $request->category_id[$i];
                             $invoice_details->product_id = $request->product_id[$i];
                             $invoice_details->selling_qty = $request->selling_qty[$i];
+                            //dd($invoice_details->selling_qty);
                             $invoice_details->unit_price = $request->unit_price[$i];
                             $invoice_details->selling_price = $request->selling_price[$i];
                             $invoice_details->status = '1';
@@ -225,8 +225,9 @@ class InvoiceController extends Controller
                 $invoice_details            = InvoiceDetail::where('id', $key)->first();
                 $invoice_details->status    = '1';
                 $invoice_details->save();
-                $product                    = Product::where('id', $invoice_details->product_id)->first();
-                $product->quantity          = ((float)$product->quantity) - ((float)$request->selling_qty[$key]);
+                $product           = Product::where('id', $invoice_details->product_id)->first();
+                $product->quantity = ((float)$product->quantity) - ((float)$request->selling_qty[$key]);
+                //$product->quantity = ($product->quantity) - ($request->selling_qty[$key]);
                 $product->save();
             }
             $invoice->save();

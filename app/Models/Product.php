@@ -16,8 +16,8 @@ class Product extends Model
 
     public function units()
     {
-        //return $this->belongsTo('App\Models\Unit','unit_id')->withDefault();
-        return $this->belongsTo(Unit::class)->withDefault();
+        return $this->belongsTo('App\Models\Unit','unit_id')->withDefault();
+        //return $this->belongsTo(Unit::class)->withDefault();
 
 
     }

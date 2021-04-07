@@ -48,8 +48,8 @@
                                             <th>Product name</th>
                                             <th>Current Stock</th>
                                             <th>Quantity</th>
-                                            <th class="text-right">Unit Price</th>
-                                            <th class="text-right">Total</th>
+                                            <th>Unit Price</th>
+                                            <th>Total</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -57,18 +57,19 @@
                                             $total_sum = '0';
                                         @endphp
                                         @foreach($invoice['invoice_details'] as $key => $details)
+
                                             <tr class="table-primary">
-                                                <input type="hidden" name="category_id[]" value="{{ $details->category_id }}">
-                                                <input type="hidden" name="product_id[]" value="{{ $details->product_id }}">
-                                                <input type="hidden" name="selling_qty[{{ $details->id }}]" value="{{ $details->id }}">
+                        <input type="hidden" name="category_id[]" value="{{ $details->category_id }}">
+                        <input type="hidden" name="product_id[]" value="{{ $details->product_id }}">
+                        <input type="hidden" name="selling_qty[{{ $details->id }}]" value="{{ $details->selling_qty }}">
 
                                                 <td>{{ $key+1 }}</td>
                                                 <td>{{ $details['category']['name'] }}</td>
                                                 <td>{{ $details['products']['name'] }}</td>
-                                                <td class="text-center">{{ $details['products']['quantity'] }}</td>
+                                                <td>{{ $details['products']['quantity'] }}</td>
                                                 <td>{{ $details->selling_qty }}</td>
-                                                <td class="text-right">{{ $details->unit_price }}</td>
-                                                <td class="text-right">{{ $details->selling_price }}</td>
+                                                <td>{{ $details->unit_price }}</td>
+                                                <td>{{ $details->selling_price }}</td>
                                             </tr>
                                             @php
                                                 $total_sum += $details->selling_price;

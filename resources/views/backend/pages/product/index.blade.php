@@ -13,7 +13,7 @@
                             <div class="card-header">
                                 <h3 class="card-title">{{$title}} List</h3>
                                 <div class="float-right">
-                                    <a href="{{ route('admin.products.create') }}" class="btn btn-outline-info"><i class="fas fa-plus"></i> &nbsp;Add {{$title}}</a>
+                                    <a href="{{ route('admin.products.create') }}" class="btn btn-success"><i class="fas fa-plus"></i> &nbsp;Add {{$title}}</a>
                                 </div>
 
                             </div>
@@ -27,8 +27,8 @@
                                         <th>@lang('form.th_supplier')</th>
                                         <th>@lang('form.th_product_category')</th>
                                         <th>@lang('form.th_title')</th>
-{{--                                        <th>@lang('form.th_units')</th>--}}
-                                        <th>@lang('form.th_created_by')</th>
+                                        <th>@lang('form.th_units')</th>
+
                                         <th>@lang('form.th_action')</th>
                                     </tr>
                                     </thead>
@@ -36,15 +36,15 @@
 
                                     @if(count($products))
                                         @foreach ($products as $key => $list)
-                                        
+
                                             <tr>
                                                 <td>{{ ++$key }}</td>
                                                 <td class="text-success">{{ $list['supplier']['name'] }}</td>
                                                 <td>{{ $list['category']['name'] }}</td>
                                                 <td>{{ Str::limit($list->name, 20) }}</td>
 
-{{--                                                <td>{{ $list->units->name }}</td>--}}
-                                                <td>{{ \Carbon\Carbon::parse($list->created_at)->diffForHumans() }}</td>
+                                                <td>{{ $list->units->name }}</td>
+
                                                 <td>
 
                                                     <a href="{{ route('admin.products.edit', $list->id ) }}" class="badge badge-info">
@@ -100,7 +100,7 @@
                                         @endforeach
                                     @else
                                         <tr>
-                                            <td colspan="5"> Opps!!, {{$title}} Not found</td>
+                                            <td colspan="6"> Opps!!, {{$title}} Not found</td>
                                         </tr>
                                     @endif
                                     </tbody>
