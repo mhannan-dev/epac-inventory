@@ -25,7 +25,7 @@
                                     <tr>
                                         <th>@lang('form.th_sl')</th>
                                         <th>@lang('form.th_supplier')</th>
-                                        <th>@lang('form.th_product_category')</th>
+                                        
                                         <th>@lang('form.th_title')</th>
                                         <th>@lang('form.th_units')</th>
 
@@ -40,7 +40,7 @@
                                             <tr>
                                                 <td>{{ ++$key }}</td>
                                                 <td class="text-success">{{ $list['supplier']['name'] }}</td>
-                                                <td>{{ $list['category']['name'] }}</td>
+
                                                 <td>{{ Str::limit($list->name, 20) }}</td>
 
                                                 <td>{{ $list->units->name }}</td>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 06, 2021 at 11:49 AM
+-- Generation Time: Apr 08, 2021 at 11:56 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.13
 
@@ -94,10 +94,7 @@ CREATE TABLE `invoices` (
 --
 
 INSERT INTO `invoices` (`id`, `invoice_no`, `date`, `description`, `status`, `approved_by`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 1, '2021-02-18', 'Rice 20 litre', 1, 8, 8, NULL, '2021-02-18 02:17:34', '2021-02-18 02:17:49'),
-(2, 2, '2021-02-18', 'Mota chal', 1, 8, 8, NULL, '2021-02-18 02:50:36', '2021-02-18 02:51:04'),
-(3, 3, '2021-02-18', 'Mota chal	98 kg', 1, 8, 8, NULL, '2021-02-18 02:52:36', '2021-02-18 02:52:57'),
-(5, 4, '2021-04-06', 'Mota chal 95 KG per kg 65 bdt.', 1, 8, 8, NULL, '2021-04-06 05:45:45', '2021-04-06 05:46:27');
+(1, 1, '2021-04-07', 'Minicket Rice  sale rate 150', 1, 1, 1, NULL, '2021-04-07 09:44:20', '2021-04-07 09:44:32');
 
 -- --------------------------------------------------------
 
@@ -124,10 +121,7 @@ CREATE TABLE `invoice_details` (
 --
 
 INSERT INTO `invoice_details` (`id`, `invoice_id`, `category_id`, `product_id`, `date`, `selling_qty`, `unit_price`, `selling_price`, `status`, `updated_at`, `created_at`) VALUES
-(1, 1, 1, 2, '2021-02-18', 20, 180, 3600, 1, '2021-02-18 02:17:34', '2021-02-18 02:17:34'),
-(2, 2, 1, 1, '2021-02-18', 10, 110, 1100, 1, '2021-02-18 02:50:36', '2021-02-18 02:50:36'),
-(3, 3, 1, 1, '2021-02-18', 98, 100, 9800, 1, '2021-02-18 02:52:36', '2021-02-18 02:52:36'),
-(5, 5, 1, 1, '2021-04-06', 95, 65, 6175, 1, '2021-04-06 05:45:45', '2021-04-06 05:45:45');
+(1, 1, 1, 1, '2021-04-07', 50, 150, 7500, 1, '2021-04-07 09:44:20', '2021-04-07 09:44:20');
 
 -- --------------------------------------------------------
 
@@ -177,10 +171,7 @@ CREATE TABLE `payments` (
 --
 
 INSERT INTO `payments` (`id`, `invoice_id`, `customer_id`, `paid_status`, `paid_amount`, `due_amount`, `total_amount`, `discount_amount`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 'full_paid', 3500, 0, 3500, 100, '2021-02-18 02:17:34', '2021-02-18 02:17:34'),
-(2, 2, 1, 'full_paid', 1000, 0, 1000, 100, '2021-02-18 02:50:36', '2021-02-18 02:50:36'),
-(3, 3, 1, 'full_paid', 9800, 0, 9800, 0, '2021-02-18 02:52:36', '2021-02-18 02:52:36'),
-(5, 5, 1, 'full_paid', 6000, 0, 6000, 175, '2021-04-06 05:45:45', '2021-04-06 05:45:45');
+(1, 1, 1, 'full_paid', 7500, 0, 7500, 0, '2021-04-07 09:44:20', '2021-04-07 09:44:20');
 
 -- --------------------------------------------------------
 
@@ -203,10 +194,7 @@ CREATE TABLE `payment_details` (
 --
 
 INSERT INTO `payment_details` (`id`, `invoice_id`, `current_paid_amount`, `date`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 1, 3500, '2021-02-18', NULL, '2021-02-18 02:17:34', '2021-02-18 02:17:34'),
-(2, 2, 1000, '2021-02-18', NULL, '2021-02-18 02:50:36', '2021-02-18 02:50:36'),
-(3, 3, 9800, '2021-02-18', NULL, '2021-02-18 02:52:36', '2021-02-18 02:52:36'),
-(4, 5, 6000, '2021-04-06', NULL, '2021-04-06 05:45:45', '2021-04-06 05:45:45');
+(1, 1, 7500, '2021-04-07', NULL, '2021-04-07 09:44:20', '2021-04-07 09:44:20');
 
 -- --------------------------------------------------------
 
@@ -215,26 +203,26 @@ INSERT INTO `payment_details` (`id`, `invoice_id`, `current_paid_amount`, `date`
 --
 
 CREATE TABLE `products` (
-  `id` int(11) NOT NULL,
-  `category_id` bigint(200) UNSIGNED DEFAULT NULL,
-  `name` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
+  `supplier_id` int(10) UNSIGNED NOT NULL COMMENT 'PK on suppliers table',
+  `unit_id` int(10) UNSIGNED NOT NULL COMMENT 'PK on units table',
+  `quantity` int(11) DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_by` int(11) DEFAULT NULL,
-  `updated_by` int(255) DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `supplier_id` int(11) NOT NULL,
-  `unit_id` int(11) DEFAULT NULL,
-  `quantity` int(11) DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `category_id`, `name`, `created_by`, `updated_by`, `created_at`, `updated_at`, `supplier_id`, `unit_id`, `quantity`) VALUES
-(1, 1, 'Mota chal', 8, 8, '2021-02-18 02:12:23', '2021-04-06 05:46:27', 2, NULL, 190),
-(2, 2, 'Oil', 8, 8, '2021-02-18 02:13:28', '2021-04-06 05:43:39', 2, NULL, 449),
-(4, 1, 'Minicket Rice', 8, 8, '2021-02-18 04:43:37', '2021-04-06 05:40:48', 2, NULL, NULL);
+INSERT INTO `products` (`id`, `supplier_id`, `unit_id`, `quantity`, `name`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 1, 2, 50, 'Minicket Rice', 1, NULL, '2021-04-07 09:42:31', '2021-04-07 09:44:32'),
+(2, 1, 2, 50, 'Chal', 1, NULL, '2021-04-08 03:47:00', '2021-04-08 03:47:00'),
+(3, 2, 1, NULL, 'Soyabean Oil', 1, NULL, '2021-04-08 05:51:37', '2021-04-08 05:51:37'),
+(4, 2, 1, NULL, 'Custerd Oil', 1, NULL, '2021-04-08 05:51:54', '2021-04-08 05:51:54');
 
 -- --------------------------------------------------------
 
@@ -244,18 +232,16 @@ INSERT INTO `products` (`id`, `category_id`, `name`, `created_by`, `updated_by`,
 
 CREATE TABLE `purchases` (
   `id` int(11) NOT NULL,
-  `category_id` int(11) NOT NULL,
   `supplier_id` int(11) NOT NULL,
   `buying_qty` double NOT NULL,
   `unit_price` int(11) NOT NULL,
-  `buying_price` double NOT NULL,
+  `buying_price` int(11) NOT NULL,
   `description` text,
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0 = Pending, 1 = Approved',
   `date` date NOT NULL,
   `created_by` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `unit_id` int(11) DEFAULT NULL,
-  `size_weight` varchar(100) DEFAULT NULL,
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -264,9 +250,9 @@ CREATE TABLE `purchases` (
 -- Dumping data for table `purchases`
 --
 
-INSERT INTO `purchases` (`id`, `category_id`, `supplier_id`, `buying_qty`, `unit_price`, `buying_price`, `description`, `status`, `date`, `created_by`, `product_id`, `unit_id`, `size_weight`, `updated_at`, `created_at`) VALUES
-(1, 1, 2, 200, 100, 20000, 'Mota chal', 1, '2021-02-18', 8, 1, 2, NULL, '2021-02-18 08:47:37', '2021-02-18 08:47:37'),
-(2, 2, 2, 200, 100, 20000, 'Oil 20 Litre', 1, '2021-04-06', 8, 2, 1, NULL, '2021-04-06 11:43:11', '2021-04-06 11:43:11');
+INSERT INTO `purchases` (`id`, `supplier_id`, `buying_qty`, `unit_price`, `buying_price`, `description`, `status`, `date`, `created_by`, `product_id`, `unit_id`, `updated_at`, `created_at`) VALUES
+(1, 1, 100, 100, 10000, 'Minicket Rice purchase 100 KG', 1, '2021-04-07', 1, 1, 2, '2021-04-07 15:43:33', '2021-04-07 15:43:33'),
+(2, 2, 10, 150, 1500, 'Soyabean Oil', 0, '2021-04-08', 1, 3, 2, '2021-04-08 11:55:56', '2021-04-08 11:55:56');
 
 -- --------------------------------------------------------
 
@@ -286,15 +272,7 @@ CREATE TABLE `roles` (
 
 INSERT INTO `roles` (`id`, `name`, `slug`) VALUES
 (1, 'Admin', 'admin'),
-(2, 'User', 'user'),
-(3, 'Admin', 'admin'),
-(4, 'User', 'user'),
-(5, 'Admin', 'admin'),
-(6, 'User', 'user'),
-(7, 'Admin', 'admin'),
-(8, 'User', 'user'),
-(9, 'Admin', 'admin'),
-(10, 'User', 'user');
+(2, 'User', 'user');
 
 -- --------------------------------------------------------
 
@@ -320,7 +298,8 @@ CREATE TABLE `suppliers` (
 --
 
 INSERT INTO `suppliers` (`id`, `name`, `mobile_no`, `email`, `address`, `status`, `created_by`, `updated_by`, `updated_at`, `created_at`) VALUES
-(2, 'Square', NULL, 'securepass@admin.com', 'Dhaka update', 'active', 8, 8, '2021-02-18 01:14:47', '2021-02-18 01:14:23');
+(1, 'Rashid Agro', NULL, 'rashidag@admin.com', 'Dhaka update', 'active', 8, 8, '2021-02-18 01:14:47', '2021-02-18 01:14:23'),
+(2, 'NordEdge Food and Consumer Ltd.', NULL, NULL, 'gulshan road 2', 'active', 1, NULL, '2021-04-08 05:51:11', '2021-04-08 05:51:11');
 
 -- --------------------------------------------------------
 
@@ -373,8 +352,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role_id`, `name`, `username`, `email`, `mobile`, `gender`, `address`, `password`, `image`, `remember_token`, `created_at`, `updated_at`) VALUES
-(8, '1', 'Muhammad Hannan Ali', 'admin', 'mdhannan.info@gmail.com', '01744894452', 'Male', 'Dhaka', '$2y$10$/hxhnQOSwCGO.loRlBoxiOTz2DOxZaqbWkx/hgQHtWR/LWuliJud.', '/upload/user/1608013066.jpg', 'DRmeuBFmZ7A3BatxaCbRjLIfz588aGfCUySpSu2SojPC9waSHIY2U7kK6eIp', NULL, '2020-12-15 00:17:46'),
-(9, '2', 'Author Name', 'author', 'generaluser@epac.com', NULL, NULL, NULL, '$2y$10$3EcxpGsHvehVa7ActoKD/eEizBsEKFkLNwlqYrqwzadhgJ2cEcFK6', 'default.png', NULL, NULL, NULL);
+(1, '1', 'Admin Name', 'admin', 'epacinv@gmail.com', NULL, NULL, NULL, '$2y$10$vrKhE5VK981yX2rC1feMJeeXSuT9mZtZTqhxUD3u3aWlOCB2YKGaO', 'default.png', NULL, NULL, NULL),
+(2, '2', 'Author Name', 'author', 'hannan@arobil.com', NULL, NULL, NULL, '$2y$10$JlU0ZBIDPwUT1PRBi31kvuBdSE6V1e3xDIv6LNoE/VTzuHFAPW9jK', 'default.png', NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -434,8 +413,7 @@ ALTER TABLE `payment_details`
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `name` (`name`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `purchases`
@@ -491,13 +469,13 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT for table `invoices`
 --
 ALTER TABLE `invoices`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `invoice_details`
 --
 ALTER TABLE `invoice_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -509,13 +487,19 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `payment_details`
 --
 ALTER TABLE `payment_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `purchases`
@@ -524,10 +508,22 @@ ALTER TABLE `purchases`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `suppliers`
+--
+ALTER TABLE `suppliers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

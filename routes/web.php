@@ -149,10 +149,8 @@ Route::group(['prefix' => 'stock'], function () {
 
 //DefaultController for Ajax
 Route::get('/get-supplier', 'Backend\DefaultController@getSupplier')->name('get-supplier');
-Route::get('/get-category', 'Backend\DefaultController@getCategory')->name('get-category');
 Route::get('/category-for-invoice', 'Backend\DefaultController@categoryForInvoice')->name('category-for-invoice');
-#Route::get('/get-sub-category', 'Backend\DefaultController@getSubCategory')->name('get-sub-category');
-Route::get('/get-products', 'Backend\DefaultController@getProducts')->name('get-products');
+Route::get('/get-product', 'Backend\DefaultController@getProduct')->name('get-product');
 Route::get('/get-unit', 'Backend\DefaultController@getUnits')->name('get-unit');
 Route::get('/check-product-stock', 'Backend\DefaultController@getStock')->name('check-product-stock');
 

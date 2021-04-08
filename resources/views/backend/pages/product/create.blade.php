@@ -31,7 +31,7 @@
                                         </div>
 
                                     </div>
-                                    <div class="form-group col-md-4">
+                                    {{-- <div class="form-group col-md-4">
 
                                         <div class="form-group">
                                             <label>Category</label>
@@ -44,7 +44,7 @@
 
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
 
                                     <div class="form-group col-md-3">

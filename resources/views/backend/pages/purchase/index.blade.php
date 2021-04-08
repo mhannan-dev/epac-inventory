@@ -25,13 +25,13 @@
                                         <th width="4%">@lang('form.th_sl')</th>
                                         {{-- <th width="12%">PO No.</th> --}}
                                         <th>Date</th>
-                                        <th>@lang('form.th_title')</th>
+                                        <th>Product name</th>
                                         <th>@lang('form.th_supplier')</th>
-                                        <th>@lang('form.th_product_category')</th>
+
                                         <th>Total</th>
                                         <th>Buy Price</th>
                                         <th>@lang('form.th_quantity')</th>
-                                        {{-- <th>Size weight</th> --}}
+
                                         <th>Unit Name</th>
                                         <th>@lang('form.th_status')</th>
                                         <th>@lang('form.th_action')</th>
@@ -48,7 +48,7 @@
                                                 <td>{{ $purchase->date }}</td>
                                                 <td>{{ $purchase['products']['name'] }}</td>
                                                 <td>{{ $purchase['products']['supplier']->name }}</td>
-                                                <td>{{ $purchase['products']['category']->name }}</td>
+
                                                 <td>{{ $purchase->buying_price }}</td>
                                                 <td>{{ $purchase->unit_price }}</td>
                                                 <td>{{ $purchase->buying_qty }}</td>

@@ -113,7 +113,7 @@
 {{--                    </li>--}}
 
 
-                    <li class="nav-item has-treeview {{($prefix=='/category')?'menu-open':''}}">
+                    {{-- <li class="nav-item has-treeview {{($prefix=='/category')?'menu-open':''}}">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-toolbox"></i>
                             <p>
@@ -132,7 +132,7 @@
 
 
                         </ul>
-                    </li>
+                    </li> --}}
 
 {{--                    <li class="nav-item has-treeview {{($prefix=='/sub-category')?'menu-open':''}}">--}}
 {{--                        <a href="#" class="nav-link">--}}
@@ -178,7 +178,7 @@
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-toolbox"></i>
                             <p>
-                                Manage Products <i class="right fas fa-angle-left"></i>
+                                Manage Store <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
@@ -196,7 +196,7 @@
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-toolbox"></i>
                             <p>
-                                Manage Purchase <i class="right fas fa-angle-left"></i>
+                                Billing/Purchase <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
