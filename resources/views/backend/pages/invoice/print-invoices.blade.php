@@ -12,7 +12,7 @@
                                 <h3 class="card-title">{{$title}} List</h3>
                                 <div class="float-right">
                                     <a href="{{ route('invoice.create') }}" class="btn btn-outline-info"><i
-                                            class="fas fa-plus"></i> &nbsp;Add {{$title}}</a>
+                                            class="fas fa-plus"></i> &nbsp;Add Invoice</a>
                                 </div>
                             </div>
                             <!-- /.card-header -->

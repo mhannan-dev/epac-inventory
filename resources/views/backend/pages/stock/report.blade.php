@@ -21,7 +21,7 @@
                                     <tr>
                                         <th>@lang('form.th_sl')</th>
                                         <th>@lang('form.th_supplier')</th>
-                                        <th>@lang('form.th_product_category')</th>
+
                                         <th>Product Name</th>
                                         <th>@lang('form.th_created_by')</th>
                                         <th>Stock</th>
@@ -34,7 +34,7 @@
                                             <tr>
                                                 <td>{{ ++$key }}</td>
                                                 <td class="text-success">{{ $list['supplier']['name'] }}</td>
-                                                <td>{{ $list['category']['name'] }}</td>
+                                                
                                                 <td>{{ Str::limit($list->name, 20) }}</td>
                                                 <td>{{ \Carbon\Carbon::parse($list->created_at)->diffForHumans() }}</td>
                                                 <td>

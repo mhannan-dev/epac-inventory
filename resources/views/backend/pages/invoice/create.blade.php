@@ -19,7 +19,7 @@
 
                                 <div class="form-row">
 
-                                    <div class="form-group col-md-2">
+                                    <div class="form-group col-md-4">
                                         <label>Date</label>
 
                                         <div class="input-group">
@@ -27,7 +27,7 @@
                                         </div>
                                         <!-- /.input group -->
                                     </div>
-                                    <div class="form-group col-md-2">
+                                    <div class="form-group col-md-4">
                                         <label>Invoice No</label>
 
                                         <div class="input-group">
@@ -36,25 +36,18 @@
                                         </div>
                                         <!-- /.input group -->
                                     </div>
-                                    <div class="form-group col-md-2">
 
-                                        <label for="category_id">Select Category</label>
 
-                                        <select class="form-control form-control-sm select2" id="category_id" name="category_id">
-                                            <option>Select category</option>
-                                            @foreach($categories as $data_row)
-                                                <option value="{{ $data_row->id}}">{{ $data_row->name }}</option>
-                                            @endforeach
-                                        </select>
-
-                                    </div>
-                                    <div class="form-group col-md-3">
+                                    <div class="form-group col-md-4">
                                         <label for="cuntry">Product name</label>
                                         <select class="form-control select2 form-control-sm" id="product_id" name="product_id">
-                                            <option>Product name</option>
+                                            <option>Select/Type</option>
+                                            @foreach ($products as $product)
+                                            <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
-                                    <div class="form-group col-md-3">
+                                    <div class="form-group col-md-4">
                                         <label for="cuntry">Unit</label>
                                         <select class=" select2 form-control form-control-sm" id="unit_id" name="unit_id">
                                             <option>Select Unit</option>
@@ -66,7 +59,7 @@
 
                                     </div>
 
-                                    <div class="form-group col-md-3">
+                                    <div class="form-group col-md-4">
                                         <label for="cuntry">Stock</label>
                                         <input class="form-control form-control-sm" id="curent_stock_qty" name="curent_stock_qty" style="background-color: #d4edda" readonly>
 
@@ -86,7 +79,6 @@
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                         <tr>
-                                            <th>@lang('form.th_product_category')</th>
 
                                             <th>Product name</th>
                                             <th width="10%">Quantity</th>
@@ -105,7 +97,7 @@
                                         <tbody>
 
                                         <tr>
-                                            <td colspan="5" class="text-right text-bold text-dark">Discount Amount</td>
+                                            <td colspan="4" class="text-right text-bold text-dark">Discount Amount</td>
 
                                             <td  class="text-white text-bold">
                                                 <input name="discount_amount" id="discount_amount" type="text" class="text-right form-control form-control-sm" style="background-color: #d4edda" value="{{ old('discount_amount') }}">
@@ -116,7 +108,7 @@
 
 
                                         <tr>
-                                            <td colspan="5" class="text-right text-bold text-dark">Line Total</td>
+                                            <td colspan="4" class="text-right text-bold text-dark">Line Total</td>
                                             <td  class="text-white text-bold ">
                                                 <input name="estimated_amount" id="estimated_amount" type="text" class="text-right form-control form-control-sm estimated_amount" style="background-color: #d4edda" readonly value="{{old('estimated_amount')}}">
                                             </td>
@@ -187,54 +179,7 @@
 
     </div>
 
-    <!-- Category Modal-->
-    <div class="modal fade" id="addCatgModal" tabindex="-1" role="dialog" aria-labelledby="addCatgModal"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Product Category</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    {!! Form::open([ 'route' => ['admin.category.store'], 'id' => 'prdForm','method' => 'post']) !!}
-                    @csrf
-                    <div class="card-body">
-                        <div class="form-group">
-                            <label for="name">@lang('form.name')<span class="text-danger">*</span></label>
-                            {!! Form::text('name', null, [ 'class' => 'form-control', 'data-validation-required-message' => 'This field is required', 'placeholder' => 'Enter category name']) !!}
-                            {!! $errors->first('name', '<label class="help-block text-danger">:message</label>') !!}
-                        </div>
 
-                        <div class="form-group">
-                            <label for="code">@lang('form.code')<span class="text-danger">*</span></label>
-                            {!! Form::text('code', null, [ 'class' => 'form-control', 'data-validation-required-message' => 'This field is required', 'placeholder' => 'Enter category code']) !!}
-                            {!! $errors->first('code', '<label class="help-block text-danger">:message</label>') !!}
-                        </div>
-                        <div class="form-group">
-                            <label for="status">@lang('form.status')</label>
-                            <select class="form-control" id="status" name="status">
-                                <option value="active">Select status</option>
-                                <option value="active">Active</option>
-                                <option value="inactive">Inactive</option>
-
-                            </select>
-                        </div>
-
-                    </div>
-                    <!-- /.card-body -->
-                    <div class="card-footer">
-                        <button type="submit" class="btn btn-info">Submit</button>
-                        <a href="{{ route('admin.category.view') }}" class="btn btn-danger"><i class="fas fa-undo"></i></a>
-                    </div>
-                    {!! Form::close() !!}
-                </div>
-
-            </div>
-        </div>
-    </div>
 
     <!-- Supplier Modal-->
     <div class="modal fade" id="addSupplierModal" tabindex="-1" role="dialog" aria-labelledby="addSupplierModal"
@@ -357,10 +302,6 @@
             <input type="hidden" name="invoice_no" value="@{{ invoice_no }}">
 
 
-            <td>
-                <input type="hidden" name="category_id[]" value="@{{ category_id }}">@{{ category_name }}
-            </td>
-
 
             <td>
                 <input type="hidden" name="product_id[]" value="@{{ product_id }}">@{{ product_name }}
@@ -394,8 +335,7 @@
 
             var date = $('#date').val();
             var invoice_no = $('#invoice_no').val();
-            var category_id           = $('#category_id').val();
-            var category_name         = $('#category_id').find('option:selected').text();
+
             var product_id            = $('#product_id').val();
             var product_name          = $('#product_id').find('option:selected').text();
             var unit_id               = $('#unit_id').val();
@@ -406,13 +346,6 @@
 
             if (date == '') {
                 $.notify("Date is rquired", {globalPosition: 'top-right', className: 'error'});
-                return false;
-            }
-
-
-
-            if (category_id == '') {
-                $.notify("Category is rquired", {globalPosition: 'top-right', className: 'error'});
                 return false;
             }
 
@@ -444,8 +377,6 @@
             var data = {
                 date: date,
                 invoice_no: invoice_no,
-                category_id: category_id,
-                category_name: category_name,
                 product_id: product_id,
                 product_name: product_name,
                 selling_qty: selling_qty,
@@ -509,16 +440,17 @@
 
         $(function () {
 
-            //Loading product under subcategory selection
-            $(document).on('change', '#category_id', function () {
-                var my_category_id = $(this).val();
+            //Loading product_id under supplier_id selection
+            $(document).on('change', '#supplier_id', function () {
+                $('#product_id').empty()
+                $('#product_id').append(`<option value="">Select product</option>`)
+                var supplier_id = $(this).val();
                 $.ajax({
-                    url: "{{ route('get-products') }}",
+                    url: "{{ route('get-product') }}",
                     type: "GET",
-                    data: {category_id: my_category_id},
+                    data: {supplier_id: supplier_id},
                     success: function (data) {
                         var html = '<option value="">Select product</option>';
-
                         $.each(data, function (key, v) {
                             html += '<option value="' + v.id + '">' + v.name + '</option>'
                         });

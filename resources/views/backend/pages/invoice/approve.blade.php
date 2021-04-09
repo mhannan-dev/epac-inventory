@@ -44,7 +44,7 @@
                                         <thead>
                                         <tr>
                                             <th>Sl</th>
-                                            <th>Category</th>
+
                                             <th>Product name</th>
                                             <th>Current Stock</th>
                                             <th>Quantity</th>
@@ -59,12 +59,12 @@
                                         @foreach($invoice['invoice_details'] as $key => $details)
 
                                             <tr class="table-primary">
-                        <input type="hidden" name="category_id[]" value="{{ $details->category_id }}">
+
                         <input type="hidden" name="product_id[]" value="{{ $details->product_id }}">
                         <input type="hidden" name="selling_qty[{{ $details->id }}]" value="{{ $details->selling_qty }}">
 
                                                 <td>{{ $key+1 }}</td>
-                                                <td>{{ $details['category']['name'] }}</td>
+
                                                 <td>{{ $details['products']['name'] }}</td>
                                                 <td>{{ $details['products']['quantity'] }}</td>
                                                 <td>{{ $details->selling_qty }}</td>
@@ -76,25 +76,25 @@
                                             @endphp
                                         @endforeach
                                         <tr class="text-right">
-                                            <td colspan="6">Sub Total</td>
+                                            <td colspan="5">Sub Total</td>
                                             <td>{{ $total_sum }}</td>
                                         </tr>
                                         <tr class="text-right table-success">
-                                            <td colspan="6" class="text-muted">Discount</td>
+                                            <td colspan="5" class="text-muted">Discount</td>
                                             <td>{{ $payment->discount_amount }}</td>
                                         </tr>
 
                                         <tr class="text-right" style="text-decoration: underline double;">
-                                            <td colspan="6" class="te">Paid amount</td>
+                                            <td colspan="5" class="te">Paid amount</td>
                                             <td>{{ $payment->paid_amount }}</td>
                                         </tr>
 
                                         <tr class="text-right table-warning">
-                                            <td colspan="6">Due</td>
+                                            <td colspan="5">Due</td>
                                             <td>{{ $payment->due_amount }}</td>
                                         </tr>
                                         <tr class="text-right " style="text-decoration: underline double;">
-                                            <td colspan="6"> <strong> Grand Total</strong> </td>
+                                            <td colspan="5"> <strong> Grand Total</strong> </td>
                                             <td>{{ $payment->total_amount }}</td>
                                         </tr>
                                         </tbody>

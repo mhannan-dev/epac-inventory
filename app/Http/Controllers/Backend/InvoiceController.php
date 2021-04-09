@@ -49,15 +49,13 @@ class InvoiceController extends Controller
     public function getCreate()
     {
         $data['title'] = "Create Invoice";
-        $data['categories'] = Category::all();
         $data['units'] = Unit::all();
         $data['products'] = Product::all();
         $data['customers'] = Customer::all();
         $invoice_data = Invoice::orderBy('id', 'desc')->first();
         if ($invoice_data == null) {
-            $firstReg = '0';
+            $firstReg = '2020';
             $data['invoice_no'] = $firstReg + 1;
-            //dd($invoice_no);
         } else {
             $invoice_data = Invoice::orderBy('id', 'desc')->first()->invoice_no;
             $data['invoice_no'] = $invoice_data + 1;
@@ -73,7 +71,7 @@ class InvoiceController extends Controller
     public function postStore(Request $request)
     {
         //dd($request->all());
-        if ($request->category_id == null) {
+        if ($request->product_id == null) {
             toast('Sorry you do not added any product !!', 'error');
             return redirect()->back();
         } else {
@@ -90,15 +88,15 @@ class InvoiceController extends Controller
                 // Transaction start
                 DB::transaction(function () use ($request, $invoice) {
                     if ($invoice->save()) {
-                        $count_category = count($request->category_id);
-                        for ($i = 0; $i < $count_category; $i++) {
+                        $count_product = count($request->product_id);
+                        for ($i = 0; $i < $count_product; $i++) {
                             $invoice_details = new InvoiceDetail();
                             $invoice_details->date = date('Y-m-d', strtotime($request->date));
                             $invoice_details->invoice_id = $invoice->id;
-                            $invoice_details->category_id = $request->category_id[$i];
+
                             $invoice_details->product_id = $request->product_id[$i];
                             $invoice_details->selling_qty = $request->selling_qty[$i];
-                            //dd($invoice_details->selling_qty);
+                            
                             $invoice_details->unit_price = $request->unit_price[$i];
                             $invoice_details->selling_price = $request->selling_price[$i];
                             $invoice_details->status = '1';
@@ -109,7 +107,6 @@ class InvoiceController extends Controller
                             $customer = new Customer();
                             $customer->name = $request->name;
                             $customer->mobile_no = $request->mobile_no;
-                            #$customer->email = $request->email;
                             $customer->address = $request->address;
                             $customer->save();
                             $customer_id = $customer->id;
@@ -159,7 +156,6 @@ class InvoiceController extends Controller
     {
         $data['title'] = "Update Product";
         $data['suppliers'] = Supplier::all();
-        $data['categories'] = Category::all();
         $data['brands'] = Brand::all();
         $data['units'] = Unit::all();
         $data['product'] = Product::find($id);

@@ -254,7 +254,7 @@
                                 <a href="{{route('invoice.daily.search')}}"
                                    class="nav-link {{($route=='invoice.daily.search')?'active':''}}">
                                     <i class="far fa-list-alt"></i>
-                                    <p>Daily Invoice</p>
+                                    <p>Search Invoice</p>
                                 </a>
                             </li>
 

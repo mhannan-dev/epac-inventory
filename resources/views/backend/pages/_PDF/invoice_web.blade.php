@@ -17,6 +17,14 @@
 
   <link rel="stylesheet" href="{{ asset('backend/dist/css/adminlte.css') }}">
   <style>
+    .page-break {
+        page-break-after: always;
+    }
+
+      .logo{
+          height: 50px;
+          width: 150px
+      }
     @media print {
       @page {
         margin-top: 0;
@@ -37,7 +45,8 @@
     <div class="row">
       <div class="col-12">
         <h2 class="page-header">
-          <i class="fas fa-globe"></i> Epac.com.bd
+
+          <img src="{{ asset('backend/epac_logo.jpg') }}" alt="epac_logo" class="logo">
 
         </h2>
       </div>
@@ -76,8 +85,6 @@
       </div>
       <!-- /.col -->
     </div>
-    <!-- /.row -->
-
     <!-- Table row -->
     <div class="row">
       <div class="col-12 table-responsive">
@@ -134,7 +141,6 @@
                 <td>{{ $payment->total_amount }}</td>
             </tr>
             </tbody>
-
         </table>
       </div>
       <!-- /.col -->
@@ -144,6 +150,88 @@
   <!-- /.content -->
 </div>
 <!-- ./wrapper -->
+<div class="page-break"></div>
+<br><br><br>
+
+<div class="wrapper">
+    <!-- Main content -->
+    <section class="invoice">
+      <!-- title row -->
+      <div class="row">
+        <div class="col-12">
+          <h2 class="page-header">
+
+            <img src="{{ asset('backend/epac_logo.jpg') }}" alt="epac_logo" class="logo">
+
+          </h2>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- info row -->
+      <div class="row invoice-info">
+        <div class="col-sm-4 invoice-col">
+          From
+          <address>
+            <strong>Epac.com.bd</strong><br>
+            45, Topkhana Road, <br>
+            Purana paltan,<br>
+            Dhaka - 1000 <br>
+            Mobile: +880 1823 88 38 91<br>
+            Email: support@epac.com.bd
+          </address>
+        </div>
+        <!-- /.col -->
+        <div class="col-sm-4 invoice-col">
+          To
+          <address>
+            <strong>{{ $payment['customer']['name']}}</strong><br>
+            Address: {{ $payment['customer']['address']}}<br>
+            Mobile: {{ $payment['customer']['mobile_no']}}<br>
+
+          </address>
+        </div>
+        <!-- /.col -->
+        <div class="col-sm-4 invoice-col">
+          <b>Challan No : {{ $invoice->invoice_no }}</b><br>
+
+          <b>Challan Date : </b> {{ $invoice->date }}<br>
+
+          {{-- <b>Account:</b> 968-34567 --}}
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- Table row -->
+      <div class="row">
+        <div class="col-12 table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Unit Name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                  </tr>
+
+                </tbody>
+              </table>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+
 <!-- Page specific script -->
 <script>
   window.addEventListener("load", window.print());

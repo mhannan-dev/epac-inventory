@@ -25,10 +25,10 @@
                                             <th>SL</th>
                                             <th>Date</th>
                                             <th>Supplier</th>
-                                            <th>Category</th>
+
                                             <th>Title</th>
                                             <th>Description</th>
-                                            {{-- <th>Size/Weight</th> --}}
+
                                             <th>Unit</th>
                                             <th>Rate</th>
                                             <th>Quantity</th>
@@ -44,12 +44,12 @@
                                                     <td>1</td>
                                                     <td>{{ $purchase->date }}</td>
                                                     <td>{{ $purchase['products']['supplier']->name }}</td>
-                                                    <td>{{ $purchase['products']['category']->name }}</td>
+
                                                     <td>{{ $purchase['products']->name }}</td>
                                                     <td>{{ $purchase->description }}</td>
-                                                    {{-- <td>{{ $purchase->size_weight }}</td> --}}
+
                                                     <td><button class="btn btn-success btn-sm">{{ $purchase['unit']->name }}</button></td>
-                                                    
+
                                                     <td>{{ $purchase->unit_price }}</td>
                                                     <td>{{ $purchase->buying_qty }}</td>
                                                     <td>{{ $purchase->buying_price }}</td>
@@ -57,11 +57,11 @@
                                                          @if ($purchase->status == '0')
                                                             <span class="badge badge-warning">
                                                                 Pending
-                                                            </span>  
+                                                            </span>
                                                         @else
                                                             <span class="badge badge-warning">
                                                                 Approved
-                                                            </span> 
+                                                            </span>
                                                         @endif
                                                     </td>
                                                     <td>
