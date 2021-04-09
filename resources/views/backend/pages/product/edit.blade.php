@@ -14,7 +14,7 @@
                             @csrf
                             <div class="card-body">
                                 <div class="form-row">
-                                    <div class="form-group col-md-4">
+                                    <div class="form-group col-md-6">
                                     @if($suppliers->count() < 1)
                                         <!-- Button trigger modal -->
                                             <a type="button" class="btn btn-outline-info mt-md-4"
@@ -34,24 +34,12 @@
                                         @endif
                                     </div>
 
-                                    <div class="form-group col-md-4">
-                                        <label for="cuntry">Select category</label>
-                                        <select class="form-control form-control-sm select2" id="category_id" name="category_id">
-                                            <option>Select category</option>
-                                            @foreach($categories as $data_row)
-                                                <option value="{{ $data_row->id}}"
-                                                        @if($data_row->id == $product->category_id): selected @else '' @endif>
-                                                {{ $data_row->name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-md-4">
+                                    <div class="form-group col-md-6">
                                         <label for="status">Name</label>
                                         <input type="text" class="form-control form-control-sm" name="name" id="name"
                                                value="{{ $product->name  }}">
 
-                                               
+
                                     </div>
                                 </div>
                             </div>
