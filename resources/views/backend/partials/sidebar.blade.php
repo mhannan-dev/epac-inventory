@@ -6,9 +6,10 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-        <img src="{{ URL::asset('backend')}}/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
+        <img src="{{ URL::asset('backend')}}/epac_logo.jpg" alt="AdminLTE Logo"
              class="brand-image img-circle elevation-3"
              style="opacity:.8">
+
         <span class="brand-text font-weight-light">Epac Inventory</span>
     </a>
 
@@ -91,68 +92,6 @@
                     </li>
 
 
-
-{{--                    <li class="nav-item has-treeview {{($prefix=='/brand')?'menu-open':''}}">--}}
-{{--                        <a href="#" class="nav-link">--}}
-{{--                            <i class="nav-icon fas fa-toolbox"></i>--}}
-{{--                            <p>--}}
-{{--                                Manage Brand <i class="right fas fa-angle-left"></i>--}}
-
-{{--                            </p>--}}
-{{--                        </a>--}}
-{{--                        <ul class="nav nav-treeview">--}}
-{{--                            <li class="nav-item">--}}
-{{--                                <a href="{{route('admin.brand.view')}}"--}}
-{{--                                   class="nav-link {{($route=='admin.brand.view')?'active':''}}">--}}
-{{--                                    <i class="far fa-list-alt"></i>--}}
-{{--                                    <p>Brands</p>--}}
-{{--                                </a>--}}
-{{--                            </li>--}}
-
-{{--                        </ul>--}}
-{{--                    </li>--}}
-
-
-                    {{-- <li class="nav-item has-treeview {{($prefix=='/category')?'menu-open':''}}">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-toolbox"></i>
-                            <p>
-                                Manage Category <i class="right fas fa-angle-left"></i>
-
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{route('admin.category.view')}}"
-                                   class="nav-link {{($route=='admin.category.view')?'active':''}}">
-                                    <i class="far fa-list-alt"></i>
-                                    <p>Categories</p>
-                                </a>
-                            </li>
-
-
-                        </ul>
-                    </li> --}}
-
-{{--                    <li class="nav-item has-treeview {{($prefix=='/sub-category')?'menu-open':''}}">--}}
-{{--                        <a href="#" class="nav-link">--}}
-{{--                            <i class="nav-icon fas fa-toolbox"></i>--}}
-{{--                            <p>--}}
-{{--                                Manage Subcategory <i class="right fas fa-angle-left"></i>--}}
-
-{{--                            </p>--}}
-{{--                        </a>--}}
-{{--                        <ul class="nav nav-treeview">--}}
-{{--                            <li class="nav-item">--}}
-{{--                                <a href="{{ route('admin.sub_category.view') }}"--}}
-{{--                                   class="nav-link {{( $route=='admin.sub_category.view')?'active':''}}">--}}
-{{--                                    <i class="far fa-list-alt"></i>--}}
-{{--                                    <p>Sub Categories</p>--}}
-{{--                                </a>--}}
-{{--                            </li>--}}
-
-{{--                        </ul>--}}
-{{--                    </li>--}}
 
 
                     <li class="nav-item has-treeview {{($prefix=='/units')?'menu-open':''}}">
@@ -274,6 +213,11 @@
                                    class="nav-link {{($route=='stock.report')?'active':''}}">
                                     <i class="far fa-list-alt"></i>
                                     <p>Stock Report</p>
+                                </a>
+                                <a href="{{route('stock.supplier.wise')}}"
+                                   class="nav-link {{($route=='stock.supplier.wise')?'active':''}}">
+                                    <i class="far fa-list-alt"></i>
+                                    <p>Supplier Wise Stock </p>
                                 </a>
                             </li>
                         </ul>

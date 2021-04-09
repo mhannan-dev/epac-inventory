@@ -36,11 +36,21 @@ class StockController extends Controller
     public function stockReportPdf()
     {
 
-     $data['products'] = Product::orderBy('supplier_id' ,'ASC')->orderBy('category_id' ,'ASC')->get();
+     $data['products'] = Product::orderBy('supplier_id' ,'ASC')->orderBy('id' ,'ASC')->get();
      return view('backend.pages._PDF.stock_report', $data);
      //$pdf = PDF::loadView('backend.pages._PDF.stock_report', $data);
      //$pdf->SetProtection(['copy','print'], '', 'pass');
      //return $pdf->stream('stock_report.pdf');
+
+    }
+    public function stockSupplierWise()
+    {
+     $data['title'] = "Supplier/Product Wise Stock";
+     $data['suppliers'] = Supplier::where('status', 'active')->get();
+
+     $data['products'] = Product::orderBy('supplier_id' ,'ASC')->orderBy('id' ,'ASC')->get();
+     return view('backend.pages.stock.supplier-wise', $data);
+
 
     }
 
