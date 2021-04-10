@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\Unit;
-use App\Models\Brand;
+
 use App\Models\Invoice;
 use App\Models\Payment;
 use App\Models\Product;
-use App\Models\Category;
 use App\Models\Customer;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
@@ -156,7 +155,6 @@ class InvoiceController extends Controller
     {
         $data['title'] = "Update Product";
         $data['suppliers'] = Supplier::all();
-        $data['brands'] = Brand::all();
         $data['units'] = Unit::all();
         $data['product'] = Product::find($id);
         //dd($data['product']);
@@ -170,6 +168,7 @@ class InvoiceController extends Controller
     {
         $data['title'] = "Pending Invoice";
         $data['invoices'] = Invoice::orderBy('date', 'desc')->orderBy('id', 'desc')->where('status', '0')->get();
+        //dd($data['invoices']);
         return view('backend.pages.invoice.pending', $data);
     }
     /**

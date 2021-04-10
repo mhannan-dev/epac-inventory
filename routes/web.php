@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -141,7 +142,9 @@ Route::group(['prefix' => 'invoice'], function () {
 Route::group(['prefix' => 'stock'], function () {
     Route::get('/report', 'Backend\StockController@stockReport')->name('stock.report');
     Route::get('/report/pdf', 'Backend\StockController@stockReportPdf')->name('stock.report.pdf');
-    Route::get('/supplier-wise', 'Backend\StockController@stockSupplierWise')->name('stock.supplier.wise');
+    Route::get('/by-option', 'Backend\StockController@stockSupplierWise')->name('stock.supplier.wise');
+    Route::get('/report/supplier/wise', 'Backend\StockController@stockReportSupplierWise')->name('report.supplier.wise');
+    Route::get('/report/product/wise', 'Backend\StockController@stockReportProductWise')->name('report.product.wise');
 
 });
 
@@ -155,9 +158,6 @@ Route::get('/get-product', 'Backend\DefaultController@getProduct')->name('get-pr
 Route::get('/get-unit', 'Backend\DefaultController@getUnits')->name('get-unit');
 Route::get('/check-product-stock', 'Backend\DefaultController@getStock')->name('check-product-stock');
 
-
-
-//to clear all cache
 //to clear all cache
 Route::get('/clear', function() {
     Artisan::call('cache:clear');

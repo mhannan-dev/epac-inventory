@@ -35,7 +35,6 @@ class ProductsController extends Controller
     {
         $data['title'] = "Create New Product";
         $data['suppliers'] = Supplier::all();
-        $data['categories'] = Category::all();
         $data['units'] = Unit::all();
         return view('backend.pages.product.create', $data);;
     }
@@ -86,7 +85,6 @@ class ProductsController extends Controller
         $data['product'] = Product::find($id);
         $data['title'] = "Update Product";
         $data['suppliers'] = Supplier::all();
-        $data['categories'] = Category::all();
         $data['units'] = Unit::all();
         //dd($data['product']);
         if (!is_null($data)) {
@@ -107,10 +105,8 @@ class ProductsController extends Controller
     {
         //dd($request->all());
         $request->validate([
-                
                 'supplier_id' => 'required',
                 'name' => 'required',
-
             ]
         );
 
@@ -119,7 +115,6 @@ class ProductsController extends Controller
         $product->name = $request->name;
         $product->updated_by = Auth::user()->id;
         $product->save();
-
         toast('Data has been updated successfully !!', 'success');
         return redirect()->route('admin.products.view');
     }

@@ -50,6 +50,11 @@ class StockController extends Controller
      $data['products'] = Product::orderBy('supplier_id' ,'ASC')->orderBy('id' ,'ASC')->get();
      return view('backend.pages.stock.supplier-wise', $data);
     }
+    
+    public function stockReportSupplierWise(Request $request)
+    {
+        dd('Okay');
+    }
 
 
 }

@@ -33,26 +33,18 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                        @if (count($invoices))
+                                            @foreach ($invoices as $key => $invoice)
 
-                                    @if(count($invoices))
-                                        @foreach ($invoices as $key => $invoice)
-                                            <tr>
-                                                <td>{{ ++$key }}</td>
-                                                <td>{{ $invoice['payment']['customer']['name']}} || {{ $invoice['payment']['customer']['mobile_no']}}</td>
-                                                <td class="text-fuchsia text-bold">Invoice no {{ $invoice->invoice_no }}</td>
-                                                <td>{{ $invoice->date }}</td>
-                                                <td>{{ $invoice->description }}</td>
-                                                <td class="text-right">{{ $invoice['payment']['total_amount']}}</td>
-
-                                                <td>
-                                                    @if($invoice->status == 0)
-                                                        <span class="badge badge-warning">Pending</span>
-                                                    @elseif($invoice->status == 1)
-                                                        <span class="badge badge-success">Approved</span>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    @if($invoice->status == 0)
+                                                <tr>
+                                                    <td>{{ ++$key }}</td>
+                                                    <td>-</td>
+                                                    <td>{!! $invoice->invoice_no !!}</td>
+                                                    <td>{!! $invoice->date !!}</td>
+                                                    <td>{!! $invoice->description !!}</td>
+                                                    <td>total_amount</td>
+                                                    <td>total_amount</td>
+                                                    <td>@if($invoice->status == 0)
                                                         <a title="Approve" href="{{ route('invoice.approve', $invoice->id)}}" class="badge badge-success text-right">
                                                             <i class="fa fa-check-circle" aria-hidden="true"></i>
                                                         </a>
@@ -96,17 +88,14 @@
                                                         <!-- Delete Modal -->
                                                     @elseif($purchase->status == 1)
                                                         <span class="badge badge-success"><i class="fas fa-check" aria-hidden="true"></i></span>
-                                                    @endif
-
-
-                                                </td>
+                                                    @endif</td>
+                                                </tr>
+                                            @endforeach
+                                        @else
+                                            <tr>
+                                                <td colspan="6"> Opps!!, {{ $title }} Not found</td>
                                             </tr>
-                                        @endforeach
-                                    @else
-                                        <tr>
-                                            <td colspan="9"> Opps!!, {{$title}} Not found</td>
-                                        </tr>
-                                    @endif
+                                        @endif
                                     </tbody>
 
                                 </table>

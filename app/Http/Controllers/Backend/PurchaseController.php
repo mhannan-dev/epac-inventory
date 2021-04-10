@@ -39,7 +39,6 @@ class PurchaseController extends Controller
     {
         $data['title'] = "Create Purchase";
         $data['suppliers'] = Supplier::all();
-        $data['categories'] = Category::all();
         $data['units'] = Unit::all();
         $data['products'] = Product::all();
         //dd($data);
@@ -101,8 +100,6 @@ class PurchaseController extends Controller
     {
         $data['title'] = "Update Product";
         $data['suppliers'] = Supplier::all();
-        $data['categories'] = Category::all();
-        $data['brands'] = Brand::all();
         $data['units'] = Unit::all();
         $data['product'] = Product::find($id);
         //dd($data['product']);
