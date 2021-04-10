@@ -217,7 +217,7 @@
                                 <a href="{{route('stock.supplier.wise')}}"
                                    class="nav-link {{($route=='stock.supplier.wise')?'active':''}}">
                                     <i class="far fa-list-alt"></i>
-                                    <p>Supplier Wise Stock </p>
+                                    <p>Search Stock </p>
                                 </a>
                             </li>
                         </ul>

@@ -7,20 +7,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Epac.com.bd| Invoice #{{ $invoice->invoice_no }} Print</title>
-
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-
   <link rel="stylesheet" href="{{ asset('backend/plugins/fontawesome-free/css/all.min.css') }}">
   <!-- Theme style -->
-
   <link rel="stylesheet" href="{{ asset('backend/dist/css/adminlte.css') }}">
   <style>
     .page-break {
         page-break-after: always;
     }
-
       .logo{
           height: 50px;
           width: 150px
@@ -45,9 +41,7 @@
     <div class="row">
       <div class="col-12">
         <h2 class="page-header">
-
           <img src="{{ asset('backend/epac_logo.jpg') }}" alt="epac_logo" class="logo">
-
         </h2>
       </div>
       <!-- /.col -->
@@ -72,13 +66,11 @@
           <strong>{{ $payment['customer']['name']}}</strong><br>
           Address: {{ $payment['customer']['address']}}<br>
           Mobile: {{ $payment['customer']['mobile_no']}}<br>
-
         </address>
       </div>
       <!-- /.col -->
       <div class="col-sm-4 invoice-col">
         <b>Invoice #{{ $invoice->invoice_no }}</b><br>
-
         <b>Invoice Date:</b> {{ $invoice->date }}<br>
         <b>Due Date:</b> {{ $date = \Carbon\Carbon::now()->toDateString() }}<br>
         {{-- <b>Account:</b> 968-34567 --}}
@@ -94,7 +86,6 @@
                 <th>Sl</th>
                 <th>Category</th>
                 <th>Product name</th>
-
                 <th>Quantity</th>
                 <th class="text-right">Unit Price</th>
                 <th class="text-right">Total</th>
@@ -109,7 +100,6 @@
                     <td>{{ $key+1 }}</td>
                     <td>{{ $details['category']['name'] }}</td>
                     <td>{{ $details['products']['name'] }}</td>
-
                     <td>{{ $details->selling_qty }}</td>
                     <td class="text-right">{{ $details->unit_price }}</td>
                     <td class="text-right">{{ $details->selling_price }}</td>
@@ -126,12 +116,10 @@
                 <td colspan="5" class="text-muted">Discount</td>
                 <td>{{ $payment->discount_amount }}</td>
             </tr>
-
             <tr class="text-right" style="text-decoration: underline double;">
                 <td colspan="5" class="te">Paid amount</td>
                 <td>{{ $payment->paid_amount }}</td>
             </tr>
-
             <tr class="text-right table-warning">
                 <td colspan="5">Due</td>
                 <td>{{ $payment->due_amount }}</td>
@@ -146,13 +134,18 @@
       <!-- /.col -->
     </div>
     <!-- /.row -->
+    <div class="row text-center mt-3">
+        <div class="col-12">
+            Thanks for choosing <strong>epac.com.bd</strong>
+            <br>(System generated Invoice singature not required).
+        </div>
+    </div>
   </section>
   <!-- /.content -->
 </div>
 <!-- ./wrapper -->
 <div class="page-break"></div>
 <br><br><br>
-
 <div class="wrapper">
     <!-- Main content -->
     <section class="invoice">
@@ -160,9 +153,7 @@
       <div class="row">
         <div class="col-12">
           <h2 class="page-header">
-
             <img src="{{ asset('backend/epac_logo.jpg') }}" alt="epac_logo" class="logo">
-
           </h2>
         </div>
         <!-- /.col -->
@@ -187,15 +178,12 @@
             <strong>{{ $payment['customer']['name']}}</strong><br>
             Address: {{ $payment['customer']['address']}}<br>
             Mobile: {{ $payment['customer']['mobile_no']}}<br>
-
           </address>
         </div>
         <!-- /.col -->
         <div class="col-sm-4 invoice-col">
           <b>Challan No : {{ $invoice->invoice_no }}</b><br>
-
           <b>Challan Date : </b> {{ $invoice->date }}<br>
-
           {{-- <b>Account:</b> 968-34567 --}}
         </div>
         <!-- /.col -->
@@ -221,17 +209,21 @@
                     <td>@mdo</td>
                     <td>@mdo</td>
                   </tr>
-
                 </tbody>
               </table>
         </div>
         <!-- /.col -->
       </div>
       <!-- /.row -->
+      <div class="row text-center">
+        <div class="col-12">
+            Thanks for choosing <strong>epac.com.bd</strong>
+            <br>(System generated Invoice singature not required).
+        </div>
+    </div>
     </section>
     <!-- /.content -->
   </div>
-
 <!-- Page specific script -->
 <script>
   window.addEventListener("load", window.print());
