@@ -38,12 +38,18 @@
 
                                                 <tr>
                                                     <td>{{ ++$key }}</td>
-                                                    <td>-</td>
+                                                    <td>{{ $invoice['payment']['customer']['name']}} || {{ $invoice['payment']['customer']['mobile_no']}}</td>
                                                     <td>{!! $invoice->invoice_no !!}</td>
                                                     <td>{!! $invoice->date !!}</td>
                                                     <td>{!! $invoice->description !!}</td>
-                                                    <td>total_amount</td>
-                                                    <td>total_amount</td>
+                                                    <td>{{ $invoice['payment']['total_amount']}}</td>
+                                                    <td>
+                                                        @if($invoice->status == 0)
+                                                            <span class="badge badge-warning">Pending</span>
+                                                        @elseif($invoice->status == 1)
+                                                            <span class="badge badge-success">Approved</span>
+                                                        @endif
+                                                    </td>
                                                     <td>@if($invoice->status == 0)
                                                         <a title="Approve" href="{{ route('invoice.approve', $invoice->id)}}" class="badge badge-success text-right">
                                                             <i class="fa fa-check-circle" aria-hidden="true"></i>
