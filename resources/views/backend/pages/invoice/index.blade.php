@@ -33,15 +33,15 @@
                                             @foreach ($invoices as $key => $invoice)
 
                                                 <tr>
-                                                    <td> ++$key </td>
+                                                    <td>{{ ++$key}} </td>
                                                     <td>
-                                                        $invoice['payment']['customer']['name'] ||
-                                                        $invoice['payment']['customer']['mobile_no']
+                                                        {{ $invoice['payment']['customer']['name'] }} ||
+                                                        {{ $invoice['payment']['customer']['mobile_no'] }}
                                                     </td>
-                                                    <td class="text-fuchsia text-bold">Invoice no $invoice->invoice_no </td>
-                                                    <td> $invoice->date </td>
-                                                    <td> $invoice->description </td>
-                                                    <td class="text-right"> $invoice['payment']['total_amount']</td>
+                                                    <td class="text-cyan text-bold">Invoice no {{ $invoice->invoice_no }} </td>
+                                                    <td> {{ $invoice->date }} </td>
+                                                    <td> {{ $invoice->description }} </td>
+                                                    <td class="text-right"> {{ $invoice['payment']['total_amount'] }}</td>
                                                 </tr>
                                             @endforeach
                                         @else

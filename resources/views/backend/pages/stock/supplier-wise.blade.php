@@ -13,7 +13,7 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <div class="form-check form-check-inline">
+                                {{-- <div class="form-check form-check-inline">
                                     <label class="form-check-label">Supplier Wise Product</label> &nbsp;
                                     <input type="radio" name="supplier_product_wise" value="supplier_wise"
                                         class="form-check-input search_value">
@@ -21,9 +21,10 @@
                                     <label class="form-check-label">Product Wise Report</label>&nbsp;
                                     <input type="radio" name="supplier_product_wise" value="product_wise"
                                         class="form-check-input search_value">
-                                </div>
+                                </div> --}}
                                 <hr>
-                                <div class="show_supplier" style="display: none">
+                                {{-- <div class="show_supplier" style="display: none"> --}}
+                                <div class="show_supplier">
                                     <form id="supplierForm" action="{{ route('report.supplier.wise') }}" method="GET">
                                         <div class="form-row">
                                             <div class="col-md-4">
@@ -44,6 +45,29 @@
                                         </div>
                                     </form>
                                 </div>
+
+                                <div class="show_product" style="display: none">
+                                    <form id="productForm" action="{{ route('report.product.wise') }}" method="GET">
+                                        <div class="form-row">
+                                            <div class="col-md-4">
+                                                <label for="product_id">Product select</label>
+                                                <select class="form-control select2 form-control-sm" id="product_id"
+                                                    name="product_id">
+                                                    <option>Select product</option>
+                                                    @foreach ($products as $product)
+                                                        <option value="{{ $product->id }}"> {{ $product->name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button type="submit" class="btn btn-primary btn-sm"
+                                                    style="margin-top: 31px;">Search</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
                             </div>
                             <!-- /.card-body -->
                         </div>
@@ -64,6 +88,15 @@
                 $('.show_supplier').show();
             } else {
                 $('.show_supplier').hide();
+            }
+        });
+        $(document).on('change', '.search_value', function() {
+            var search_value = $(this).val();
+            //console.log(search_value);
+            if (search_value == 'product_wise') {
+                $('.show_product').show();
+            } else {
+                $('.show_product').hide();
             }
         });
 
