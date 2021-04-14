@@ -19,7 +19,7 @@
                             <h3 class="profile-username text-center">Create User</h3>
 
 
-                            {!! Form::open([ 'route' => ['logged_in.user.store'], 'method' => 'post', 'files' => true ]) !!}
+                            {!! Form::open([ 'route' => ['logged_in.user.store'], 'method' => 'post']) !!}
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
@@ -27,7 +27,7 @@
                                     <select class="form-control" id="role_id" name="role_id" required>
 
                                         @foreach($user_roles as $user_data )
-                                        <option value="{{ $user_data->role_id }}">{{ $user_data->name }}</option>
+                                        <option value="{{ $user_data->id }}">{{ $user_data->name }}</option>
                                         @endforeach
                                     </select>
 
@@ -54,13 +54,7 @@
                                     {!! Form::password('password',[ 'class' => 'form-control', 'data-validation-required-message' => 'This field is required', 'placeholder' => 'Enter password' ]) !!}
                                     {!! $errors->first('password', '<label class="help-block text-danger">:message</label>') !!} <br>
                                   </div>
-                                  <div class="form-group">
-                                      <label for="image">Image</label> <br>
-
-                                      {!! Form::file('image', null, ['class' => 'form-control', 'data-validation-required-message' => 'This field is required']); !!}
-
-
-                                  </div>
+                                  
 
                                 </div>
 

@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
+use App\Models\Unit;
 use App\Models\Brand;
+use App\Models\Product;
 use App\Models\Category;
 use App\Models\Purchase;
-use App\Models\SubCategory;
 use App\Models\Supplier;
-use App\Models\Product;
-use App\Models\Unit;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use DB;
 
 class PurchaseController extends Controller
 {
@@ -24,7 +24,7 @@ class PurchaseController extends Controller
      */
     public function getIndex()
     {
-        $data['title'] = "Purchase";
+        $data['title'] = "Product";
         $data['products'] = Purchase::orderBy('date', 'desc')->orderBy('id', 'desc')->get();
         //dd($data['products']);
         return view('backend.pages.purchase.index', $data);
@@ -37,7 +37,7 @@ class PurchaseController extends Controller
      */
     public function getCreate()
     {
-        $data['title'] = "Create Purchase";
+        $data['title'] = "Store From";
         $data['suppliers'] = Supplier::all();
         $data['units'] = Unit::all();
         $data['products'] = Product::all();
@@ -112,7 +112,7 @@ class PurchaseController extends Controller
 
     public function pendingList()
     {
-        $data['title'] = "Pending Purchase";
+        $data['title'] = "Pending Product";
         $data['purchases'] = Purchase::orderBy('date', 'desc')->orderBy('id', 'desc')->where('status', '0' )->get();
         //dd($data['purchase']);
         return view('backend.pages.purchase.pending', $data);

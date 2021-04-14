@@ -54,7 +54,7 @@
                                 </div>
                                 <!-- /.card-body -->
                                 <hr style="background-color: #123455;">
-                                <h3 class="card-title mb-2 text-bold">Purchase List</h3>
+                                <h3 class="card-title mb-2 text-bold">Stored Product List</h3>
                                 <form action="{{ route('admin.purchase.store') }}" method="post">
                                     @csrf
                                     <table id="example1" class="table table-bordered table-striped">
@@ -84,7 +84,7 @@
                                     <br>
                                     <div class="form-group">
                                         <button type="submit" id="storeButton" class="btn btn-info btn-sm text-white">
-                                            Purchase Store
+                                            Proceed
                                         </button>
                                     </div>
                                 </form>

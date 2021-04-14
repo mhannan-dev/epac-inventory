@@ -33,44 +33,28 @@ class UsersController extends Controller
     }
 
     public function postStore(Request $request, User $user){
+      //  dd($request->all());
       $request->validate([
             'role_id' => 'required',
-            'name' => 'required|string|max:255',
-            'username' => 'required|string|max:150|unique:users',
+            'name' => 'required|string|max:255|unique:users',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
 
         ],
         [
             'role_id.required'  => 'Please select role',
             'name.required'  => 'Please enter name',
-            'username.required'  => 'Please enter username',
             'email' => 'Please enter email',
             'password' => 'Please Enter password',
-            'image' => 'Please select an image',
+           
         ]);
-
-        //return $request->all();
-        if ($request->has('image')) {
-            $image = $request->file('image');
-            $imageName = time();
-            $folder = '/upload/user';
-            $filePath = $folder . $imageName. '.' . $image->getClientOriginalExtension();
-            $this->uploadOne($image, $folder, 'public', $imageName);
-            $user->image = $filePath;
-        }
 
         $user           = new User();
         $user->role_id = $request->role_id;
         $user->name     = $request->name;
-        $user->username = $request->username;
         $user->password = bcrypt($request->password);
         $user->email    = $request->email;
-        $user->image = $imageName.'.'.$image->getClientOriginalExtension();
         $user->save();
-        //dd($user);
-
         toast('Data added successfully !!','success');
 
         return redirect()->route('logged_in.user.view');
@@ -97,7 +81,6 @@ class UsersController extends Controller
     public function getEdit($id)
     {
         $editData = User::find($id);
-        //dd($editData);
         return view('backend.pages.user.edit')->with(compact('editData'));
     }
 

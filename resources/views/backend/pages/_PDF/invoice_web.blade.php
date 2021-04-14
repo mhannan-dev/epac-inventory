@@ -212,7 +212,7 @@ $payment = App\Models\Payment::where('invoice_id', $invoice->id)->first();
                             <tr>
                                 <th scope="row">1</th>
                                 <td>{{ $details['products']['name'] }}</td>
-                                <td>{{ $details->description }}</td>
+                                <td>{{ $invoice->description }}</td>
                                 <td>{{ $details->selling_qty }}</td>
 
                             </tr>

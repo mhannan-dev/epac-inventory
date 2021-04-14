@@ -29,8 +29,6 @@
                                         <th>@lang('form.th_cell_no')</th>
                                         <th>@lang('form.th_address')</th>
                                         <th>@lang('form.th_created_by')</th>
-                                        <th>@lang('form.th_updated_by')</th>
-                                        <th>@lang('form.th_time')</th>
                                         <th>@lang('form.th_action')</th>
                                     </tr>
                                     </thead>
@@ -44,14 +42,12 @@
                                                 <td>{{ $list->email }}</td>
                                                 <td>{{ $list->mobile_no }}</td>
                                                 <td>{{ $list->address }}</td>
-                                                <td>{{ Auth::user()->name }}</td>
-                                                <td>{{ Auth::user()->name }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($list->created_at)->diffForHumans() }}</td>
+                                                
                                                 @php
                                                     $count_supplier = App\Models\Product::where('supplier_id',$list->id)->count();
                                                 @endphp
                                                 {{--@dd($count_supplier);--}}
-
-                                                <td>{{ \Carbon\Carbon::parse($list->created_at)->diffForHumans() }}</td>
 
                                                 <td>
 

@@ -29,7 +29,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="mobile_no">@lang('form.mobile_no')<span class="text-danger">*</span></label>
-                                        {!! Form::text('mobile_no', $data_list->mobile_no, [ 'class' => 'form-control', 'data-validation-required-message' => 'This field is required', 'placeholder' => 'Enter name']) !!}
+                                        <input type="text" class="form-control" value="{{ $data_list->mobile_no }}">
                                         {!! $errors->first('mobile_no', '<label class="help-block text-danger">:message</label>') !!}
                                     </div>
                                     <div class="form-group">

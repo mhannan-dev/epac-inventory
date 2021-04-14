@@ -117,7 +117,7 @@
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-toolbox"></i>
                             <p>
-                                Manage Store <i class="right fas fa-angle-left"></i>
+                                Insert New  Product <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
@@ -125,7 +125,7 @@
                                 <a href="{{route('admin.products.view')}}"
                                    class="nav-link {{($route=='admin.products.view')?'active':''}}">
                                     <i class="far fa-list-alt"></i>
-                                    <p>Products</p>
+                                    <p>Lists</p>
                                 </a>
                             </li>
 
@@ -135,7 +135,7 @@
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-toolbox"></i>
                             <p>
-                                Billing/Purchase <i class="right fas fa-angle-left"></i>
+                               Inventory<i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
@@ -143,7 +143,7 @@
                                 <a href="{{route('admin.purchase.view')}}"
                                    class="nav-link {{($route=='admin.purchase.view')?'active':''}}">
                                     <i class="far fa-list-alt"></i>
-                                    <p>Purchase</p>
+                                    <p>Products</p>
                                 </a>
                             </li>
 
@@ -151,11 +151,9 @@
                                 <a href="{{route('purchase.pending.list')}}"
                                    class="nav-link {{($route=='purchase.pending.list')?'active':''}}">
                                     <i class="far fa-list-alt"></i>
-                                    <p>Approve Purchase</p>
+                                    <p>Approve Product</p>
                                 </a>
                             </li>
-
-
                         </ul>
                     </li>
 
@@ -171,7 +169,7 @@
                                 <a href="{{route('invoice.view')}}"
                                    class="nav-link {{($route=='invoice.view')?'active':''}}">
                                     <i class="far fa-list-alt"></i>
-                                    <p>View Invoice</p>
+                                    <p>Confirm Invoice</p>
                                 </a>
                             </li>
                             <li class="nav-item">
