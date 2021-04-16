@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\Purchase;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 
@@ -46,10 +47,8 @@ class DefaultController extends Controller
 
     public function getUnits(Request $request){
         $r_product_id = $request->product_id;
-       // dd($r_product_id);
         $allUnits = Product::select('unit_id')->where('id',$r_product_id)->first();
-        $allUnits = Unit::select('id','name')->where('id',$allUnits->unit_id)->get();
-        //dd($allUnits->toArray());
+        dd($allUnits->toArray());
         return response()->json($allUnits);
     }
 
@@ -60,6 +59,15 @@ class DefaultController extends Controller
         //dd($stock);
         return response()->json($stock);
     }
+
+    public function get_unit_price(Request $request){
+        $r_product_id = $request->product_id;
+        $unit_price = Purchase::where('id',$r_product_id)->first()->unit_price;
+        //dd($unit_price);
+        return response()->json($unit_price);
+    }
+
+    
 
 
 //    public function getSubCategory(Request $request){

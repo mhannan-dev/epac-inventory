@@ -12,7 +12,8 @@ class Invoice extends Model
 
     public function payment()
     {
-        return $this->belongsTo('App\Models\Payment', 'id','invoice_id');
+        //return $this->belongsTo('App\Models\Payment', 'id','invoice_id')->withDefault();
+        return $this->belongsTo('App\Models\Payment','id','invoice_id');   
     }
     
     public function invoice_details()

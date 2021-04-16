@@ -26,11 +26,11 @@
                                             <th>Date</th>
                                             <th>Supplier</th>
 
-                                            <th>Title</th>
+                                            <th>Name</th>
                                             <th>Description</th>
-
                                             <th>Unit</th>
                                             <th>Rate</th>
+                                            <th>Selling Rate</th>
                                             <th>Quantity</th>
                                             <th>Buying Price</th>
                                             <th>Status</th>
@@ -51,6 +51,7 @@
                                                     <td><button class="btn btn-success btn-sm">{{ $purchase['unit']->name }}</button></td>
 
                                                     <td>{{ $purchase->unit_price }}</td>
+                                                    <td><span class="badge badge-success">{{ $purchase->unt_sell_price }}</span></td>
                                                     <td>{{ $purchase->buying_qty }}</td>
                                                     <td>{{ $purchase->buying_price }}</td>
                                                     <td>

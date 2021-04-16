@@ -23,7 +23,7 @@
                                         <label>Date</label>
 
                                         <div class="input-group">
-                                            <input class="form-control form-control-sm" name="date" id="date" placeholder="YY-MM-DD"/>
+                                            <input class="form-control form-control-sm" name="date" id="date" value="<?php echo date('Y-m-d'); ?>"/>
                                         </div>
                                         <!-- /.input group -->
                                     </div>
@@ -62,7 +62,12 @@
                                     <div class="form-group col-md-4">
                                         <label for="cuntry">Stock</label>
                                         <input class="form-control form-control-sm" id="curent_stock_qty" name="curent_stock_qty" style="background-color: #d4edda" readonly>
-
+                                    
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="cuntry">Unit Price</label>
+                                        <input class="form-control form-control-sm" id="get_unit_price" name="get_unit_price" style="background-color: #d4edda" readonly>
+                                    
                                     </div>
 
                                     <div class="form-group">
@@ -458,6 +463,26 @@
                     }
                 });
             });
+            //Loading product unit under product
+            $(document).on('change', '#supplier_id', function () {
+                $('#product_id').empty()
+                $('#product_id').append(`<option value="">Select Unit</option>`)
+                var supplier_id = $(this).val();
+                $.ajax({
+                    url: "{{ route('get-product') }}",
+                    type: "GET",
+                    data: {supplier_id: supplier_id},
+                    success: function (data) {
+                        var html = '<option value="">Select product</option>';
+                        $.each(data, function (key, v) {
+                            html += '<option value="' + v.id + '">' + v.name + '</option>'
+                        });
+                        $('#product_id').html(html);
+                    }
+                });
+            });
+            
+
             //Loading product stock under product_id selection
             $(document).on('change', '#product_id', function () {
                 var my_product_id = $(this).val();
@@ -468,6 +493,19 @@
                     success: function (data) {
                         //console.log(data)
                         $('#curent_stock_qty').val(data);
+                    }
+                });
+            });
+            //Loading product unit price product_id selection
+            $(document).on('change', '#product_id', function () {
+                var my_product_id = $(this).val();
+                $.ajax({
+                    url: "{{ route('product-unit-price') }}",
+                    type: "GET",
+                    data: { product_id: my_product_id },
+                    success: function (data) {
+                        console.log(data)
+                        $('#get_unit_price').val(data);
                     }
                 });
             });

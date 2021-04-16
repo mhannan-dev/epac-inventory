@@ -13,15 +13,7 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                {{-- <div class="form-check form-check-inline">
-                                    <label class="form-check-label">Supplier Wise Product</label> &nbsp;
-                                    <input type="radio" name="supplier_product_wise" value="supplier_wise"
-                                        class="form-check-input search_value">
-                                    &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <label class="form-check-label">Product Wise Report</label>&nbsp;
-                                    <input type="radio" name="supplier_product_wise" value="product_wise"
-                                        class="form-check-input search_value">
-                                </div> --}}
+                                
                                 <hr>
                                 {{-- <div class="show_supplier" style="display: none"> --}}
                                 <div class="show_supplier">

@@ -12,10 +12,7 @@
                             <div class="card-header">
                                 <a class="btn btn-info text-white text-bold">Invoice no {{ $invoice->invoice_no }}
                                     ({{ date('d-m-y', strtotime($invoice->date)) }})</a>
-                                <div class="float-right">
-                                    <a href="{{ route('invoice.pending.list') }}" class="btn btn-outline-info"><i
-                                            class="fas fa-arrow-left"></i> &nbsp;Back to Pending Invoice</a>
-                                </div>
+                                
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">

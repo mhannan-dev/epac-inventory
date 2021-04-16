@@ -157,6 +157,7 @@ Route::get('/category-for-invoice', 'Backend\DefaultController@categoryForInvoic
 Route::get('/get-product', 'Backend\DefaultController@getProduct')->name('get-product');
 Route::get('/get-unit', 'Backend\DefaultController@getUnits')->name('get-unit');
 Route::get('/check-product-stock', 'Backend\DefaultController@getStock')->name('check-product-stock');
+Route::get('/product-unit-price', 'Backend\DefaultController@get_unit_price')->name('product-unit-price');
 
 //to clear all cache
 Route::get('/clear', function() {

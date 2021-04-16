@@ -9,13 +9,13 @@ use App\Models\Payment;
 use App\Models\Product;
 use App\Models\Customer;
 use App\Models\Supplier;
+use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
 use App\Models\InvoiceDetail;
 use App\Models\PaymentDetail;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use PDF;
 class InvoiceController extends Controller
 {
     /**
@@ -26,15 +26,12 @@ class InvoiceController extends Controller
     public function getIndex()
     {
         $data['title'] = "Invoice";
-        $data['invoices'] = Invoice::orderBy('date', 'desc')->orderBy('id', 'desc')->where('status', '1')->get();
+        //$data['invoices'] = Invoice::orderBy('date', 'desc')->orderBy('id', 'desc')->where('status', '1')->get();
+        $data['invoices'] = Invoice::orderBy('date', 'desc')->orderBy('id', 'desc')->get();
+        //dd($data['invoices']);
         return view('backend.pages.invoice.index', $data);
     }
-    //Fake
-    public function invoice_design()
-    {
-        $data['title'] = "Invoice";
-        return view('backend.pages.invoice.invoice_pdf');
-    }
+   
     public function invoice_print()
     {
         $data['title'] = "invoice_print";
@@ -228,7 +225,7 @@ class InvoiceController extends Controller
             $invoice->save();
         });
         toast('Invoice successfully approved !!', 'success');
-        return redirect()->route('invoice.pending.list');
+        return redirect()->route('invoice.view');
     }
     public function invoicePrintList()
     {

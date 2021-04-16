@@ -71,7 +71,7 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item has-treeview {{($prefix=='/customers')?'menu-open':''}}">
+                    {{-- <li class="nav-item has-treeview {{($prefix=='/customers')?'menu-open':''}}">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-tools"></i>
                             <p>
@@ -89,7 +89,7 @@
                             </li>
 
                         </ul>
-                    </li>
+                    </li> --}}
 
 
 
@@ -117,7 +117,7 @@
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-toolbox"></i>
                             <p>
-                                Insert New  Product <i class="right fas fa-angle-left"></i>
+                                New  Product <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
@@ -161,7 +161,7 @@
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-toolbox"></i>
                             <p>
-                                Manage Invoice <i class="right fas fa-angle-left"></i>
+                                Bill <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
@@ -169,29 +169,23 @@
                                 <a href="{{route('invoice.view')}}"
                                    class="nav-link {{($route=='invoice.view')?'active':''}}">
                                     <i class="far fa-list-alt"></i>
-                                    <p>Confirm Invoice</p>
+                                    <p>All </p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="{{route('invoice.pending.list')}}"
-                                   class="nav-link {{($route=='invoice.pending.list')?'active':''}}">
-                                    <i class="far fa-list-alt"></i>
-                                    <p>Approve Invoice</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
+                            
+                            {{-- <li class="nav-item">
                                 <a href="{{route('invoice.print.list')}}"
                                    class="nav-link {{($route=='invoice.print.list')?'active':''}}">
                                     <i class="far fa-list-alt"></i>
                                     <p>Print Invoice</p>
                                 </a>
-                            </li>
+                            </li> --}}
 
                             <li class="nav-item">
                                 <a href="{{route('invoice.daily.search')}}"
                                    class="nav-link {{($route=='invoice.daily.search')?'active':''}}">
                                     <i class="far fa-list-alt"></i>
-                                    <p>Search Invoice</p>
+                                    <p>Search Bill</p>
                                 </a>
                             </li>
 

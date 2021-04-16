@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\Backend;
-
 use App\Models\Unit;
 use App\Models\Product;
-use App\Models\Category;
+
+use App\Models\Purchase;
 use App\Models\Supplier;
-use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -54,13 +54,10 @@ class StockController extends Controller
     public function stockReportSupplierWise(Request $request)
     {
         $data['products'] = Product::orderBy('supplier_id' ,'ASC')->where('supplier_id', $request->supplier_id)->get();
-        return view('backend.pages._PDF.supplier_wise_stock_report', $data);
+        
+        return view('backend.pages.stock.supplier_wise_stock', $data);
     }
-    public function stockReportProductWise(Request $request)
-    {
-        $data['products'] = Product::orderBy('supplier_id' ,'ASC')->where('supplier_id', $request->supplier_id)->get();
-        return view('backend.pages._PDF.product_wise_stock_report', $data);
-    }
+    
 
 
 }

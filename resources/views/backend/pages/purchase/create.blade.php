@@ -64,6 +64,7 @@
                                             <th>Description</th>
                                             <th>Unit</th>
                                             <th width="10%">Buying Rate</th>
+                                            <th width="10%">Selling Rate</th>
                                             <th width="10%">Quantity</th>
                                             <th width="15%">Total Price</th>
                                             <th width="3%" class="text-right">Action</th>
@@ -73,7 +74,7 @@
                                         </tbody>
                                         <tbody>
                                         <tr>
-                                            <td colspan="5" class="text-bold text-dark">Line Total</td>
+                                            <td colspan="6" class="text-bold text-dark">Line Total</td>
                                             <td class="text-white text-bold text-center">
                                                 <input id="estimated_amount" type="text" class="form-control form-control-sm text-right estimated_amount" readonly>
                                             </td>
@@ -117,6 +118,9 @@
                 <input type="number" class="form-control form-control-sm unit_price" name="unit_price[]" value="">
             </td>
             <td>
+                <input type="number" class="form-control form-control-sm unt_sell_price" name="unt_sell_price[]" value="">
+            </td>
+            <td>
                 <input type="number" min="1" class="form-control form-control-sm buying_qty" name="buying_qty[]">
             </td>
             <td>
@@ -139,6 +143,7 @@
             var unit_name = $('#unit_id').find('option:selected').text();
             var buying_qty = $('#buying_qty').val();
             var unit_price = $('#unit_price').val();
+            var unt_sell_price = $('#unt_sell_price').val();
             var description = $('#description').val();
             var buying_price = $('#buying_price').val();
             if (date == '') {
@@ -165,6 +170,10 @@
                 $.notify("Unit price is required", {globalPosition: 'top-right', className: 'error'});
                 return false;
             }
+            if (unt_sell_price == '') {
+                $.notify("Selling is required", {globalPosition: 'top-right', className: 'error'});
+                return false;
+            }
             if (buying_price == '') {
                 $.notify("Buying price is required", {globalPosition: 'top-right', className: 'error'});
                 return false;
@@ -179,6 +188,7 @@
                 product_name: product_name,
                 buying_qty: buying_qty,
                 unit_price: unit_price,
+                unt_sell_price: unt_sell_price,
                 unit_id: unit_id,
                 unit_name: unit_name,
                 buying_price: buying_price,
