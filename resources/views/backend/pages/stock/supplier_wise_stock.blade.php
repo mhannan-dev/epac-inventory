@@ -1,4 +1,16 @@
 @extends('backend.layouts.master')
+<style>
+    @media print {
+      @page {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      body  {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+      }
+    }
+  </style>
 @section('content')
     <div class="content-wrapper">
         <!-- Main content -->
@@ -61,7 +73,7 @@
                       <!-- this row will not appear when printing -->
                       <div class="row no-print">
                         <div class="col-12">
-                            <a href="invoice-print.html" rel="noopener" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
+                            <a href="{{ route('supplier.wise.stock.print') }}" rel="noopener" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
                         </div>
                       </div>
                     </div>

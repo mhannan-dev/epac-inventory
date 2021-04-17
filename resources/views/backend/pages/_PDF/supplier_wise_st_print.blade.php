@@ -32,14 +32,14 @@
   <section class="invoice">
     <!-- info row -->
     <div class="row invoice-info text-center">
-      <div class="col invoice-col mb-2">
+      <div class="col invoice-col">
+        <h1 class="text-danger">Working on this</h1>
           <h3>Epac.com.bd</h3>
           45, Topkhana Road,
           Purana paltan,<br>
           Dhaka - 1000 <br>
           Mobile: +880 1823 88 38 91<br>
-          Email: support@epac.com.bd <br>
-          <strong>Supplier Name: {{ $products['0']['supplier']['name'] }}</strong>
+          Email: support@epac.com.bd
       </div>
       <!-- /.col -->
     </div>
@@ -51,7 +51,8 @@
             <thead>
             <tr>
                 <th>@lang('form.th_sl')</th>
-
+                <th>@lang('form.th_supplier')</th>
+                
                 <th>Product Name</th>
                 <th>Created At</th>
                 <th>Stock</th>
@@ -59,11 +60,12 @@
             </tr>
             </thead>
             <tbody>
-            @if(count($products))
-                @foreach ($products as $key => $list)
+            @if(count($supplier_wise_stock))
+                @foreach ($supplier_wise_stock as $key => $list)
                     <tr>
                         <td>{{ ++$key }}</td>
-                        
+                        <td class="text-success">{{ $list['supplier']['name'] }}</td>
+
                         <td>{{ Str::limit($list->name, 20) }}</td>
                         <td>{{ \Carbon\Carbon::parse($list->created_at)->diffForHumans() }}</td>
                         <td>
@@ -78,7 +80,7 @@
                 @endforeach
             @else
                 <tr>
-                    <td colspan="5"> Opps!!, {{$title}} Not found</td>
+                    <td colspan="5"> Opps!!,  Not found</td>
                 </tr>
             @endif
             </tbody>
