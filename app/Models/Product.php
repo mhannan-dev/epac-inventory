@@ -36,7 +36,7 @@ class Product extends Model
 
     public function purchases()
     {
-        return $this->hasMany(Purchase::class);
+        return $this->hasMany(Purchase::class)->orderBy('id', 'DESC');
     }
 
 
