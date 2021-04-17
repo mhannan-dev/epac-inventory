@@ -3,12 +3,9 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\Unit;
-use App\Models\Brand;
 use App\Models\Product;
-use App\Models\Category;
 use App\Models\Purchase;
 use App\Models\Supplier;
-use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -84,7 +81,7 @@ class PurchaseController extends Controller
 
         }
         toast('Data added successfully !!', 'success');
-        return redirect()->route('admin.purchase.view');
+        return redirect()->route('purchase.pending.list');
 
     }
 

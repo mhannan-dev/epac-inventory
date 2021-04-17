@@ -1,9 +1,6 @@
 <?php
-
 namespace App\Http\Controllers\Backend;
-
 use App\Models\Unit;
-
 use App\Models\Invoice;
 use App\Models\Payment;
 use App\Models\Product;
@@ -25,13 +22,12 @@ class InvoiceController extends Controller
      */
     public function getIndex()
     {
-        $data['title'] = "Invoice";
+        $data['title'] = "Bill";
         //$data['invoices'] = Invoice::orderBy('date', 'desc')->orderBy('id', 'desc')->where('status', '1')->get();
         $data['invoices'] = Invoice::orderBy('date', 'desc')->orderBy('id', 'desc')->get();
         //dd($data['invoices']);
         return view('backend.pages.invoice.index', $data);
     }
-   
     public function invoice_print()
     {
         $data['title'] = "invoice_print";
@@ -44,7 +40,7 @@ class InvoiceController extends Controller
      */
     public function getCreate()
     {
-        $data['title'] = "Create Invoice";
+        $data['title'] = "Create Bill";
         $data['units'] = Unit::all();
         $data['products'] = Product::all();
         $data['customers'] = Customer::all();
@@ -89,11 +85,9 @@ class InvoiceController extends Controller
                             $invoice_details = new InvoiceDetail();
                             $invoice_details->date = date('Y-m-d', strtotime($request->date));
                             $invoice_details->invoice_id = $invoice->id;
-
                             $invoice_details->product_id = $request->product_id[$i];
                             $invoice_details->selling_qty = $request->selling_qty[$i];
-
-                            $invoice_details->unit_price = $request->unit_price[$i];
+                            $invoice_details->unt_sell_price = $request->unt_sell_price[$i];
                             $invoice_details->selling_price = $request->selling_price[$i];
                             $invoice_details->status = '1';
                             $invoice_details->save();
@@ -154,7 +148,6 @@ class InvoiceController extends Controller
         $data['suppliers'] = Supplier::all();
         $data['units'] = Unit::all();
         $data['product'] = Product::find($id);
-        //dd($data['product']);
         if (!is_null($data)) {
             return view('backend.pages.product.edit', $data);
         } else {
@@ -260,6 +253,5 @@ class InvoiceController extends Controller
         $data['end_date']   = date('Y-m-d', strtotime($request->end_date));
         $data['invoices']   = Invoice::whereBetween('date', [$st_date, $end_date])->where('status', '1')->get();
         return view('backend.pages.invoice.search_result', $data);
-
     }
 }

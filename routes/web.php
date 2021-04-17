@@ -158,6 +158,8 @@ Route::get('/get-product', 'Backend\DefaultController@getProduct')->name('get-pr
 Route::get('/get-unit', 'Backend\DefaultController@getUnits')->name('get-unit');
 Route::get('/check-product-stock', 'Backend\DefaultController@getStock')->name('check-product-stock');
 Route::get('/product-unit-price', 'Backend\DefaultController@get_unit_price')->name('product-unit-price');
+Route::get('/unit-selling-price', 'Backend\DefaultController@unit_selling_price')->name('unit-selling-price');
+Route::get('/get-product-by-id', 'Backend\DefaultController@getProductById')->name('get-product-by-id');
 
 //to clear all cache
 Route::get('/clear', function() {

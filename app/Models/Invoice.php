@@ -20,6 +20,10 @@ class Invoice extends Model
     {
         return $this->hasMany(InvoiceDetail::class, 'invoice_id','id');
     }
+    public function unit()
+    {
+        return $this->belongsTo(Unit::class,'id','unit_id');
+    }
 
 
 }

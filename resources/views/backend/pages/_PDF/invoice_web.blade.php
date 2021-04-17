@@ -94,7 +94,7 @@ $payment = App\Models\Payment::where('invoice_id', $invoice->id)->first();
                                 <th>Category</th>
                                 <th>Product name</th>
                                 <th>Quantity</th>
-                                <th class="text-right">Unit Price</th>
+                                <th class="text-right">Selling Price</th>
                                 <th class="text-right">Total</th>
                             </tr>
                         </thead>
@@ -108,7 +108,7 @@ $payment = App\Models\Payment::where('invoice_id', $invoice->id)->first();
                                 <td>{{ $details['category']['name'] }}</td>
                                 <td>{{ $details['products']['name'] }}</td>
                                 <td>{{ $details->selling_qty }}</td>
-                                <td class="text-right">{{ $details->unit_price }}</td>
+                                <td class="text-right">{{ $details->unt_sell_price }}</td>
                                 <td class="text-right">{{ $details->selling_price }}</td>
                             </tr>
                             @php

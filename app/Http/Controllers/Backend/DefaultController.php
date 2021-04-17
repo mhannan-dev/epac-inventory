@@ -4,11 +4,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Purchase;
-use App\Models\SubCategory;
 use Illuminate\Http\Request;
-
-use App\Models\Unit;
-use Validator;
 
 
 class DefaultController extends Controller
@@ -28,13 +24,6 @@ class DefaultController extends Controller
     }
 
 
-    // public function getCategory(Request $request)
-    // {
-    //     $r_supplier_id = $request->supplier_id;
-    //     $allCategory = Product::with('category')->select('category_id')->where('supplier_id',$r_supplier_id)->groupBy('category_id')->get();
-    //     return response()->json($allCategory);
-    // }
-
     public function categoryForInvoice(Request $request)
     {
         $r_brand_id = $request->brand_id;
@@ -47,8 +36,9 @@ class DefaultController extends Controller
 
     public function getUnits(Request $request){
         $r_product_id = $request->product_id;
+        //dd($r_product_id);
         $allUnits = Product::select('unit_id')->where('id',$r_product_id)->first();
-        dd($allUnits->toArray());
+        //dd($allUnits->toArray());
         return response()->json($allUnits);
     }
 
@@ -63,23 +53,36 @@ class DefaultController extends Controller
     public function get_unit_price(Request $request){
         $r_product_id = $request->product_id;
         $unit_price = Purchase::where('id',$r_product_id)->first()->unit_price;
-        //dd($unit_price);
         return response()->json($unit_price);
     }
+    public function unit_selling_price(Request $request){
+        $r_product_id = $request->product_id;
+        //dd($r_product_id);
+        $unt_sell_price = Purchase::where('id',$r_product_id)->first()->unt_sell_price;
+        //dd($unt_sell_price);
+        return response()->json($unt_sell_price);
+    }
 
-    
+    public function getProductById(Request $request){
+        try {
+            $product = Product::findOrFail($request->product_id);
+            $data['unit'] = $product->units->name;
+            $data['unitPrice'] = $product->unitPrice;
+            $data['stock'] = $product->stock;
+            $data['unitSellingPrice'] = $product->unitSellingPrice;
+            return response()->json([
+                'status' => 1,
+                'message' => 'Product Data Found',
+                'data' => $data
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => 0,
+                'message' => 'Product Data Not Found',
+                'data' => []
+            ]);
+        }
+    }
 
-
-//    public function getSubCategory(Request $request){
-//        if(empty($request->cat_id)){
-//            return response()->json(['status' => false , 'message' => 'Category ID Not found', 'data' => [] ]);
-//        }
-//        $data = SubCategory::select('id','name')->where('category_id',$request->cat_id)->get();
-//        if(count($data)){
-//            return response()->json(['status' => true , 'message' => 'Sub Category found', 'data' => $data]);
-//        }else{
-//            return response()->json(['status' => false , 'message' => 'Sub Category Not found', 'data' => [] ]);
-//        }
-//    }
-
+ 
 }
