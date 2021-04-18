@@ -142,10 +142,10 @@ Route::group(['prefix' => 'invoice'], function () {
 Route::group(['prefix' => 'stock'], function () {
     Route::get('/report', 'Backend\StockController@stockReport')->name('stock.report');
     Route::get('/report/pdf', 'Backend\StockController@stockReportPdf')->name('stock.report.pdf');
-    Route::get('/selece/supplier', 'Backend\StockController@stockSupplierWise')->name('stock.supplier.wise');
+    Route::get('/selecet/supplier', 'Backend\StockController@stockSupplierWise')->name('stock.supplier.wise');
     Route::get('/report/supplier/wise', 'Backend\StockController@stockReportSupplierWise')->name('report.supplier.wise');
-    Route::get('/report/supplier/wise/print', 'Backend\StockController@supplierWiseStockPrint')->name('supplier.wise.stock.print');
-    Route::get('/report/product/wise', 'Backend\StockController@stockReportProductWise')->name('report.product.wise');
+    Route::get('/supplier/wise/print', 'Backend\StockController@supplierWiseStockPrint')->name('supplier.wise.stock.print');
+
 
 });
 
