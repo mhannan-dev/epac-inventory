@@ -230,7 +230,7 @@
                             <a href="{{route('logged_in.user.profile.view')}}"
                                class="nav-link {{($route=='logged_in.user.profile.view')?'active':''}}">
                                 <i class="far fa-list-alt"></i>
-                                <p>Profiles</p>
+                                <p>Profile</p>
                             </a>
                         </li>
 

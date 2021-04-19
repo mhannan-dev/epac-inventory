@@ -26,7 +26,7 @@
                                             <label for="name">Name</label>
                                             <input type="text" name="name" class="form-control" id="name" placeholder="Enter name" required value="{{$editData->name}}">
                                             <label for="email">Email</label>
-                                            <input type="email" name="email" class="form-control" id="email" placeholder="Email" required value="{{$editData->email}}">
+                                            <input type="email" name="email" class="form-control" id="email" placeholder="Email" required value="{{$editData->email}}" readonly>
 
                                             <label for="mobile">Mobile</label>
                                             <input type="text" name="mobile" class="form-control" id="mobile" required value="{{$editData->mobile}}">
@@ -41,24 +41,14 @@
 
                                             <input type="text" class="form-control" id="address" name="address" value="{{$editData->address}}">
 
+                                            <button type="submit" class="btn btn-info btn-block mt-2">@lang('form.btn_update')</button>
+
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="image">Image</label>
-                                            <input type="file" class="form-control-file" id="image" name="image">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <img id="showImage" src="{{(!empty(($editData->image))?url('/storage/'.$editData->image):url('/storage/upload/user/no_image.png'))}}" class="rounded-circle img-thumbnail" alt="{{$editData->name}}" style="height: 150px; width: 150px; border: 2px solid #000019">
-                                        </div>
 
 
                                     </div>
-                                    <!-- /.card-body -->
-                                    <div class="card-footer">
-                                        <button type="submit" class="btn btn-info btn-block">@lang('form.btn_update')</button>
 
-                                    </div>
                                 {!! Form::close() !!}
 
 

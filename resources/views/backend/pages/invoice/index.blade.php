@@ -10,10 +10,7 @@
                         <div class="card mt-2">
                             <div class="card-header">
                                 <h3 class="card-title">{{ $title }} List</h3>
-                                <div class="float-right">
-                                    <a href="{{ route('invoice.create') }}" class="btn btn-outline-info"><i
-                                            class="fas fa-plus"></i> &nbsp;Add {{ $title }}</a>
-                                </div>
+                                
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
@@ -48,10 +45,10 @@
                                                             Not Approved
                                                         @endif
                                                     </td>
-                                                   
+
                                                     <td>
                                                         @if($invoice->status == 0)
-                                                        
+
                                                         <a target="_blank" title="Approve" href="{{ route('invoice.approve', $invoice->id)}}" class="badge badge-success text-right">
                                                             <i class="fa fa-check-circle" aria-hidden="true"></i>
                                                         </a>
@@ -66,9 +63,9 @@
                                                         </a>
                                                         @endif
 
-                                                        
 
-                                                       
+
+
 
                                                         <!-- Delete Modal -->
                                                         <div class="modal fade" id="deleteModal{{ $invoice->id }}"
@@ -103,7 +100,7 @@
                                                             </div>
                                                         </div>
                                                         <!-- Delete Modal -->
-                                                   
+
                                                 </tr>
                                             @endforeach
                                         @else

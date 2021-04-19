@@ -26,8 +26,13 @@
                                         <div class="form-group col-md-1" style="padding-top: 30px;">
                                             <button class="btn btn-success float-right btn-sm">Search</button>
                                         </div>
+
+
+
                                     </div>
                                 </form>
+                                <a href="{{ route('invoice.create') }}" class="btn btn-outline-info"><i
+                                    class="fas fa-plus"></i> &nbsp; Create Bill</a>
                             </div>
                         </div>
                         <!-- /.card -->

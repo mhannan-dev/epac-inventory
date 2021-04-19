@@ -69,9 +69,15 @@
                                                     @endif
                                                 </td>
                                                 <td>
+                                                    @if($list->role_id == 1)
+                                                    -
+                                                    @else
                                                     <a href="#deleteModal{{ $list->id }}" data-toggle="modal" class="badge badge-danger">
                                                         <i class="fa fa-trash" aria-hidden="true"></i>
                                                     </a>
+                                                    @endif
+
+
                                                     <!-- Delete Modal -->
                                                     <div class="modal fade" id="deleteModal{{ $list->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog" role="document">

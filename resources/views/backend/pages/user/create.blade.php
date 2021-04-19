@@ -42,11 +42,7 @@
                                     {!! Form::text('email', null, [ 'class' => 'form-control', 'data-validation-required-message' => 'This field is required', 'placeholder' => 'Enter email']) !!}
                                     {!! $errors->first('email', '<label class="help-block text-danger">:message</label>') !!}
                                   </div>
-                                  <div class="form-group">
-                                    <label for="username">@lang('form.username')<span class="text-danger">*</span></label>
-                                    {!! Form::text('username', null, [ 'class' => 'form-control', 'data-validation-required-message' => 'This field is required', 'placeholder' => 'Enter username']) !!}
-                                    {!! $errors->first('username', '<label class="help-block text-danger">:message</label>') !!}
-                                  </div>
+                                  
 
                                     <div class="form-group">
                                     <label for="password">@lang('form.password')<span class="text-danger">*</span></label>
@@ -54,7 +50,7 @@
                                     {!! Form::password('password',[ 'class' => 'form-control', 'data-validation-required-message' => 'This field is required', 'placeholder' => 'Enter password' ]) !!}
                                     {!! $errors->first('password', '<label class="help-block text-danger">:message</label>') !!} <br>
                                   </div>
-                                  
+
 
                                 </div>
 

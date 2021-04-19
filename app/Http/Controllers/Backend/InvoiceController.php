@@ -246,7 +246,7 @@ class InvoiceController extends Controller
     }
     public function dailyInvoiceReport(Request $request)
     {
-        $data['title'] = "Invoice";
+        $data['title'] = "Bill";
         $st_date    = date('Y-m-d', strtotime($request->start_date));
         $end_date   = date('Y-m-d', strtotime($request->end_date));
         $data['start_date'] = date('Y-m-d', strtotime($request->start_date));
