@@ -13,7 +13,7 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                
+
                                 <hr>
                                 {{-- <div class="show_supplier" style="display: none"> --}}
                                 <div class="show_supplier">
@@ -39,7 +39,7 @@
                                 </div>
 
                                 <div class="show_product" style="display: none">
-                                    <form id="productForm" action="{{ route('report.product.wise') }}" method="GET">
+                                    <form id="productForm" action="" method="GET">
                                         <div class="form-row">
                                             <div class="col-md-4">
                                                 <label for="product_id">Product select</label>

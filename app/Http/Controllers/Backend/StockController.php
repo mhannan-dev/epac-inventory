@@ -45,7 +45,7 @@ class StockController extends Controller
     }
     public function stockSupplierWise()
     {
-     $data['title'] = "Supplier/Product Wise Stock";
+     $data['title'] = "Supplier";
      $data['suppliers'] = Supplier::where('status', 'active')->get();
      $data['products'] = Product::orderBy('supplier_id' ,'ASC')->get();
      return view('backend.pages.stock.supplier-wise', $data);

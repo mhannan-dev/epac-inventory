@@ -172,7 +172,7 @@
                                     <p>All </p>
                                 </a>
                             </li>
-                            
+
                             {{-- <li class="nav-item">
                                 <a href="{{route('invoice.print.list')}}"
                                    class="nav-link {{($route=='invoice.print.list')?'active':''}}">
@@ -206,8 +206,8 @@
                                     <i class="far fa-list-alt"></i>
                                     <p>Stock Report</p>
                                 </a>
-                                <a href="{{route('stock.supplier.wise')}}"
-                                   class="nav-link {{($route=='stock.supplier.wise')?'active':''}}">
+                                <a href="{{route('select.supplier')}}"
+                                   class="nav-link {{($route=='select.supplier')?'active':''}}">
                                     <i class="far fa-list-alt"></i>
                                     <p>Search Stock </p>
                                 </a>
