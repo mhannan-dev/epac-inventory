@@ -57,13 +57,7 @@ class StockController extends Controller
         //dd($data['products']);
         return view('backend.pages.stock.supplier_wise_stock', $data);
     }
-    public function supplierWiseStockPrint(Request $request)
-    {
-        $data['all_data'] = Product::orderBy('supplier_id' ,'asc')->where('supplier_id', $request->supplier_id)->get();
-        //dd($data['all_data']);
-        $pdf = PDF::loadView('backend.pages._PDF.supplier_wise_stock_report', $data);
-        return $pdf->stream('supplier_wise_stock_report.pdf');
-    }
+
 
 
 }

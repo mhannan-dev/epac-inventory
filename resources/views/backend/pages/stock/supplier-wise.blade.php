@@ -17,22 +17,23 @@
                                 <hr>
                                 {{-- <div class="show_supplier" style="display: none"> --}}
                                 <div class="show_supplier">
-                                    <form id="supplierForm" action="{{ route('report.supplier.wise') }}" method="GET">
+                                    <form id="supplierForm" action="{{ route('report.supplier.wise') }}" method="GET" target="_blank">
                                         <div class="form-row">
                                             <div class="col-md-4">
                                                 <label for="supplier_id">Supplier select</label>
                                                 <select class="form-control select2 form-control-sm" id="supplier_id"
                                                     name="supplier_id">
-                                                    <option>Select Supplier</option>
+                                                <option value="0" disabled>Select Supplier</option>
                                                     @foreach ($suppliers as $supplier)
-                                                        <option value="{{ $supplier->id }}"> {{ $supplier->name }}
-                                                        </option>
+                                                        <option value="{{ $supplier->id }}">
+                                                            {{ $supplier->name }}
+                                                </option>
                                                     @endforeach
                                                 </select>
                                             </div>
                                             <div class="col-md-2">
                                                 <button type="submit" class="btn btn-primary btn-sm"
-                                                    style="margin-top: 31px;">Search</button>
+                                                    style="margin-top: 31px;">Generate</button>
                                             </div>
                                         </div>
                                     </form>
