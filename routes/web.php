@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 
@@ -21,6 +22,7 @@ Route::get('/', 'Backend\DashboardController@index')->name('dashboard');
 Auth::routes();
 
 Route::group(array('middleware' => 'auth'), function () {
+   
     Route::group(['prefix' => 'user'], function () {
         Route::get('/all-user', 'Backend\UsersController@getIndex')->name('logged_in.user.view');
         Route::get('/create', 'Backend\UsersController@getCreate')->name('admin.user.create');
@@ -29,7 +31,7 @@ Route::group(array('middleware' => 'auth'), function () {
         Route::post('/update/{id}', 'Backend\UsersController@postUpdate')->name('logged_in.user.update');
         Route::post('/delete/{id}', 'Backend\UsersController@postDelete')->name('logged_in.user.delete');
     });
-
+    
     Route::group(['prefix' => 'profile'], function () {
         Route::get('/view', 'Backend\ProfileController@getIndex')->name('logged_in.user.profile.view');
         Route::get('/edit/{id}', 'Backend\ProfileController@getEdit')->name('logged_in.user.profile.edit');
@@ -60,16 +62,6 @@ Route::group(array('middleware' => 'auth'), function () {
 
 });
 
-
-Route::group(['prefix' => 'brand'], function () {
-    Route::get('/index', 'Backend\BrandsController@getIndex')->name('admin.brand.view');
-    Route::get('/create', 'Backend\BrandsController@getCreate')->name('admin.brand.create');
-    Route::post('/store', 'Backend\BrandsController@postStore')->name('admin.brand.store');
-    Route::get('/edit/{id}', 'Backend\BrandsController@getEdit')->name('admin.brand.edit');
-    Route::post('/update/{id}', 'Backend\BrandsController@postUpdate')->name('admin.brand.update');
-    Route::post('/delete/{id}', 'Backend\BrandsController@postDelete')->name('admin.brand.delete');
-
-});
 
 
 
@@ -103,15 +95,7 @@ Route::group(['prefix' => 'category'], function () {
 
 });
 
-Route::group(['prefix' => 'sub-category'], function () {
-    Route::get('/index', 'Backend\SubCategoryController@getIndex')->name('admin.sub_category.view');
-    Route::get('/create', 'Backend\SubCategoryController@getCreate')->name('admin.sub_category.create');
-    Route::post('/store', 'Backend\SubCategoryController@postStore')->name('admin.sub_category.store');
-    Route::get('/edit/{id}', 'Backend\SubCategoryController@getEdit')->name('admin.sub_category.edit');
-    Route::post('/update/{id}', 'Backend\SubCategoryController@postUpdate')->name('admin.sub_category.update');
-    Route::post('/delete/{id}', 'Backend\SubCategoryController@postDelete')->name('admin.sub_category.delete');
 
-});
 
 Route::group(['prefix' => 'purchase'], function () {
     Route::get('/index', 'Backend\PurchaseController@getIndex')->name('admin.purchase.view');

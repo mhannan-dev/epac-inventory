@@ -30,7 +30,7 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                @if(Auth::user()->role_id==1)
+                @if(Auth::user()->role_id == 1)
                     <li class="nav-item has-treeview {{($prefix=='/user')?'menu-open':''}}">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-user"></i>
@@ -50,6 +50,8 @@
 
                         </ul>
                     </li>
+                    
+                    @endif
 
                     <li class="nav-item has-treeview {{($prefix=='/suppliers')?'menu-open':''}}">
                         <a href="#" class="nav-link">
@@ -216,7 +218,7 @@
                     </li>
 
 
-                @endif
+                
 
                 <li class="nav-item has-treeview {{($prefix=='/profile')?'menu-open':''}}">
                     <a href="#" class="nav-link">

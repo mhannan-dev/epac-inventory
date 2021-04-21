@@ -7,6 +7,7 @@ use Illuminate\Contracts\Support\Renderable;
 
 class DashboardController extends Controller
 {
+    
     /**
      * Create a new controller instance.
      *
