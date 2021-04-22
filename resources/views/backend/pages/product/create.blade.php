@@ -21,7 +21,7 @@
                                             <label>Supplier</label>
                                             <select class="form-control select2 form-control-sm" style="width: 100%;" id="supplier_id" name="supplier_id">
 
-                                                <option selected="selected">Select supplier</option>
+                                                <option disabled>Select supplier</option>
                                                 @foreach($suppliers as $data_row)
 
                                                     <option value="{{ $data_row->id}}">{{ $data_row->name }}</option>

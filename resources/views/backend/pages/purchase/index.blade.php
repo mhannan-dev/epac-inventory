@@ -10,9 +10,10 @@
 
                         <div class="card mt-2">
                             <div class="card-header">
-                                <h3 class="card-title">{{$title}} List</h3>
+                                <h3 class="card-title"><strong>Inventory List</strong> (Stored Products)</h3>
                                 <div class="float-right">
-                                    <a href="{{ route('admin.purchase.create') }}" class="btn btn-outline-info"><i class="fas fa-plus"></i> &nbsp;Add {{$title}}</a>
+                                    <a href="{{ route('admin.purchase.create') }}" class="btn btn-outline-info">
+                                        <i class="fas fa-plus"></i> &nbsp; New Inventory</a>
                                 </div>
 
                             </div>

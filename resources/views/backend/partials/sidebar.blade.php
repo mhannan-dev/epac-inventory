@@ -5,7 +5,7 @@
 
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="" class="brand-link">
         <img src="{{ URL::asset('backend')}}/epac_logo.jpg" alt="AdminLTE Logo"
              class="brand-image img-circle elevation-3"
              style="opacity:.8">
@@ -73,26 +73,7 @@
                         </ul>
                     </li>
 
-                    {{-- <li class="nav-item has-treeview {{($prefix=='/customers')?'menu-open':''}}">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-tools"></i>
-                            <p>
-                                Manage Customers <i class="right fas fa-angle-left"></i>
-
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{route('admin.customers.view')}}"
-                                   class="nav-link {{($route=='admin.customers.view')?'active':''}}">
-                                    <i class="far fa-list-alt"></i>
-                                    <p>Customers</p>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </li> --}}
-
+                    
 
 
 
@@ -145,7 +126,7 @@
                                 <a href="{{route('admin.purchase.view')}}"
                                    class="nav-link {{($route=='admin.purchase.view')?'active':''}}">
                                     <i class="far fa-list-alt"></i>
-                                    <p>Products</p>
+                                    <p>Inventory  Product</p>
                                 </a>
                             </li>
 
@@ -168,6 +149,14 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
+                                <a href="{{route('invoice.daily.search')}}"
+                                   class="nav-link {{($route=='invoice.daily.search')?'active':''}}">
+                                    <i class="far fa-list-alt"></i>
+                                    <p>Create Bill</p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
                                 <a href="{{route('invoice.view')}}"
                                    class="nav-link {{($route=='invoice.view')?'active':''}}">
                                     <i class="far fa-list-alt"></i>
@@ -175,21 +164,7 @@
                                 </a>
                             </li>
 
-                            {{-- <li class="nav-item">
-                                <a href="{{route('invoice.print.list')}}"
-                                   class="nav-link {{($route=='invoice.print.list')?'active':''}}">
-                                    <i class="far fa-list-alt"></i>
-                                    <p>Print Invoice</p>
-                                </a>
-                            </li> --}}
-
-                            <li class="nav-item">
-                                <a href="{{route('invoice.daily.search')}}"
-                                   class="nav-link {{($route=='invoice.daily.search')?'active':''}}">
-                                    <i class="far fa-list-alt"></i>
-                                    <p>Search Bill</p>
-                                </a>
-                            </li>
+                        
 
                         </ul>
                     </li>

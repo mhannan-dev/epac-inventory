@@ -22,44 +22,89 @@
                                         <tr>
                                             <th>@lang('form.th_sl')</th>
                                             <th>@lang('form.th_supplier')</th>
-
                                             <th>Product Name</th>
-
                                             <th>In Qty</th>
                                             <th>In Stock</th>
-                                            
-
+                                            <th>Buying Price</th>
+                                            <th>Avg. Unit Price</th>
+                                            <th>Avg. Unit Sell Price</th>
                                             <th>@lang('form.th_units')</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @if (count($products))
+
                                             @foreach ($products as $key => $list)
+
                                                 @php
                                                     $buying_total = App\Models\Purchase::where('supplier_id', $list->supplier_id)
                                                         ->where('product_id', $list->id)
                                                         ->where('status', '1')
                                                         ->sum('buying_qty');
                                                     
-                                                        $unt_sell_price = DB::select('SELECT unt_sell_price from purchases ORDER by product_id');
-
-                                                        
+                                                    $buying_price = App\Models\Purchase::where('supplier_id', $list->supplier_id)
+                                                        ->where('product_id', $list->id)
+                                                        ->where('status', '1')
+                                                        ->sum('buying_price');
+                                                    $unit_price = App\Models\Purchase::where('supplier_id', $list->supplier_id)
+                                                        ->where('product_id', $list->id)
+                                                        ->where('status', '1')
+                                                        ->avg('unit_price');
+                                                    $avg_unt_sell_price = App\Models\Purchase::where('supplier_id', $list->supplier_id)
+                                                        ->where('product_id', $list->id)
+                                                        ->where('status', '1')
+                                                        ->avg('unt_sell_price');
                                                     
                                                 @endphp
-                                                {{-- {{ dd($selling_total) }} --}}
+
                                                 <tr>
                                                     <td>{{ ++$key }}</td>
                                                     <td class="text-success">{{ $list['supplier']['name'] }}</td>
-
                                                     <td>{{ Str::limit($list->name, 20) }}</td>
-                                                    <td>{{ $buying_total }}</td>
-
                                                     <td>
-                                                        {{ $list->quantity }}
+                                                        @if ($buying_total > 0)
+                                                            {{ $buying_total }}
+                                                        @else
+                                                            -
+                                                        @endif
                                                     </td>
+                                                    <td>
 
+                                                        @if ($list->quantity > 0)
+                                                            {{ $list->quantity }}
+                                                        @else
+                                                            -
+                                                        @endif
+
+
+                                                    </td>
+                                                    <td>
+                                                        @if ($buying_price > 0)
+                                                            {{ $buying_price }}
+                                                        @else
+                                                            -
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if ($unit_price > 0)
+                                                            {{ $unit_price }}
+                                                        @else
+                                                            -
+                                                        @endif
+
+                                                    </td>
+                                                    <td>
+                                                        @if ($avg_unt_sell_price > 0)
+                                                            {{ $avg_unt_sell_price }}
+                                                        @else
+                                                            -
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                       
+                                                        {{ $list->units->name }}
                                                     
-                                                    <td>{{ $list->units->name }}</td>
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                         @else
