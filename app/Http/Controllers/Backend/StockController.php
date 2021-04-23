@@ -29,6 +29,8 @@ class StockController extends Controller
 
         $data['title'] = "Stock";
         $data['products'] = Product::orderBy('supplier_id' ,'ASC')->orderBy('id' ,'ASC')->get();
+        $data['suppliers'] = Supplier::where('status', 'active')->get();
+        //$data['products'] = Product::orderBy('supplier_id' ,'ASC')->get();
         //dd($data['products']);
         return view('backend.pages.stock.report', $data);
     }

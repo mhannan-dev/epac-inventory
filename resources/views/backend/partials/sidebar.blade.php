@@ -100,7 +100,7 @@
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-toolbox"></i>
                             <p>
-                                New  Product <i class="right fas fa-angle-left"></i>
+                                General  Product <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
@@ -139,8 +139,16 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{route('invoice.daily.search')}}"
+                                   class="nav-link {{($route=='invoice.daily.search')?'active':''}}">
+                                    <i class="far fa-list-alt"></i>
+                                    <p>Create Bill</p>
+                                </a>
+                        
+                    </li>
 
-                    <li class="nav-item has-treeview {{($prefix=='/invoice')?'menu-open':''}}">
+                    {{-- <li class="nav-item has-treeview {{($prefix=='/invoice')?'menu-open':''}}">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-toolbox"></i>
                             <p>
@@ -155,7 +163,6 @@
                                     <p>Create Bill</p>
                                 </a>
                             </li>
-
                             <li class="nav-item">
                                 <a href="{{route('invoice.view')}}"
                                    class="nav-link {{($route=='invoice.view')?'active':''}}">
@@ -163,11 +170,8 @@
                                     <p>All </p>
                                 </a>
                             </li>
-
-                        
-
                         </ul>
-                    </li>
+                    </li> --}}
 
                     <li class="nav-item has-treeview {{($prefix=='/stock')?'menu-open':''}}">
                         <a href="#" class="nav-link">
@@ -183,11 +187,7 @@
                                     <i class="far fa-list-alt"></i>
                                     <p>Stock Report</p>
                                 </a>
-                                <a href="{{route('select.supplier')}}"
-                                   class="nav-link {{($route=='select.supplier')?'active':''}}">
-                                    <i class="far fa-list-alt"></i>
-                                    <p>Search Stock </p>
-                                </a>
+                                
                             </li>
                         </ul>
                     </li>
