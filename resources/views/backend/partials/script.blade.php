@@ -1,5 +1,5 @@
 <!-- jQuery -->
-<script src="{{ URL::asset('backend')}}/plugins/jquery/jquery.min.js"></script>
+
 <script src="{{ URL::asset('backend')}}/plugins/jquery-ui/jquery-ui.min.js"></script>
 <script src="{{ URL::asset('backend')}}/plugins/jquery-validation/jquery.validate.min.js"></script>
 <script src="{{ URL::asset('backend')}}/plugins/jquery-validation/additional-methods.min.js"></script>
