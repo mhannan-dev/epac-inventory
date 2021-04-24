@@ -40,10 +40,11 @@
                                     <div class="form-group col-md-4">
                                         <label for="unit_id">Unit Name</label>
                                         <select class="form-control select2 form-control-sm" id="unit_id" name="unit_id">
-                                        <option>Unit name</option>
-                                        @foreach ($units as $key => $unit)
+                                        
+                                        <option value="">Unit name</option>
+                                        {{-- @foreach ($units as $key => $unit)
                                             <option value="{{ $unit->id }}">{{ $unit->name }}</option>
-                                        @endforeach
+                                        @endforeach --}}
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -237,6 +238,27 @@
                             html += '<option value="' + v.id + '">' + v.name + '</option>'
                         });
                         $('#product_id').html(html);
+                    }
+                });
+            });
+        });
+        $(function () {
+            //Loading product_id under supplier_id selection
+            $(document).on('change', '#product_id', function () {
+               
+                var product_id = $(this).val();
+                $.ajax({
+                    url: "{{ route('get-unit') }}",
+                    type: "GET",
+                    data: {product_id: product_id},
+                    success: function (data) {
+                        var html = '<option value="">Select unit</option>';
+                        $.each(data, function (key, v) {
+                            
+                            html += '<option value="' + v.id + '">' + v.name + '</option>'
+                           
+                        });
+                        $('#unit_id').html(html);
                     }
                 });
             });
