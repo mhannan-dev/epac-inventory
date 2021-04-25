@@ -26,16 +26,16 @@
     <link rel="stylesheet" href="{{ URL::asset('backend')}}/plugins/summernote/summernote-bs4.css">
 
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
     <!--gijgo -->
     <link rel="stylesheet" href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css">
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ URL::asset('backend')}}/plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="{{ URL::asset('backend')}}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
-    
 
-    @stack('styles')
-    @stack('scripts')
+
+    @yield('styles')
+    @yield('js')
 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -84,7 +84,6 @@
 <!-- ./wrapper -->
 
 @include('backend.partials.script')
-
 @include('sweetalert::alert')
 
 @stack('scripts')

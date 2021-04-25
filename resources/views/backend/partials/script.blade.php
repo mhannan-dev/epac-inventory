@@ -1,5 +1,5 @@
 <!-- jQuery -->
-
+<script src="{{ URL::asset('backend')}}/plugins/jquery/jquery.min.js"></script>
 <script src="{{ URL::asset('backend')}}/plugins/jquery-ui/jquery-ui.min.js"></script>
 <script src="{{ URL::asset('backend')}}/plugins/jquery-validation/jquery.validate.min.js"></script>
 <script src="{{ URL::asset('backend')}}/plugins/jquery-validation/additional-methods.min.js"></script>
@@ -40,6 +40,7 @@
 <script src="{{ URL::asset('backend')}}/dist/js/notify.min.js"></script>
 <!-- Select2 -->
 <script src="{{ URL::asset('backend')}}/plugins/select2/js/select2.full.min.js"></script>
+
 <script>
     $(function () {
         //Initialize Select2 Elements
@@ -51,4 +52,3 @@
         });
     })
 </script>
-

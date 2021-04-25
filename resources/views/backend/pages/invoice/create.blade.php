@@ -100,7 +100,7 @@
                                         <div class="form-group col-md-4">
                                             <label for="paid_status">Payment status</label>
                                             <select name="paid_status" id="paid_status" class="form-control form-control-sm">
-                                                <option value="full_paid">Full paid</option>
+                                                <option selected value="full_paid">Full paid</option>
                                                 <option value="full_due">Full due</option>
                                                 <option value="partial_paid">Partial payment</option>
                                             </select>
@@ -146,8 +146,8 @@
             </div>
         </section>
     </div>
-   
-    
+
+
 @endsection
 @push('scripts')
     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
@@ -161,11 +161,11 @@
             <td>
                 <input type="number" min="1" class="form-control form-control-sm selling_qty" name="selling_qty[]" value="">
             </td>
-           
+
             <td>
-                
+
                 <input type="number" class="form-control form-control-sm unt_sell_price" name="unt_sell_price[]" value="@{{ unt_sell_price }}">
-                
+
             </td>
             <td>
                 <input type="hidden" class="form-control form-control-sm unit_id" name="unit_id[]" value="@{{ unit_id }}">@{{ unit_name }}
