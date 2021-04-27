@@ -140,8 +140,8 @@ class InvoiceController extends Controller
             }
         }
         toast('Invoice has been saved successfully !!', 'success');
-        //return redirect()->route('invoice.daily.search');
-        return redirect()->back();
+        return redirect()->route('invoice.daily.search');
+        
     }
     /**
      * Show the form for editing the specified resource.
