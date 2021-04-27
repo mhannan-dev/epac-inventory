@@ -13,51 +13,51 @@
                                     <div class="form-row">
                                         <div class="col-md-4">
                                             <label for="supplier_id">Supplier select</label>
-                                            
+
                                             <select class="form-control select2 form-control-sm" id="supplier_id"
                                                 name="supplier_id">
-                                            <option value="0" disabled>Select Supplier</option>
-                                                @foreach ($suppliers as $supplier)
-                                                    <option value="{{ $supplier->id }}">
-                                                        {{ $supplier->name }}
-                                            </option>
-                                                @endforeach
+                                    <option selected disabled>Select Supplier</option>
+                                @foreach ($suppliers as $supplier)
+
+                                <option value="{{ $supplier->supplier_id }}">{{ $supplier->supplier->name }} </option>
+                                @endforeach
                                             </select>
                                         </div>
                                         <div class="col-md-2">
                                             <button type="submit" class="btn btn-primary btn-sm"
                                                 style="margin-top: 31px;">Generate</button>
-                                                
+
+
                                         </div>
-                                        
+
                                     </div>
                                 </form>
                             </div>
                             <div class="card-header">
-                                
+
                                 <h3 class="card-title">{{ $title }} List</h3>
                                 <div class="float-right">
-                                    
+
                                     <a target="_blank" href="{{ route('stock.report.pdf') }}" class="btn btn-success"><i
                                             class="fas fa-save"></i> &nbsp;Print</a>
                                 </div>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <table id="example1" class="table table-bordered table-striped">
+                                <table id="example1" class="table table-bordered table-striped table-sm">
                                     <thead>
                                         <tr>
                                             <th>@lang('form.th_sl')</th>
                                             <th width="15%">@lang('form.th_supplier')</th>
                                             <th width="10%">Product Name</th>
-                                            <th>In Qty</th>
                                             <th>In Stock</th>
+                                            <th>Current Stock</th>
                                             <th>Sell Qty</th>
                                             <th>@lang('form.th_units')</th>
                                             <th>Buying Price</th>
                                             <th>Avg. Unit Price</th>
-                                            <th>Avg. Unit Sell Price</th>
-                                           
+                                            <th>Avg. Selling Price</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -70,7 +70,7 @@
                                                         ->where('product_id', $list->id)
                                                         ->where('status', '1')
                                                         ->sum('buying_qty');
-                                                    
+
                                                     $buying_price = App\Models\Purchase::where('supplier_id', $list->supplier_id)
                                                         ->where('product_id', $list->id)
                                                         ->where('status', '1')
@@ -83,7 +83,7 @@
                                                         ->where('product_id', $list->id)
                                                         ->where('status', '1')
                                                         ->avg('unt_sell_price');
-                                                    
+
                                                 @endphp
 
                                                 <tr>
@@ -97,8 +97,8 @@
                                                             -
                                                         @endif
                                                     </td>
-                                                    
-                                                    <td>
+
+                                                    <td class="bg-gradient-blue">
 
                                                         @if ($list->quantity > 0)
                                                             {{ $list->quantity }}
@@ -112,9 +112,9 @@
                                                         {{ $buying_total - $list->quantity }}
                                                     </td>
                                                     <td>
-                                                       
+
                                                         {{ $list->units->name }}
-                                                    
+
                                                     </td>
                                                     <td>
                                                         @if ($buying_price > 0)
@@ -138,7 +138,7 @@
                                                             -
                                                         @endif
                                                     </td>
-                                                    
+
                                                 </tr>
                                             @endforeach
                                         @else
@@ -178,7 +178,7 @@
                 "autoWidth": false,
                 "bDestroy": true,
             });
-            
+
         });
 
     </script>

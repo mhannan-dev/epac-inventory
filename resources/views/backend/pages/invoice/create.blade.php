@@ -139,7 +139,7 @@
                                     </div>
                                     <br>
                                     <div class="form-group">
-                                        <button type="submit" id="storeButton"  class="btn btn-info btn-sm text-white">Invoice Store</button>
+                                        <button type="submit" id="storeButton"  class="btn btn-info btn-sm text-white">Save</button>
                                     </div>
                                 </form>
                             </div>

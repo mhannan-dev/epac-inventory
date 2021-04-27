@@ -18,7 +18,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{ URL::asset('backend')}}/dist/img/user2-160x160.jpg" class="img-circle elevation-2"
+                <img src="{{ URL::asset('backend')}}/dist/img/avatar5.png" class="img-circle elevation-2"
                      alt="User Image">
             </div>
             <div class="info">
@@ -50,7 +50,7 @@
 
                         </ul>
                     </li>
-                    
+
                     @endif
 
                     <li class="nav-item has-treeview {{($prefix=='/suppliers')?'menu-open':''}}">
@@ -73,7 +73,7 @@
                         </ul>
                     </li>
 
-                    
+
 
 
 
@@ -145,7 +145,7 @@
                                     <i class="far fa-list-alt"></i>
                                     <p>Create Bill</p>
                                 </a>
-                        
+
                     </li>
 
                     {{-- <li class="nav-item has-treeview {{($prefix=='/invoice')?'menu-open':''}}">
@@ -187,13 +187,13 @@
                                     <i class="far fa-list-alt"></i>
                                     <p>Stock Report</p>
                                 </a>
-                                
+
                             </li>
                         </ul>
                     </li>
 
 
-                
+
 
                 <li class="nav-item has-treeview {{($prefix=='/profile')?'menu-open':''}}">
                     <a href="#" class="nav-link">

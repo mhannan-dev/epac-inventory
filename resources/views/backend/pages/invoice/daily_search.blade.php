@@ -39,7 +39,7 @@
                         </div>
                         <!-- /.card -->
                         <div class="card card-info mt-2">
-                            <table class="table table-striped">
+                            <table class="table table-striped table-sm">
                                 <thead>
                                     <tr>
                                         <th>@lang('form.th_sl')</th>

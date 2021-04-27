@@ -15,8 +15,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 class InvoiceController extends Controller
 {
-    
-    
+
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -81,7 +81,7 @@ class InvoiceController extends Controller
                 $invoice->invoice_no = $request->invoice_no;
                 $invoice->date = date('Y-m-d', strtotime($request->date));
                 $invoice->description = $request->description;
-                $invoice->status = '0';
+                $invoice->status = '1';
                 $invoice->created_by = Auth::user()->id;
                 // Transaction start
                 DB::transaction(function () use ($request, $invoice) {
@@ -136,7 +136,7 @@ class InvoiceController extends Controller
                         $payment_details->save();
                     }
                 });
-                // Transaction end
+
             }
         }
         toast('Invoice has been saved successfully !!', 'success');
@@ -246,10 +246,9 @@ class InvoiceController extends Controller
         return view('backend.pages._PDF.invoice_web', $data);
     }
     public function dailyInvoiceSearch()
-    {   
-        
+    {
+
         $data['title'] = "Daily Invoice";
-        //$data['invoices'] = Invoice::orderBy('date', 'desc')->orderBy('id', 'desc')->where('status', '0')->get();
         $data['invoices'] = Invoice::orderBy('date', 'desc')->orderBy('id', 'desc')->get();
         return view('backend.pages.invoice.daily_search', $data);
     }

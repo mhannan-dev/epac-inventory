@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 
 class StockController extends Controller
 {
-     
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -29,9 +29,7 @@ class StockController extends Controller
 
         $data['title'] = "Stock";
         $data['products'] = Product::orderBy('supplier_id' ,'ASC')->orderBy('id' ,'ASC')->get();
-        $data['suppliers'] = Supplier::where('status', 'active')->get();
-        //$data['products'] = Product::orderBy('supplier_id' ,'ASC')->get();
-        //dd($data['products']);
+        $data['suppliers'] = Product::select('supplier_id')->orderBy('id' ,'ASC')->get();
         return view('backend.pages.stock.report', $data);
     }
 
