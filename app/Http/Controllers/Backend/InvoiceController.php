@@ -140,7 +140,8 @@ class InvoiceController extends Controller
             }
         }
         toast('Invoice has been saved successfully !!', 'success');
-        return redirect()->route('invoice.view');
+        //return redirect()->route('invoice.daily.search');
+        return redirect()->back();
     }
     /**
      * Show the form for editing the specified resource.
@@ -176,7 +177,6 @@ class InvoiceController extends Controller
     {
         $data['title'] = 'Approve Invoice';
         $data['invoice'] = Invoice::with(['invoice_details'])->find($id);
-        //dd($data['invoice']);
         return view('backend.pages.invoice.approve', $data);
     }
     /**
@@ -203,6 +203,7 @@ class InvoiceController extends Controller
         foreach ($request->selling_qty as $key => $val) {
             $invoice_details = InvoiceDetail::where('id', $key)->first();
             $product = Product::where('id', $invoice_details->product_id)->first();
+            //dd($product);
             if ($product->quantity < $request->selling_qty[$key]) {
                 toast('Sorry ! you approve maximum value', 'error');
                 return redirect()->back();
@@ -218,7 +219,6 @@ class InvoiceController extends Controller
                 $invoice_details->save();
                 $product           = Product::where('id', $invoice_details->product_id)->first();
                 $product->quantity = ((float)$product->quantity) - ((float)$request->selling_qty[$key]);
-                //$product->quantity = ($product->quantity) - ($request->selling_qty[$key]);
                 $product->save();
             }
             $invoice->save();
@@ -246,8 +246,11 @@ class InvoiceController extends Controller
         return view('backend.pages._PDF.invoice_web', $data);
     }
     public function dailyInvoiceSearch()
-    {
+    {   
+        
         $data['title'] = "Daily Invoice";
+        //$data['invoices'] = Invoice::orderBy('date', 'desc')->orderBy('id', 'desc')->where('status', '0')->get();
+        $data['invoices'] = Invoice::orderBy('date', 'desc')->orderBy('id', 'desc')->get();
         return view('backend.pages.invoice.daily_search', $data);
     }
     public function dailyInvoiceReport(Request $request)

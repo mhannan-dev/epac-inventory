@@ -1,5 +1,4 @@
 @extends('backend.layouts.master')
-
 @section('content')
     <div class="content-wrapper" style="min-height: 1244.06px;">
         <section class="content">
@@ -14,34 +13,23 @@
                             @csrf
                             <div class="card-body">
                                 <div class="form-row">
-
                                     <div class="form-group col-md-4">
-
                                         <div class="form-group">
                                             <label>Supplier</label>
                                             <select class="form-control select2 form-control-sm" style="width: 100%;" id="supplier_id" name="supplier_id">
-
-                                                <option disabled>Select supplier</option>
+                                                <option>Select supplier</option>
                                                 @foreach($suppliers as $data_row)
-
                                                     <option value="{{ $data_row->id}}">{{ $data_row->name }}</option>
                                                 @endforeach
-
                                             </select>
                                         </div>
-
                                     </div>
-                                    
-
-
                                     <div class="form-group col-md-3">
-
                                         <div class="form-group">
                                             <label>Unit</label>
                                             <select  class="form-control select2 form-control-sm" style="width: 100%;" id="unit_id" name="unit_id">
                                                 <option selected="selected">Select Unit</option>
                                                 @foreach($units as $data_row)
-
                                                 <option value="{{ $data_row->id}}">
                                                     {{ $data_row->name }}
                                                 </option>
@@ -49,15 +37,11 @@
                                           </select>
                                         </div>
                                     </div>
-
                                     <div class="form-group col-md-4">
                                         <label for="status">Product Name</label>
                                         <input type="text" class="form-control form-control-sm" name="name" id="name" placeholder="Enter product name">
                                     </div>
-
-
                                 </div>
-
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">
@@ -66,24 +50,15 @@
                                         class="fas fa-undo"></i></a>
                             </div>
                             {!! Form::close() !!}
-
                         </div>
                         <!-- /.card -->
                     </div>
-
                     <div class="col-md-6">
-
                     </div>
-
                 </div>
-
             </div><!-- /.container-fluid -->
         </section>
-
     </div>
-
-   
-
     <div class="modal fade" id="addUnitModal" tabindex="-1" role="dialog" aria-labelledby="addUnitModal" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -102,18 +77,14 @@
                             {!! Form::text('name', null, [ 'class' => 'form-control form-control-sm', 'data-validation-required-message' => 'This field is required', 'placeholder' => 'Enter category name']) !!}
                             {!! $errors->first('name', '<label class="help-block text-danger">:message</label>') !!}
                         </div>
-
-
                         <div class="form-group">
                             <label for="status">@lang('form.status')</label>
                             <select class="form-control form-control-sm" id="status" name="status">
                                 <option value="active">Select status</option>
                                 <option value="active">Active</option>
                                 <option value="inactive">Inactive</option>
-
                             </select>
                         </div>
-
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
@@ -122,61 +93,43 @@
                     </div>
                     {!! Form::close() !!}
                 </div>
-
             </div>
         </div>
     </div>
-
-
-
 @endsection
 @push('scripts')
-
-
     <script type="text/javascript">
-
-
         $(document).ready(function () {
-
             $("#prdForm").submit(function (event) {
                 loadAjax();
                 event.preventDefault()
             });
-
             $('#supplierForm').validate({
                 rules: {
                     supplier_id: {
                         required: true,
-
                     },
                     category_id: {
                         required: true,
-
                     },
                     name: {
                         required: true,
-
                     },
                     email: {
                         required: true,
-
                     },
                     mobile_no: {
                         required: true,
-
                     },
                     address: {
                         required: true,
-
                     },
-
                 },
                 messages: {
                     supplier_id: {
                         required: "Please select supplier",
                         name: "Please select supplier"
                     },
-
                     category_id: {
                         required: "Please select category",
                         name: "Please select category"
@@ -197,7 +150,6 @@
                         required: "Please provide a address",
                         address: "Please write address"
                     }
-
                 },
                 errorElement: 'span',
                 errorPlacement: function (error, element) {
@@ -213,6 +165,4 @@
             });
         });
     </script>
-
-
 @endpush

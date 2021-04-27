@@ -13,7 +13,7 @@
                             @csrf
                             <div class="card-body">
                                 <div class="form-row">
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-4">
                                     @if($suppliers->count() < 1)
                                         <!-- Button trigger modal -->
                                             <a type="button" class="btn btn-outline-info mt-md-4"
@@ -32,10 +32,25 @@
                                             </select>
                                         @endif
                                     </div>
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-4">
                                         <label for="status">Name</label>
                                         <input type="text" class="form-control form-control-sm" name="name" id="name"
                                                value="{{ $product->name  }}">
+                                    </div>
+                                    <div class="form-group col-md-4">
+
+                                        <div class="form-group">
+                                            <label>Unit</label>
+                                            <select  class="form-control select2 form-control-sm" style="width: 100%;" id="unit_id" name="unit_id">
+                                                <option selected="selected">Select Unit</option>
+                                                @foreach($units as $data_row)
+
+                                                <option value="{{ $data_row->id}}" value="{{ $data_row->id}}" @if($data_row->id == $product->unit_id): selected @else ' ' @endif>
+                                                    {{ $data_row->name }}
+                                                </option>
+                                                @endforeach
+                                          </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -1,6 +1,5 @@
 @extends('backend.layouts.master')
 @push('styles')
-
 @endpush
 @section('content')
     <div class="content-wrapper" style="min-height: 1244.06px;">
@@ -17,8 +16,7 @@
                                     <div class="form-group col-md-4">
                                         <label>Date</label>
                                         <div class="input-group">
-                                            <input class="form-control form-control-sm" name="date" id="date"
-                                                placeholder="MM-DD-YY" />
+                                            <input class="form-control form-control-sm" name="date" id="date" value="<?php echo date('Y-m-d'); ?>"/>
                                         </div>
                                         <!-- /.input group -->
                                     </div>
@@ -42,9 +40,7 @@
                                     <div class="form-group col-md-4">
                                         <label for="unit_id">Unit Name</label>
                                         <select class="form-control select2 form-control-sm" id="unit_id" name="unit_id">
-
                                             <option value="">Unit name</option>
-
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -118,16 +114,16 @@
                         <input type="hidden" name="unit_id[]" value="@{{ unit_id }}">@{{ unit_name }}
                     </td>
                     <td>
-                        <input type="number" class="form-control form-control-sm unit_price" name="unit_price[]" value="">
+                        <input type="text" class="form-control form-control-sm unit_price" name="unit_price[]" value="1">
                     </td>
                     <td>
-                        <input type="number" class="form-control form-control-sm unt_sell_price" name="unt_sell_price[]" value="">
+                        <input type="text" class="form-control form-control-sm unt_sell_price" name="unt_sell_price[]" value="1">
                     </td>
                     <td>
-                        <input type="number" min="1" class="form-control form-control-sm buying_qty" name="buying_qty[]">
+                        <input type="text" min="1" class="form-control form-control-sm buying_qty" name="buying_qty[]" value="1">
                     </td>
                     <td>
-                        <input type="number" class="form-control form-control-sm text-right buying_price" value="1"
+                        <input type="text" class="form-control form-control-sm text-right buying_price" value="1"
                                name="buying_price[]" readonly>
                     </td>
                     <td>
@@ -246,7 +242,6 @@
             })
             $('#estimated_amount').val(sum);
         }
-
     </script>
     <script type="text/javascript">
         $(function() {
@@ -285,7 +280,6 @@
                     success: function(data) {
                         var html = '<option value="">Select unit</option>';
                         $.each(data, function(key, v) {
-
                             html += '<option value="' + v.id + '">' + v.name + '</option>'
                         });
                         $('#unit_id').html(html);
@@ -293,7 +287,6 @@
                 });
             });
         });
-
     </script>
     <script type="text/javascript">
         $(document).ready(function() {
@@ -301,6 +294,5 @@
                 uiLibrary: 'bootstrap4'
             });
         });
-
     </script>
 @endpush

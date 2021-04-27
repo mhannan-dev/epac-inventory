@@ -118,6 +118,7 @@ class ProductsController extends Controller
         $product = Product::find($id);
         $product->supplier_id = $request->supplier_id;
         $product->name = $request->name;
+        $product->unit_id = $request->unit_id;
         $product->updated_by = Auth::user()->id;
         $product->save();
         toast('Data has been updated successfully !!', 'success');

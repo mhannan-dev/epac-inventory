@@ -72,18 +72,14 @@ class PurchaseController extends Controller
                 $pucrhase->product_id = $request->product_id[$i];
                 $pucrhase->description = $request->description[$i];
                 $pucrhase->unit_id = $request->unit_id[$i];
-
                 $pucrhase->buying_qty = $request->buying_qty[$i];
                 $pucrhase->unit_price = $request->unit_price[$i];
                 $pucrhase->unt_sell_price = $request->unt_sell_price[$i];
                 $pucrhase->buying_price = $request->buying_price[$i];
                 $pucrhase->created_by = Auth::user()->id;
                 $pucrhase->status = '0';
-
                 $pucrhase->save();
-
             }
-
         }
         toast('Data added successfully !!', 'success');
         return redirect()->route('purchase.pending.list');

@@ -69,6 +69,7 @@ class DefaultController extends Controller
     public function getProductById(Request $request){
         try {
             $product = Product::findOrFail($request->product_id);
+            
             $data['unit'] = $product->units->name;
             $data['unitPrice'] = $product->unitPrice;
             $data['stock'] = $product->stock;
