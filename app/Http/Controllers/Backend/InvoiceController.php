@@ -81,7 +81,7 @@ class InvoiceController extends Controller
                 $invoice->invoice_no = $request->invoice_no;
                 $invoice->date = date('Y-m-d', strtotime($request->date));
                 $invoice->description = $request->description;
-                $invoice->status = '1';
+                $invoice->status = '0';
                 $invoice->created_by = Auth::user()->id;
                 // Transaction start
                 DB::transaction(function () use ($request, $invoice) {
@@ -249,7 +249,7 @@ class InvoiceController extends Controller
     {
 
         $data['title'] = "Daily Invoice";
-        $data['invoices'] = Invoice::orderBy('date', 'desc')->orderBy('id', 'desc')->get();
+        $data['invoices'] = Invoice::orderBy('date', 'desc')->orderBy('id', 'desc')->take(5)->get();
         return view('backend.pages.invoice.daily_search', $data);
     }
     public function dailyInvoiceReport(Request $request)

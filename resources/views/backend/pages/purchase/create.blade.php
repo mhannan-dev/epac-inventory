@@ -54,7 +54,7 @@
                                 <h3 class="card-title mb-2 text-bold">Stored Product List</h3>
                                 <form action="{{ route('admin.purchase.store') }}" method="post">
                                     @csrf
-                                    <table id="example1" class="table table-bordered table-striped">
+                                    <table id="example1" class="table table-bordered table-striped table-sm">
                                         <thead>
                                             <tr>
                                                 <th>@lang('form.th_title')</th>
