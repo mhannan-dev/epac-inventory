@@ -23,10 +23,11 @@
                                         <th width="4%">@lang('form.th_sl')</th>
                                         {{-- <th width="12%">PO No.</th> --}}
                                         <th>Date</th>
-                                        <th>Product name</th>
+                                        <th>Product</th>
                                         <th>@lang('form.th_supplier')</th>
                                         <th>Total</th>
-                                        <th>Buy Price</th>
+                                        <th>Buy Prc.</th>
+                                        <th>Sell Prc.</th>
                                         <th>Qty.</th>
                                         <th>Unit</th>
                                         <th>@lang('form.th_status')</th>
@@ -44,6 +45,7 @@
                                                 <td>{{ $purchase['products']['supplier']->name }}</td>
                                                 <td>{{ $purchase->buying_price }}</td>
                                                 <td>{{ $purchase->unit_price }}</td>
+                                                <td>{{ $purchase->unt_sell_price }}</td>
                                                 <td>{{ $purchase->buying_qty }}</td>
 
                                                 <td>{{ $purchase['unit']->name }}</td>

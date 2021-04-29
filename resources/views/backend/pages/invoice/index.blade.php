@@ -18,7 +18,7 @@
                                     <thead>
                                     <tr>
                                         <th>@lang('form.th_sl')</th>
-                                        <th>Customer Name</th>
+                                        <th>Customer</th>
                                         <th>Invoice No</th>
                                         <th>Date</th>
                                         <th>Description</th>
