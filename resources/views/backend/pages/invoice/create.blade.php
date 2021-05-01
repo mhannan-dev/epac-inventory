@@ -31,7 +31,7 @@
                                     <div class="form-group col-md-4">
                                         <label for="cuntry">Product name</label>
                                         <select class="form-control select2 form-control-sm" id="product_id" name="product_id">
-                                            <option>Select/Type</option>
+                                            <option>Select product</option>
                                             @foreach ($products as $product)
                                             <option value="{{ $product->id }}">{{ $product->name }}</option>
                                             @endforeach
@@ -210,10 +210,6 @@
                 $.notify("Unit sell price is rquired", {globalPosition: 'top-right', className: 'error'});
                 return false;
             }
-            // if (unit_price == '') {
-            //     $.notify("Unit price is rquired", {globalPosition: 'top-right', className: 'error'});
-            //     return false;
-            // }
             if (selling_price == '') {
                 $.notify("Puying price is rquired", {globalPosition: 'top-right', className: 'error'});
                 return false;
@@ -226,7 +222,6 @@
                 product_id: product_id,
                 product_name: product_name,
                 selling_qty: selling_qty,
-                //unit_price: unit_price,
                 unt_sell_price: unt_sell_price,
                 unit_id: unit_id,
                 unit_name: unit_name,
@@ -245,7 +240,7 @@
             var unt_sell_price  = $(this).closest("tr").find("input.unt_sell_price").val();
             var qty         = $(this).closest("tr").find("input.selling_qty").val();
             var total = unt_sell_price * qty;
-            console.log(total);
+            //console.log(total);
             $(this).closest("tr").find("input.selling_price").val(total);
             //totalAmountPrice();
             $('#discount_amount').trigger('keyup');
@@ -267,6 +262,7 @@
             var discount_amount = parseFloat($('#discount_amount').val());
                 if(!isNaN(discount_amount) && discount_amount.length != 0){
                     sum -= parseFloat(discount_amount);
+                    
             }
             //estimated_amount after applying discount
             $('#estimated_amount').val(sum);

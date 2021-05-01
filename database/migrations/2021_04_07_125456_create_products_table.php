@@ -17,9 +17,8 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->integer('supplier_id')->unsigned()->comment('PK on suppliers table');
             $table->integer('unit_id')->unsigned()->comment('PK on units table');
-            $table->integer('category_id')->unsigned()->comment('PK on category table');
-            $table->integer('quantity')->nullable();
-            $table->string('name');
+            $table->double('quantity', 20, 2)->nullable();
+            $table->string('name', 200);
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();
             $table->timestamps();
@@ -27,7 +26,6 @@ class CreateProductsTable extends Migration
         Schema::table('products', function($table) {
             $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
             $table->foreign('unit_id')->references('id')->on('units')->onDelete('cascade');
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 

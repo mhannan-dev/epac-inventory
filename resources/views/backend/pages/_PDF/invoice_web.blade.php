@@ -3,7 +3,6 @@ $payment = App\Models\Payment::where('invoice_id', $invoice->id)->first();
 @endphp
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,27 +18,22 @@ $payment = App\Models\Payment::where('invoice_id', $invoice->id)->first();
         .page-break {
             page-break-after: always;
         }
-
         .logo {
             height: 50px;
             width: 150px
         }
-
         @media print {
             @page {
                 margin-top: 0;
                 margin-bottom: 0;
             }
-
             body {
                 padding-top: 5rem;
                 padding-bottom: 5rem;
             }
         }
-
     </style>
 </head>
-
 <body>
     <div class="wrapper">
         <!-- Main content -->
@@ -91,7 +85,6 @@ $payment = App\Models\Payment::where('invoice_id', $invoice->id)->first();
                         <thead>
                             <tr>
                                 <th>Sl</th>
-                                <th>Category</th>
                                 <th>Product name</th>
                                 <th>Quantity</th>
                                 <th class="text-right">Selling Price</th>
@@ -105,42 +98,53 @@ $payment = App\Models\Payment::where('invoice_id', $invoice->id)->first();
                             @foreach($invoice['invoice_details'] as $key => $details)
                             <tr class="table-primary">
                                 <td>{{ $key+1 }}</td>
-                                <td>{{ $details['category']['name'] }}</td>
                                 <td>{{ $details['products']['name'] }}</td>
                                 <td>{{ $details->selling_qty }}</td>
                                 <td class="text-right">{{ $details->unt_sell_price }}</td>
-                                <td class="text-right">{{ $details->selling_price }}</td>
+                                <td class="text-right">{{ number_format($details->selling_price, 2) }}</td>
                             </tr>
                             @php
                             $total_sum += $details->selling_price;
                             @endphp
                             @endforeach
                             <tr class="text-right">
-                                <td colspan="5">Sub Total</td>
-                                <td>{{ $total_sum }}</td>
+                                <td colspan="4">Sub Total</td>
+                                <td>{{ number_format($payment->total_sum, 2)}}</td>
                             </tr>
                             <tr class="text-right table-success">
-                                <td colspan="5" class="text-muted">Discount</td>
-                                <td>{{ $payment->discount_amount }}</td>
+                                <td colspan="4" class="text-muted">Discount</td>
+                                <td>{{ number_format($payment->discount_amount, 2)}}</td>
                             </tr>
-                            <tr class="text-right" style="text-decoration: underline double;">
-                                <td colspan="5" class="te">Paid amount</td>
-                                <td>{{ $payment->paid_amount }}</td>
+                            <tr class="text-right" style="text-decoration: underline;">
+                                <td colspan="4" class="te">Paid amount</td>
+                                <td>{{ number_format($payment->paid_amount, 2)}}</td>
                             </tr>
                             <tr class="text-right table-warning">
-                                <td colspan="5">Due</td>
-                                <td>{{ $payment->due_amount }}</td>
+                                <td colspan="4">Due</td>
+                                <td>{{ number_format($payment->due_amount, 2)}}</td>
                             </tr>
                             <tr class="text-right " style="text-decoration: underline double;">
-                                <td colspan="5"> <strong> Grand Total</strong> </td>
-                                <td>{{ $payment->total_amount }}</td>
+                                <td colspan="4"> <strong> Grand Total</strong> </td>
+                                <td>{{ number_format($payment->total_amount, 2)}}</td>
                             </tr>
+                            
                         </tbody>
                     </table>
                 </div>
                 <!-- /.col -->
             </div>
             <!-- /.row -->
+            <div class="row">
+                <div class="col-md-offset-6 col-md-6">
+                    <strong >In words: </strong>
+                    <span class="text-capitalize">
+                        @php
+                        $digit = new NumberFormatter("en", NumberFormatter::SPELLOUT);
+                    @endphp 
+                    {{  $digit->format($payment->total_amount) }}
+                    </span>
+                </div>
+            </div>
             <div class="row text-center mt-3">
                 <div class="col-12">
                     Thanks for choosing <strong>epac.com.bd</strong>
@@ -205,7 +209,6 @@ $payment = App\Models\Payment::where('invoice_id', $invoice->id)->first();
                                 <th scope="col">Product Name</th>
                                 <th scope="col">Description</th>
                                 <th scope="col">Quantity</th>
-                                
                             </tr>
                         </thead>
                         <tbody>
@@ -214,7 +217,6 @@ $payment = App\Models\Payment::where('invoice_id', $invoice->id)->first();
                                 <td>{{ $details['products']['name'] }}</td>
                                 <td>{{ $invoice->description }}</td>
                                 <td>{{ $details->selling_qty }}</td>
-
                             </tr>
                         </tbody>
                     </table>
@@ -234,8 +236,6 @@ $payment = App\Models\Payment::where('invoice_id', $invoice->id)->first();
     <!-- Page specific script -->
     <script>
         window.addEventListener("load", window.print());
-
     </script>
 </body>
-
 </html>

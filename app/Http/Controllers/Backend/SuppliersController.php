@@ -52,7 +52,7 @@ class SuppliersController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
         //  'email' => 'required|max:255|unique:suppliers',
-        //  'mobile_no' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+            'mobile_no' => 'required',
             'address' => 'required',
             'status' => 'required',
         ]);
@@ -60,8 +60,8 @@ class SuppliersController extends Controller
 
         $supplier               = new Supplier();
         $supplier->name         = $request->name;
-//        $supplier->email        = $request->email;
-//        $supplier->mobile_no    = $request->mobile_no;
+        //        $supplier->email        = $request->email;
+        $supplier->mobile_no    = $request->mobile_no;
         $supplier->address      = $request->address;
         $supplier->status       = $request->status;
         $supplier->created_by   = Auth::user()->id;

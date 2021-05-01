@@ -280,7 +280,7 @@
                     success: function(data) {
                         var html = '<option value="">Select unit</option>';
                         $.each(data, function(key, v) {
-                            html += '<option value="' + v.id + '">' + v.name + '</option>'
+                            html += '<option selected value="' + v.id + '">' + v.name + '</option>'
                         });
                         $('#unit_id').html(html);
                     }
