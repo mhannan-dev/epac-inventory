@@ -53,11 +53,11 @@ $payment = App\Models\Payment::where('invoice_id', $invoice->id)->first();
                     Sold From,
                     <address>
                         <strong>Epac.com.bd</strong><br>
-                        45, Topkhana Road, <br>
-                        Purana paltan,<br>
-                        Dhaka - 1000 <br>
-                        Mobile: +880 1823 88 38 91<br>
-                        Email: support@epac.com.bd
+                        45,Topkhana Road,<br>
+                        Purana Paltan, Dhaka-1000<br>
+                        Mobile : 0184 1180 710<br>
+                        Mail: support@epac.com.bd<br>
+                        Web: epac.com.bd
                     </address>
                 </div>
                 <!-- /.col -->
@@ -93,7 +93,7 @@ $payment = App\Models\Payment::where('invoice_id', $invoice->id)->first();
                         </thead>
                         <tbody>
                             @php
-                            $total_sum = '0';
+                                $total_sum = '0';
                             @endphp
                             @foreach($invoice['invoice_details'] as $key => $details)
                             <tr class="table-primary">
@@ -101,15 +101,15 @@ $payment = App\Models\Payment::where('invoice_id', $invoice->id)->first();
                                 <td>{{ $details['products']['name'] }}</td>
                                 <td>{{ $details->selling_qty }}</td>
                                 <td class="text-right">{{ $details->unt_sell_price }}</td>
-                                <td class="text-right">{{ number_format($details->selling_price, 2) }}</td>
+                                <td class="text-right">{{ number_format($details->selling_price,  2, '.', '') }}</td>
                             </tr>
                             @php
-                            $total_sum += $details->selling_price;
+                                 $total_sum += $details->selling_price;
                             @endphp
                             @endforeach
                             <tr class="text-right">
                                 <td colspan="4">Sub Total</td>
-                                <td>{{ number_format($payment->total_sum, 2)}}</td>
+                                <td>{{ number_format($total_sum, 2) }}</td>
                             </tr>
                             <tr class="text-right table-success">
                                 <td colspan="4" class="text-muted">Discount</td>
@@ -141,7 +141,7 @@ $payment = App\Models\Payment::where('invoice_id', $invoice->id)->first();
                         @php
                         $digit = new NumberFormatter("en", NumberFormatter::SPELLOUT);
                     @endphp 
-                    {{  $digit->format($payment->total_amount) }}
+                    {{  $digit->format($payment->total_amount) }} taka only.
                     </span>
                 </div>
             </div>
@@ -175,11 +175,11 @@ $payment = App\Models\Payment::where('invoice_id', $invoice->id)->first();
                     Sold From,
                     <address>
                         <strong>Epac.com.bd</strong><br>
-                        45, Topkhana Road, <br>
-                        Purana paltan,<br>
-                        Dhaka - 1000 <br>
-                        Mobile: +880 1823 88 38 91<br>
-                        Email: support@epac.com.bd
+                        45,Topkhana Road,<br>
+                        Purana Paltan, Dhaka-1000<br>
+                        Mobile : 0184 1180 710<br>
+                        Mail: support@epac.com.bd<br>
+                        Web: epac.com.bd
                     </address>
                 </div>
                 <!-- /.col -->

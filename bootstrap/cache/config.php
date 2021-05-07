@@ -10,7 +10,7 @@
     'locale' => 'en',
     'fallback_locale' => 'en',
     'faker_locale' => 'en_US',
-    'key' => 'base64:XLnoFlyadEqeRmR6xNs7ggXg0esfacEdd1D4ASlmGy0=',
+    'key' => 'base64:rUe+VeMukRpE12X+cfqlIz4moligb9Mwc9gJOTCUoQQ=',
     'cipher' => 'AES-256-CBC',
     'providers' => 
     array (
@@ -180,7 +180,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'D:\\laragon\\www\\inventory\\storage\\framework/cache/data',
+        'path' => 'E:\\laragon\\www\\epac-inventory\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -230,7 +230,7 @@
       array (
         'driver' => 'sqlite',
         'url' => NULL,
-        'database' => 'shop_pos',
+        'database' => 'epac_inv',
         'prefix' => '',
         'foreign_key_constraints' => true,
       ),
@@ -240,7 +240,7 @@
         'url' => NULL,
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'shop_pos',
+        'database' => 'epac_inv',
         'username' => 'root',
         'password' => '',
         'unix_socket' => '',
@@ -260,7 +260,7 @@
         'url' => NULL,
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'shop_pos',
+        'database' => 'epac_inv',
         'username' => 'root',
         'password' => '',
         'charset' => 'utf8',
@@ -275,7 +275,7 @@
         'url' => NULL,
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'shop_pos',
+        'database' => 'epac_inv',
         'username' => 'root',
         'password' => '',
         'charset' => 'utf8',
@@ -316,10 +316,10 @@
     'orientation' => 'portrait',
     'defines' => 
     array (
-      'font_dir' => 'D:\\laragon\\www\\inventory\\storage\\fonts/',
-      'font_cache' => 'D:\\laragon\\www\\inventory\\storage\\fonts/',
-      'temp_dir' => 'C:\\Users\\User\\AppData\\Local\\Temp',
-      'chroot' => 'D:\\laragon\\www\\inventory',
+      'font_dir' => 'E:\\laragon\\www\\epac-inventory\\storage\\fonts/',
+      'font_cache' => 'E:\\laragon\\www\\epac-inventory\\storage\\fonts/',
+      'temp_dir' => 'C:\\Users\\user\\AppData\\Local\\Temp',
+      'chroot' => 'E:\\laragon\\www\\epac-inventory',
       'enable_font_subsetting' => false,
       'pdf_backend' => 'CPDF',
       'default_media_type' => 'screen',
@@ -342,12 +342,12 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'D:\\laragon\\www\\inventory\\storage\\app',
+        'root' => 'E:\\laragon\\www\\epac-inventory\\storage\\app',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'D:\\laragon\\www\\inventory\\storage\\app/public',
+        'root' => 'E:\\laragon\\www\\epac-inventory\\storage\\app/public',
         'url' => 'http://localhost/storage',
         'visibility' => 'public',
       ),
@@ -393,13 +393,13 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'D:\\laragon\\www\\inventory\\storage\\logs/laravel.log',
+        'path' => 'E:\\laragon\\www\\epac-inventory\\storage\\logs/laravel.log',
         'level' => 'debug',
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'D:\\laragon\\www\\inventory\\storage\\logs/laravel.log',
+        'path' => 'E:\\laragon\\www\\epac-inventory\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
       ),
@@ -447,15 +447,15 @@
   'mail' => 
   array (
     'driver' => 'smtp',
-    'host' => 'smtp.gmail.com',
-    'port' => '587',
+    'host' => 'smtp.mailtrap.io',
+    'port' => '2525',
     'from' => 
     array (
       'address' => 'hello@example.com',
       'name' => 'Example',
     ),
     'encryption' => NULL,
-    'username' => 'epacinv@gmail.com',
+    'username' => NULL,
     'password' => NULL,
     'sendmail' => '/usr/sbin/sendmail -bs',
     'markdown' => 
@@ -463,7 +463,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'D:\\laragon\\www\\inventory\\resources\\views/vendor/mail',
+        0 => 'E:\\laragon\\www\\epac-inventory\\resources\\views/vendor/mail',
       ),
     ),
     'log_channel' => NULL,
@@ -542,7 +542,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'D:\\laragon\\www\\inventory\\storage\\framework/sessions',
+    'files' => 'E:\\laragon\\www\\epac-inventory\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -604,9 +604,9 @@
   array (
     'paths' => 
     array (
-      0 => 'D:\\laragon\\www\\inventory\\resources\\views',
+      0 => 'E:\\laragon\\www\\epac-inventory\\resources\\views',
     ),
-    'compiled' => 'D:\\laragon\\www\\inventory\\storage\\framework\\views',
+    'compiled' => 'E:\\laragon\\www\\epac-inventory\\storage\\framework\\views',
   ),
   'flare' => 
   array (

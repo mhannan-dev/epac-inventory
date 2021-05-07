@@ -55,6 +55,7 @@
                                     <tbody>
                                         @if (count($products))
                                             @foreach ($products as $key => $list)
+                                            
                                                 @php
                                                     $buying_total = App\Models\Purchase::where('supplier_id', $list->supplier_id)
                                                         ->where('product_id', $list->id)
@@ -106,14 +107,14 @@
                                                     </td>
                                                     <td>
                                                         @if ($unit_price > 0)
-                                                            {{ $unit_price }}
+                                                            {{number_format($unit_price, 2, '.', '') }}
                                                         @else
                                                             -
                                                         @endif
                                                     </td>
                                                     <td>
                                                         @if ($avg_unt_sell_price > 0)
-                                                            {{ $avg_unt_sell_price }}
+                                                            {{ number_format($avg_unt_sell_price,  2, '.', '') }}
                                                         @else
                                                             -
                                                         @endif

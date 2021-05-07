@@ -46,7 +46,7 @@
                                             <th>Current Stock</th>
                                             <th>Quantity</th>
                                             <th>Unit Selling Price</th>
-                                            <th>Total</th>
+                                            <th class="text-right">Total</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -67,7 +67,7 @@
                                                 <td>{{ $details->selling_qty }}</td>
                                                 {{-- <td>{{ $details->unit_price }}</td> --}}
                                                 <td>{{ $details->unt_sell_price }}</td>
-                                                <td>{{ $details->selling_price }}</td>
+                                                <td class="text-right">{{ $details->selling_price }}</td>
                                             </tr>
                                             @php
                                                 $total_sum += $details->selling_price;
