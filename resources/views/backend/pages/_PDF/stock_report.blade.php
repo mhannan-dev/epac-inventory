@@ -51,9 +51,8 @@
             <tr>
                 <th>@lang('form.th_sl')</th>
                 <th>@lang('form.th_supplier')</th>
-                
                 <th>Product Name</th>
-                <th>Created At</th>
+                
                 <th>Stock</th>
                 <th>@lang('form.th_units')</th>
             </tr>

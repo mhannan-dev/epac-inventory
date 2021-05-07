@@ -50,9 +50,9 @@ $payment = App\Models\Payment::where('invoice_id', $invoice->id)->first();
             <!-- info row -->
             <div class="row invoice-info">
                 <div class="col-sm-4 invoice-col">
-                    Sold From,
+                    
                     <address>
-                        <strong>Epac.com.bd</strong><br>
+                        <strong>Epac Limited</strong><br>
                         45,Topkhana Road,<br>
                         Purana Paltan, Dhaka-1000<br>
                         Mobile : 0184 1180 710<br>
@@ -62,7 +62,7 @@ $payment = App\Models\Payment::where('invoice_id', $invoice->id)->first();
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-4 invoice-col">
-                    Sold To,
+                    
                     <address>
                         <strong>{{ $payment['customer']['name']}}</strong><br>
                         Address: {{ $payment['customer']['address']}}<br>
@@ -87,8 +87,8 @@ $payment = App\Models\Payment::where('invoice_id', $invoice->id)->first();
                                 <th>Sl</th>
                                 <th>Product name</th>
                                 <th>Quantity</th>
-                                <th class="text-right">Selling Price</th>
-                                <th class="text-right">Total</th>
+                                <th class="text-right">Rate</th>
+                                <th class="text-right">Amount</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -174,7 +174,7 @@ $payment = App\Models\Payment::where('invoice_id', $invoice->id)->first();
                 <div class="col-sm-4 invoice-col">
                     Sold From,
                     <address>
-                        <strong>Epac.com.bd</strong><br>
+                        <strong>Epac Limited</strong><br>
                         45,Topkhana Road,<br>
                         Purana Paltan, Dhaka-1000<br>
                         Mobile : 0184 1180 710<br>
