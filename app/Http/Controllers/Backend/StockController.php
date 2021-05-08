@@ -61,7 +61,7 @@ class StockController extends Controller
 
     public function stockReportSupplierWise(Request $request)
     {
-        $data['products'] = Product::orderBy('supplier_id' ,'asc')->where('supplier_id', $request->supplier_id)->get();
+        $data['products'] = Product::where('quantity', '>', 0)->orderBy('supplier_id' ,'asc')->where('supplier_id', $request->supplier_id)->get();
         //dd($data['products']);
         return view('backend.pages.stock.supplier_wise_stock', $data);
     }

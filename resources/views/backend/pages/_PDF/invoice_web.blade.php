@@ -50,7 +50,7 @@ $payment = App\Models\Payment::where('invoice_id', $invoice->id)->first();
             <!-- info row -->
             <div class="row invoice-info">
                 <div class="col-sm-4 invoice-col">
-                    
+
                     <address>
                         <strong>Epac Limited</strong><br>
                         45,Topkhana Road,<br>
@@ -62,7 +62,7 @@ $payment = App\Models\Payment::where('invoice_id', $invoice->id)->first();
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-4 invoice-col">
-                    
+
                     <address>
                         <strong>{{ $payment['customer']['name']}}</strong><br>
                         Address: {{ $payment['customer']['address']}}<br>
@@ -115,19 +115,19 @@ $payment = App\Models\Payment::where('invoice_id', $invoice->id)->first();
                                 <td colspan="4" class="text-muted">Discount</td>
                                 <td>{{ number_format($payment->discount_amount, 2)}}</td>
                             </tr>
-                            <tr class="text-right" style="text-decoration: underline;">
-                                <td colspan="4" class="te">Paid amount</td>
+                            <tr class="text-right">
+                                <td colspan="4">Paid amount</td>
                                 <td>{{ number_format($payment->paid_amount, 2)}}</td>
                             </tr>
                             <tr class="text-right table-warning">
                                 <td colspan="4">Due</td>
                                 <td>{{ number_format($payment->due_amount, 2)}}</td>
                             </tr>
-                            <tr class="text-right " style="text-decoration: underline double;">
+                            <tr class="text-right ">
                                 <td colspan="4"> <strong> Grand Total</strong> </td>
                                 <td>{{ number_format($payment->total_amount, 2)}}</td>
                             </tr>
-                            
+
                         </tbody>
                     </table>
                 </div>
@@ -140,7 +140,7 @@ $payment = App\Models\Payment::where('invoice_id', $invoice->id)->first();
                     <span class="text-capitalize">
                         @php
                         $digit = new NumberFormatter("en", NumberFormatter::SPELLOUT);
-                    @endphp 
+                    @endphp
                     {{  $digit->format($payment->total_amount) }} taka only.
                     </span>
                 </div>
