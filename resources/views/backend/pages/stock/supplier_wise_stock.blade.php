@@ -53,6 +53,7 @@
                     <th>@lang('form.th_sl')</th>
                     <th>Product Name</th>
                     <th>Stock</th>
+                    <th>Buying Price</th>
                     <th>@lang('form.th_units')</th>
                 </tr>
             </thead>
@@ -68,6 +69,16 @@
                                 @else
                                 {{ $list->quantity }}
                                 @endif
+                            </td>
+                            <td>
+                                @php
+                                $buying_price = App\Models\Purchase::where('supplier_id', $list->supplier_id)
+                                ->where('product_id', $list->id)
+                                ->where('status', '1')
+                                ->sum('buying_price');
+
+                                @endphp
+                                {{ $buying_price }}
                             </td>
                             <td>{{ $list->units->name }}</td>
                         </tr>

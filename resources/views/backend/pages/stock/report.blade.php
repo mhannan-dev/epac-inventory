@@ -55,7 +55,6 @@
                                     <tbody>
                                         @if (count($products))
                                             @foreach ($products as $key => $list)
-                                            
                                                 @php
                                                     $buying_total = App\Models\Purchase::where('supplier_id', $list->supplier_id)
                                                         ->where('product_id', $list->id)

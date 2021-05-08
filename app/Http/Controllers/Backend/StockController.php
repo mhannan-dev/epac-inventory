@@ -8,6 +8,7 @@ use App\Models\Purchase;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,7 +30,9 @@ class StockController extends Controller
 
         $data['title'] = "Stock";
         $data['products'] = Product::where('quantity', '>', 0)->orderBy('supplier_id' ,'ASC')->orderBy('id' ,'ASC')->get();
-        $data['suppliers'] = Product::select('supplier_id')->orderBy('id' ,'ASC')->get();
+        $data['suppliers'] = Product::select('supplier_id')->distinct()->orderBy('supplier_id', 'desc')->get();
+        //dd($data['suppliers']);
+
         return view('backend.pages.stock.report', $data);
     }
 

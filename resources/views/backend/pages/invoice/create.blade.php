@@ -262,7 +262,7 @@
             var discount_amount = parseFloat($('#discount_amount').val());
                 if(!isNaN(discount_amount) && discount_amount.length != 0){
                     sum -= parseFloat(discount_amount);
-                    
+
             }
             //estimated_amount after applying discount
             $('#estimated_amount').val(sum);
@@ -285,11 +285,24 @@
                     success: function (response) {
                         if(response.status){
                             let data = response.data
-                            $('#curent_stock_qty').val(data.stock)
+
                             $('#get_unit_price').val(data.unitPrice)
                             $('#unt_sell_price').val(data.unitSellingPrice)
                             $('#productUnit').val(data.unit)
                         }
+                    }
+                });
+            });
+            //Loading product stock under product_id selection
+            $(document).on('change', '#product_id', function () {
+                var my_product_id = $(this).val();
+                $.ajax({
+                    url: "{{ route('check-product-stock') }}",
+                    type: "GET",
+                    data: { product_id: my_product_id },
+                    success: function (data) {
+                        //console.log(data)
+                        $('#curent_stock_qty').val(data);
                     }
                 });
             });
